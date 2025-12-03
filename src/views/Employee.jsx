@@ -92,8 +92,7 @@ function Employee() {
         </div>
       );
     }
-
-      if (isError) return <p>Error: {error?.message || 'Something went wrong'}</p>;
+    if (isError) return <p>Error: {error?.message || 'Something went wrong'}</p>;
 
   return (
     <main className="main-container">
@@ -252,7 +251,6 @@ function Employee() {
             )}
           </tbody>
         </table>
-         {/* Pagination */}
         {totalPages > 1 && (
           <div className={style.paginationContainer}>
             <button

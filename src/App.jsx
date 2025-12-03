@@ -40,7 +40,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Auth Routes */}
+        {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
@@ -64,7 +64,7 @@ function App() {
                 <Route path="paymentRequestDetail" element={<PaymentRequestDetail />} />
                 <Route path="charge" element={<Charge />} />
 
-                {/* Edit routes */}
+                {/* Edit */}
                 <Route path="editUser/:id" element={<EditUser />} />
                 <Route path="editCompany/:id" element={<EditCompany />} />
                 <Route path="editEmployee/:id" element={<EditEmployee />} />

@@ -69,7 +69,7 @@ useEffect(() => {
   const { data: customers = [] } = useFetchCustomerQuery();
   const activeCustomers = customers.filter(c => c.isActive);
 
- const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
    
   useEffect(() => {
     const timer = setTimeout(() => setShowLoader(false), 1000);
@@ -102,86 +102,84 @@ useEffect(() => {
   return (
     <main className="main-container">
       <Toaster position="top-right" reverseOrder={false} />
-
-      <div className={style.ListContainer}>
-        
-        {/* Header */}
-        <div className={style.pageHeaderContainer}>
-          <div className={style.flexTitleHeader}>
-            <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
-                    <h3 className={style.headerLaber}>Booking</h3>
-          </div>
-          <div className={style.flexHeader}>
-            <input
-              className={style.searchBox}
-              type="text"
-              value={search}
-              onChange={e => {
-                setSearch(e.target.value);
-                setCurrentPage(1);
-              }}
-              placeholder="Search..."
-            />
-            <button className={style.addBtn} onClick={() => setShowModal(true)}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"/></svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Modal */}
-        {showModal && (
-          <div className={style.modalOverlay}>
-            <div className={style.modal}>
-              <div className={style.modalHeader}>
-                <h3>Add Booking</h3>
-                <button className={style.closeButton} onClick={() => setShowModal(false)}>
-                  <svg
-                    className={style.closeBtn}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="m11.25 4.75-6.5 6.5m0-6.5 6.5 6.5"
-                    />
-                  </svg>
+        <div className={style.ListContainer}>
+          {/* Header */}
+          <div className={style.pageHeaderContainer}>
+            <div className={style.flexTitleHeader}>
+              <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
+                      <h3 className={style.headerLaber}>Booking</h3>
+              </div>
+              <div className={style.flexHeader}>
+                <input
+                  className={style.searchBox}
+                  type="text"
+                  value={search}
+                  onChange={e => {
+                    setSearch(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  placeholder="Search..."
+                />
+                <button className={style.addBtn} onClick={() => setShowModal(true)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"/></svg>
                 </button>
               </div>
-              <form onSubmit={handleSubmit} className={style.formContainer}>
-              <div className={style.customSelectWrapper} ref={customerRef}>
-              <div
-                className={style.customSelectInput}
-                onClick={() => setOpenCustomer(!openCustomer)}
-              >
-                {formData.customerId
-                  ? activeCustomers.find((c) => c.id === formData.customerId)?.name
-                  : "Select Customer"}
-                  <span className={style.selectArrow}>▾</span>
-              </div>
-
-              {openCustomer && (
-                <div className={style.customSelectDropdown}>
-                  {activeCustomers.map((c) => (
-                    <div
-                      key={c.id}
-                      className={style.customSelectOption}
-                      onClick={() => {
-                        setFormData({ ...formData, customerId: c.id });
-                        setOpenCustomer(false);
-                      }}
-                    >
-                      {c.name}
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
+
+            {/* Modal */}
+            {showModal && (
+              <div className={style.modalOverlay}>
+                <div className={style.modal}>
+                  <div className={style.modalHeader}>
+                    <h3>Add Booking</h3>
+                    <button className={style.closeButton} onClick={() => setShowModal(false)}>
+                      <svg
+                        className={style.closeBtn}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                          d="m11.25 4.75-6.5 6.5m0-6.5 6.5 6.5"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <form onSubmit={handleSubmit} className={style.formContainer}>
+                  <div className={style.customSelectWrapper} ref={customerRef}>
+                  <div
+                    className={style.customSelectInput}
+                    onClick={() => setOpenCustomer(!openCustomer)}
+                  >
+                    {formData.customerId
+                      ? activeCustomers.find((c) => c.id === formData.customerId)?.name
+                      : "Select Customer"}
+                      <span className={style.selectArrow}>▾</span>
+                  </div>
+
+                  {openCustomer && (
+                    <div className={style.customSelectDropdown}>
+                      {activeCustomers.map((c) => (
+                        <div
+                          key={c.id}
+                          className={style.customSelectOption}
+                          onClick={() => {
+                            setFormData({ ...formData, customerId: c.id });
+                            setOpenCustomer(false);
+                          }}
+                        >
+                          {c.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
 
                 {/* <input
                   className={style.disableBookingId}

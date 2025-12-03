@@ -65,7 +65,6 @@ useEffect(() => {
     });
   }
 }, [detail, id]);
- 
 
   const [formData, setFormData] = useState({
     vendorId: "",
@@ -227,7 +226,6 @@ const handleSubmitDetail = async (e) => {
   }
 };
 
-
 function numberToWords(amount) {
   if (!amount) return "";
   const ones = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"];
@@ -330,7 +328,6 @@ const generatePDF = () => {
 
   doc.setFont("helvetica", "bold");
   doc.text(activeVendors.find(v => v.id === formData.vendorId)?.name || "", margin + 50, leftY);
-
 
   doc.setFont("helvetica", "normal");
   leftY += 18;
@@ -447,8 +444,7 @@ const generatePDF = () => {
     ? activeDepartments.find((d) => d.id === formData.departmentId)?.type || ""
     : "";
 
-
-  // department change click--
+  // department change when click
   const [departmentModal, setDepartmentModal] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 

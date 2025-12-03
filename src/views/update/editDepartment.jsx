@@ -25,7 +25,6 @@ function EditDepartment() {
 
   const typeOptions = ["Administrative", "Operation"];
 
-
   const { id } = useParams();
   // const navigate = useNavigate();
 
@@ -117,7 +116,6 @@ function EditDepartment() {
             }
             required
           />
-
           <label className={style.editLabel}>Name:</label>
           <input
             className={style.editInput}
@@ -129,7 +127,6 @@ function EditDepartment() {
             }
             required
           />
-
           <label className={style.editLabel}>Type:</label>
           <div className={style.customSelectWrapper} ref={editTypeRef}>
             <div
@@ -139,7 +136,6 @@ function EditDepartment() {
               {formData.type || "Select Type"}
               <span className={style.selectArrow}>▾</span>
             </div>
-
             {openEditType && (
               <div className={style.customSelectDropdown}>
                 {typeOptions.map((t) => (
@@ -157,7 +153,6 @@ function EditDepartment() {
               </div>
             )}
           </div>
-
           <div className={style.editActiveHolder}>
             <label>Active:</label>
             <input
@@ -172,7 +167,6 @@ function EditDepartment() {
               }
             />
           </div>
-
           <button
             className={style.editButton}
             type="submit"

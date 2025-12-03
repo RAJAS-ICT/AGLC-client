@@ -117,157 +117,150 @@ function Department() {
   return (
     <main className="main-container">
       <Toaster position="top-right" />
-
-      <div className={style.ListContainer}>
-       
+        <div className={style.ListContainer}>
         {/* Header */}
-        <div className={style.pageHeaderContainer}>
-           <div className={style.flexTitleHeader}>
-            <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
-                    <h3 className={style.headerLaber}>Department</h3>
-          </div>
-          <div className={style.flexHeader}>
-            <input
-              className={style.searchBox}
-              type="text"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setCurrentPage(1);
-              }}
-              placeholder="Search..."
-            />
+          <div className={style.pageHeaderContainer}>
+            <div className={style.flexTitleHeader}>
+              <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
+                      <h3 className={style.headerLaber}>Department</h3>
+            </div>
+            <div className={style.flexHeader}>
+              <input
+                className={style.searchBox}
+                type="text"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setCurrentPage(1);
+                }}
+                placeholder="Search..."
+              />
 
-            <button
-              className={style.addBtn}
-              onClick={() => setShowModal(true)}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+              <button
+                className={style.addBtn}
+                onClick={() => setShowModal(true)}
               >
-                <path
-                  fill="currentColor"
-                  d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Modal */}
-        {showModal && (
-          <div className={style.modalOverlay}>
-            <div className={style.modal}>
-              <div className={style.modalHeader}>
-                <h3>Add Department</h3>
-
-                <button
-                  className={style.closeButton}
-                  onClick={() => setShowModal(false)}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className={style.closeBtn}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="m11.25 4.75-6.5 6.5m0-6.5 6.5 6.5"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <form onSubmit={handleSubmit} className={style.formContainer}>
-                <input
-                  type="text"
-                  placeholder="Code"
-                  value={formData.code}
-                  onChange={(e) =>
-                    setFormData({ ...formData, code: e.target.value })
-                  }
-                  required
-                />
-
-                <input
-                  type="text"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  required
-                />
-
-                <div className={style.customSelectWrapper} ref={typeRef}>
-                  <div
-                    className={style.customSelectInput}
-                    onClick={() => setOpenType(!openType)}
-                  >
-                    {formData.type || "Select Type"}
-                    <span className={style.selectArrow}>▾</span>
-                  </div>
-
-                  {openType && (
-                    <div className={style.customSelectDropdown}>
-                      {typeOptions.map((t) => (
-                        <div
-                          key={t}
-                          className={style.customSelectOption}
-                          onClick={() => {
-                            setFormData({ ...formData, type: t });
-                            setOpenType(false);
-                          }}
-                        >
-                          {t}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-
-                <div className={style.activeWrap}>
-                  <label> Active:</label>
-                  <input
-                    className={style.activeHolder}
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        isActive: e.target.checked,
-                      })
-                    }
+                  <path
+                    fill="currentColor"
+                    d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"
                   />
-                </div>
-
-                <div className={style.modalActions}>
-                  <button
-                    type="button"
-                    className={style.cancelButton}
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancel
-                  </button>
-
-                  <button type="submit" className={style.submitButton}>
-                    Submit
-                  </button>
-                </div>
-              </form>
+                </svg>
+              </button>
             </div>
           </div>
-        )}
+
+          {/* Modal */}
+          {showModal && (
+            <div className={style.modalOverlay}>
+              <div className={style.modal}>
+                <div className={style.modalHeader}>
+                  <h3>Add Department</h3>
+
+                  <button
+                    className={style.closeButton}
+                    onClick={() => setShowModal(false)}
+                  >
+                    <svg
+                      className={style.closeBtn}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
+                        d="m11.25 4.75-6.5 6.5m0-6.5 6.5 6.5"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <form onSubmit={handleSubmit} className={style.formContainer}>
+                  <input
+                    type="text"
+                    placeholder="Code"
+                    value={formData.code}
+                    onChange={(e) =>
+                      setFormData({ ...formData, code: e.target.value })
+                    }
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    required
+                  />
+                  <div className={style.customSelectWrapper} ref={typeRef}>
+                    <div
+                      className={style.customSelectInput}
+                      onClick={() => setOpenType(!openType)}
+                    >
+                      {formData.type || "Select Type"}
+                      <span className={style.selectArrow}>▾</span>
+                    </div>
+
+                    {openType && (
+                      <div className={style.customSelectDropdown}>
+                        {typeOptions.map((t) => (
+                          <div
+                            key={t}
+                            className={style.customSelectOption}
+                            onClick={() => {
+                              setFormData({ ...formData, type: t });
+                              setOpenType(false);
+                            }}
+                          >
+                            {t}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <div className={style.activeWrap}>
+                    <label> Active:</label>
+                    <input
+                      className={style.activeHolder}
+                      type="checkbox"
+                      checked={formData.isActive}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          isActive: e.target.checked,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className={style.modalActions}>
+                    <button
+                      type="button"
+                      className={style.cancelButton}
+                      onClick={() => setShowModal(false)}
+                    >
+                      Cancel
+                    </button>
+
+                    <button type="submit" className={style.submitButton}>
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
 
         {/* Table */}
         <table>

@@ -136,7 +136,6 @@ useEffect(() => {
               )}
             </div>
 
-
           <label className={style.editLabel}>Remarks: </label>
           <textarea name="" id="" style={{marginBottom:"1rem"}}
             type="text"

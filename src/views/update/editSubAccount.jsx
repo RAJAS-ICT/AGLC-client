@@ -12,26 +12,23 @@ import { Mosaic } from "react-loading-indicators";
 function EditSubAccount() {
 
   const [openAccountEdit, setOpenAccountEdit] = useState(false);
-const accountEditRef = useRef(null);
+  const accountEditRef = useRef(null);
 
-useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (accountEditRef.current && !accountEditRef.current.contains(event.target)) {
-      setOpenAccountEdit(false);
-    }
-  };
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => document.removeEventListener("mousedown", handleClickOutside);
-}, []);
-
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (accountEditRef.current && !accountEditRef.current.contains(event.target)) {
+        setOpenAccountEdit(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const { id } = useParams();
   // const navigate = useNavigate();
 
   const { data: subAccount, isLoading, isError, error } = useFetchSubAccountByIdQuery(id);
-
   const { data: accountTitles = [], isLoading: loadingAccounts } = useFetchAccountQuery();
-
   const [updateSubAccount, { isLoading: isUpdating }] = useUpdateSubAccountMutation();
 
   const [formData, setFormData] = useState({
@@ -76,7 +73,7 @@ useEffect(() => {
     }
   };
 
- const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
    
   useEffect(() => {
     const timer = setTimeout(() => setShowLoader(false), 1000);

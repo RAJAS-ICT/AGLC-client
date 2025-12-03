@@ -121,9 +121,8 @@ function EditCharge() {
               }
             />
           </div>
-
-          <button className={style.editButton} type="submit">
-            Update
+            <button className={style.editButton} type="submit">
+              Update
           </button>
         </form>
       </div>

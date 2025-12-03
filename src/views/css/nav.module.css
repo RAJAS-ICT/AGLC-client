@@ -90,7 +90,6 @@ p{
     font-family: "Oswald", sans-serif;
 }
 
-
 /* Sidebar */
 .sideBar {
   background-color: #007bff;
@@ -144,7 +143,6 @@ ul li{
     cursor: pointer;
 }
 
-
 .menuItem{
     display: flex;
     justify-content: space-between;
@@ -181,7 +179,6 @@ svg{
   transition: 0.6s ease-in-out;
 }
 
-
 .accordionItem {
   margin-bottom: 8px;
   border-radius: 4px;
@@ -206,7 +203,6 @@ svg{
   -ms-user-select: none;
 }
 
-
 .accordionContent {
   padding-top:2px;
   padding-bottom:1rem;
@@ -222,6 +218,5 @@ svg{
 
 .accordionContent p {
   margin-top: 1rem;
-
 }
 

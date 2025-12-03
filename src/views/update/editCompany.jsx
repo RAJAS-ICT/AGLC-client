@@ -80,7 +80,7 @@ function EditCompany() {
       <div className={style.editContainer}>
               <div className={style.flexTitleHeader}>
                   <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
-                          <h3 className={style.headerLaber}>Edit Company</h3>
+                  <h3 className={style.headerLaber}>Edit Company</h3>
                 </div>
              <form onSubmit={handleSubmit} className={style.editForm}>
               <label className={style.editLabel}>Code: </label>
@@ -131,7 +131,7 @@ function EditCompany() {
                 </div>
               <button className={style.editButton} type="submit" disabled={isUpdating}>
                 {isUpdating ? 'Updating...' : 'Update'}
-              </button>
+            </button>
         </form>
       </div>
     </main>

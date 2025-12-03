@@ -5,7 +5,6 @@
   flex-wrap: wrap;
 }
 
-
 *::-webkit-scrollbar {
   width: 4px;
 }
@@ -28,7 +27,6 @@
   border-radius: 6px;
   overflow: hidden;
 }
-
 
 th {
   color: #3a3a3a;
@@ -218,7 +216,6 @@ td {
   text-align: left;
 }
 
-
 .bodyBookingTable {
   display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
@@ -310,7 +307,6 @@ th{
   border-color: #007bff;
   color: #fff;
 }
-
 
 .editBtn{
     display: flex;
@@ -441,7 +437,6 @@ th{
  margin-top: 2px;
 }
 
-
 .activeAccountWraper {
   display: flex;
   justify-content: space-between;
@@ -529,9 +524,6 @@ th{
   to { transform: translateY(0); opacity: 1; }
 }
 
-
-
-/* EDIT PAGES */
 
 .editContainer {
   display: flex;
@@ -698,10 +690,6 @@ textarea{
   color: #fff;
 }
 
-
-/* momdal */
-
-
 .moreWrapper {
   position: relative;
   margin-left: 10px;
@@ -749,7 +737,6 @@ textarea{
   text-align: center;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-
 }
 
 .dropdownItem:hover {
@@ -772,7 +759,6 @@ textarea{
   }
 }
 
-
 .loadingWrapper {
   display: flex;
   align-items: center;
@@ -788,13 +774,6 @@ textarea{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-
-
-
-
-
-
 
 .customSelectWrapper {
   position: relative;
@@ -1013,7 +992,6 @@ textarea{
  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  font-weight: 400;
  color: #6b6b6b;
-
 }
 
 .modalButtons {

@@ -153,8 +153,8 @@ function Account() {
       </div>
     );
   }
+  if (isError) return <p>Error: {error?.message || 'Something went wrong'}</p>;
 
-      if (isError) return <p>Error: {error?.message || 'Something went wrong'}</p>;
   return (
     <main className="main-container">
       <Toaster position="top-right" />

@@ -155,27 +155,25 @@ function PaymentRequestDetail() {
   return (
     <main className="main-container">
       <Toaster position="top-right" />
-
-      <div className={style.ListContainer}>
+        <div className={style.ListContainer}>
         
-        {/* Header */}
-        <div className={style.pageHeaderContainer}>
-          <div className={style.flexTitleHeader}>
-            <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
-            <h3 className={style.headerLaber}>Payment Request Detail</h3>
-        </div>
-          <div className={style.flexHeader}>
-            <input
-              className={style.searchBox}
-              type="text"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setCurrentPage(1);
-              }}
-            />
-
+          {/* Header */}
+          <div className={style.pageHeaderContainer}>
+            <div className={style.flexTitleHeader}>
+              <svg className={style.svgTitleHeader} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0a1 1 0 0 1-2 0"/></svg>
+              <h3 className={style.headerLaber}>Payment Request Detail</h3>
+          </div>
+            <div className={style.flexHeader}>
+              <input
+                className={style.searchBox}
+                type="text"
+                placeholder="Search..."
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setCurrentPage(1);
+                }}
+              />
             <button className={style.addBtn} onClick={() => setShowModal(true)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -190,8 +188,6 @@ function PaymentRequestDetail() {
               </svg>
             </button>
           </div>
-
-         
         </div>
 
         {showModal && (
@@ -408,7 +404,6 @@ function PaymentRequestDetail() {
             )}
           </tbody>
         </table>
-         {/* Pagination */}
           {totalPages > 1 && (
             <div className={style.paginationContainer}>
               <button
