@@ -433,6 +433,14 @@ th{
   margin-top: auto;
   margin-bottom: auto;
 }
+.activeWrapUser{
+  display: flex;
+  gap: 1rem;
+  font-size: 14px;
+  color: #3a3a3a;
+  margin-top: .75rem;
+
+}
 .activeHolder{
  margin-top: 2px;
 }

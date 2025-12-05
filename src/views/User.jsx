@@ -19,6 +19,8 @@ function UserList() {
     middleName: '',
     lastName: '',
     role: '',
+    isActive: true,
+
   });
   const [newUser, { isLoading: isRegistering }] = useRegisterUserMutation();
 
@@ -35,6 +37,8 @@ function UserList() {
         middleName: '',
         lastName: '',
         role: '',
+        isActive: true,
+
       });
       setShowModal(false);
     } catch (err) {
@@ -166,6 +170,15 @@ function UserList() {
                   <option value="Accounting Manager">Accounting Manager</option>
                   <option value="Accounting Staff">Accounting Staff</option>
                 </select>
+                <div className={style.activeWrapUser}>
+                  <label> Active:</label>
+                  <input
+                    className={style.activeHolder}
+                    type="checkbox"
+                    checked={formData.isActive}
+                    onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
+                  />
+                </div>
                 <div className={style.modalActions}>
                   <button type="button" className={style.cancelButton} onClick={() => setShowModal(false)}>Cancel</button>
                   <button type="submit" className={style.submitButton} disabled={isRegistering}>{isRegistering ? 'Registering...' : 'Submit'}</button>
