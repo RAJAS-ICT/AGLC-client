@@ -67,6 +67,14 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['users'],
     }),
+      updateUserProfile: builder.mutation({
+      query: ({ id, ...body }) => ({
+        url: `/profile/${id}`,
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: ['users'],
+    }),
 
     currentUser: builder.query({
       query: () => ({
@@ -94,6 +102,7 @@ export const {
   useRegisterUserModalMutation,
   useLoginUserMutation,
   useUpdateUserMutation,
+  useUpdateUserProfileMutation,
   useCurrentUserQuery,
   useLogoutUserMutation,
 } = userApi;

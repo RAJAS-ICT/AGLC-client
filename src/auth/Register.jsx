@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, Navigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
-import { useRegisterUserMutation } from '../features/userSlice'
+import { useRegisterUserMutation, useGetUserCountQuery } from '../features/userSlice'
 import authStyle from '../auth/auth.module.css'
 import logo from '../assets/acestar.jpg'
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate()
+  const { data, isLoading } = useGetUserCountQuery()
+  const [newUser, { isLoading: registering }] = useRegisterUserMutation()
 
   const [formData, setFormData] = useState({
     username: '',
@@ -18,86 +20,93 @@ export default function Login() {
     role: 'Power User',
   })
 
-  const [newUser, { isLoading }] = useRegisterUserMutation()
+  if (!isLoading && data?.count > 0) {
+    return <Navigate to="/login" replace />
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     try {
       const response = await newUser(formData).unwrap()
       toast.success(response.message || 'Registered successfully!')
       navigate('/login')
     } catch (error) {
-      const message =
-        error?.data?.message || 
-        error?.error ||          
-        'Registration failed!'
-      toast.error(message)
+      toast.error(error?.data?.message || 'Registration failed!')
     }
   }
 
   return (
     <main className={authStyle.mainRegister}>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" />
 
       <form onSubmit={handleSubmit} className={authStyle.formRegister}>
         <div className={authStyle.logHeader}>
-          <img className={authStyle.img} src={logo} alt="" />
-          <h3 className={authStyle.title}>Welcome Back</h3>
-          <p className={authStyle.subtitle}>Please enter your details below</p>
+          <img className={authStyle.img} src={logo} alt="logo" />
+          <h3 className={authStyle.title}>Create Account</h3>
         </div>
-        <div className={authStyle.flexInput}>
-            <input className={authStyle.fieldRegister}
-            type="text"
-            value={formData.username}
-            onChange={e => setFormData({ ...formData, username: e.target.value })}
-            placeholder="username"
-            required
-          />
-          <input className={authStyle.fieldRegister}
-            type="email"
-            value={formData.email}
-            onChange={e => setFormData({ ...formData, email: e.target.value })}
-            placeholder="email"
-            required
-          />
-        </div>
-        <input className={authStyle.fieldRegister}
-          type="text"
-          value={formData.firstName}
-          onChange={e => setFormData({ ...formData, firstName: e.target.value })}
-          placeholder="firstname"
-          required
-        />
-        <input className={authStyle.fieldRegister}
-          type="text"
-          value={formData.middleName}
-          onChange={e => setFormData({ ...formData, middleName: e.target.value })}
-          placeholder="middlename"
-        />
-        <input className={authStyle.fieldRegister}
-          type="text"
-          value={formData.lastName}
-          onChange={e => setFormData({ ...formData, lastName: e.target.value })}
-          placeholder="lastname"
-        />
-        <input className={authStyle.fieldRegister}
-          type="password"
-          value={formData.password}
-          onChange={e => setFormData({ ...formData, password: e.target.value })}
-          placeholder="password"
-          required
-        />
+
         <input
           className={authStyle.fieldRegister}
           type="text"
-          value="Power User"
-          disabled
+          value={formData.username}
+          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+          placeholder="Username"
+          required
         />
-        <button className={authStyle.btnLogin} type="submit" disabled={isLoading}>
-          {isLoading ? 'Registering...' : 'Register'}
+
+        <input
+          className={authStyle.fieldRegister}
+          type="email"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          placeholder="Email"
+          required
+        />
+
+        <input
+          className={authStyle.fieldRegister}
+          type="text"
+          value={formData.firstName}
+          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+          placeholder="First name"
+          required
+        />
+
+        <input
+          className={authStyle.fieldRegister}
+          type="text"
+          value={formData.middleName}
+          onChange={(e) => setFormData({ ...formData, middleName: e.target.value })}
+          placeholder="Middle name"
+        />
+
+        <input
+          className={authStyle.fieldRegister}
+          type="text"
+          value={formData.lastName}
+          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+          placeholder="Last name"
+        />
+
+        <input
+          className={authStyle.fieldRegister}
+          type="password"
+          value={formData.password}
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          placeholder="Password"
+          required
+        />
+
+        <button className={authStyle.btnLogin} type="submit" disabled={registering}>
+          {registering ? 'Registering…' : 'Register'}
         </button>
-        <p className={authStyle.linkRegister}>Already have an acconut? <Link className={authStyle.link} to='/login'>Login</Link></p>
+
+        <p className={authStyle.linkRegister}>
+          Already have an account?{' '}
+          <Link className={authStyle.link} to="/login">
+            Login
+          </Link>
+        </p>
       </form>
     </main>
   )

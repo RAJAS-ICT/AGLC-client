@@ -668,6 +668,14 @@ textarea{
   color: #333;
   font-weight: 600;
 }
+.editLabelPassword{
+  align-self: flex-start;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
 .editUserActiveHolder{
   font-size: 14px;
   font-weight: 500;

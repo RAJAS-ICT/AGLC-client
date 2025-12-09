@@ -106,8 +106,21 @@ function Nav() {
           />
           {isDropdownOpen && (
             <div className={style.dropdown}>
-              <button className={style.dropdownItem} onClick={handleLogout}>
-                Logout
+              <Link 
+                className={style.dropdownItem1} 
+                to={`/editProfile/${user.id}`} 
+                onClick={() => setIsDropdownOpen(false)}
+              >
+              <svg className={style.svgProf} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6 22q-.825 0-1.412-.587T4 20V10q0-.825.588-1.412T6 8h1V6q0-2.075 1.463-3.537T12 1t3.538 1.463T17 6v2h1q.825 0 1.413.588T20 10v10q0 .825-.587 1.413T18 22zm6-5q.825 0 1.413-.587T14 15t-.587-1.412T12 13t-1.412.588T10 15t.588 1.413T12 17M9 8h6V6q0-1.25-.875-2.125T12 3t-2.125.875T9 6z" />
+              </svg>
+                <p>Change Password</p>
+              </Link>
+              <button className={style.dropdownItem2} onClick={handleLogout}>
+                <svg className={style.svgLogout} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6q.425 0 .713.288T12 4t-.288.713T11 5H5v14h6q.425 0 .713.288T12 20t-.288.713T11 21zm12.175-8H10q-.425 0-.712-.288T9 12t.288-.712T10 11h7.175L15.3 9.125q-.275-.275-.275-.675t.275-.7t.7-.313t.725.288L20.3 11.3q.3.3.3.7t-.3.7l-3.575 3.575q-.3.3-.712.288t-.713-.313q-.275-.3-.262-.712t.287-.688z" />
+                </svg>
+                <p>Logout</p>
               </button>
             </div>
           )}
