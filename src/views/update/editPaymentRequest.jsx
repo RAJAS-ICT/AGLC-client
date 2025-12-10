@@ -74,6 +74,7 @@ useEffect(() => {
     remarks: "",
     dateNeeded: "",
     requestNumber: "",
+    status: "Canceled"
   });
 
   useEffect(() => {
@@ -84,6 +85,7 @@ useEffect(() => {
         chargeTo: paymentRequest.chargeTo || "",
         requestType: paymentRequest.requestType || "",
         remarks: paymentRequest.remarks || "",
+        status: paymentRequest.status || "",
         dateNeeded: paymentRequest.dateNeeded
           ? new Date(paymentRequest.dateNeeded).toISOString().slice(0, 10)
           : "",
@@ -161,6 +163,7 @@ useEffect(() => {
         requestType: formData.requestType,
         requestNumber: formData.requestNumber,
         remarks: formData.remarks,
+        status: formData.status,
         dateNeeded: formData.dateNeeded,
       }).unwrap();
 
@@ -300,7 +303,8 @@ const generatePDF = () => {
   const leftMargin = 40; 
   const rightMargin = 52; 
 
-  if (departmentType.toLowerCase() === "operation" && bookingIdToShow) {
+if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
+
     doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
 
@@ -459,9 +463,6 @@ const generatePDF = () => {
   };
 
   const [deleteAllDetails] = useDeleteAllDetailsMutation();
-  useFetchPaymentRequestByIdQuery(id, {
-    refetchOnMountOrArgChange: true
-  });
 
   const confirmDepartmentChange = async () => {
     if (!selectedDepartment) return;
@@ -939,9 +940,73 @@ const generatePDF = () => {
             required
           />
 
-          <button className={style.editButton} type="submit" disabled={isUpdating}>
-            {isUpdating ? "Updating..." : "Update"}
-          </button>
+         <div className={style.flexBtn}>
+            <button
+              type="button"
+              className={style.cancelBtn}
+              onClick={() => {
+                toast((t) => (
+                  <div> 
+                    <p style={{ marginBottom: "24px", marginTop:"10px" }}>
+                      Cancel this Payment Request?
+                    </p>
+                    <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
+                      <button
+                        onClick={async () => {
+                          toast.dismiss(t.id);
+                          setFormData({ ...formData, status: "Canceled" });
+
+                          try {
+                            await updatePaymentRequest({
+                              id,
+                              ...formData,
+                              status: "Canceled",
+                            }).unwrap();
+
+                            toast.success("Payment Request Canceled");
+                          } catch (err) {
+                            toast.error("Failed to cancel");
+                            console.log(err);
+                          }
+                        }}
+                        style={{
+                          background: "#dc3545",
+                          color: "#fff",
+                          border: "none",
+                          padding: "6px 16px",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => toast.dismiss(t.id)}
+                        style={{
+                          background: "#6c757d",
+                          color: "#fff",
+                          border: "none",
+                          padding: "6px 16px",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                ), {
+                  duration: Infinity,
+                  position: "top-center",
+                });
+              }}
+            >
+              Cancel
+            </button>
+            <button className={style.editButton} type="submit" disabled={isUpdating}>
+              {isUpdating ? "Updating..." : "Update"}
+            </button>
+         </div>
         </form>
                   
           <div className={style.payReqTempTable}>

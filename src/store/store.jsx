@@ -11,6 +11,7 @@ import {departmentApi} from '../features/departmentSlice'
 import {paymentRequestApi} from '../features/paymentRequest'
 import {paymentRequestDetailApi} from '../features/paymentRequestDetailSlice'
 import {chargeSlice} from '../features/chargeSlice'
+import {pettyCashApi} from '../features/pettyCashReleaseSlice'
 
 
 const store = configureStore({
@@ -27,6 +28,7 @@ const store = configureStore({
         [paymentRequestApi.reducerPath]:paymentRequestApi.reducer,
         [paymentRequestDetailApi.reducerPath]:paymentRequestDetailApi.reducer,
         [chargeSlice.reducerPath]:chargeSlice.reducer,
+        [pettyCashApi.reducerPath]:pettyCashApi.reducer
 
 
     },
@@ -44,6 +46,7 @@ const store = configureStore({
             paymentRequestApi.middleware,
             paymentRequestDetailApi.middleware,
             chargeSlice.middleware,
+            pettyCashApi.middleware
         )
 })
 

@@ -20,6 +20,7 @@ import Department from './views/Department';
 import PaymentRequest from './views/PaymentRequest';
 import PaymentRequestDetail from './views/PaymentRequestDetail';
 import Charge from './views/Charge';
+import PettyCashRelease from './views/PettyCashRelease';
 
 
 // Edit
@@ -65,6 +66,7 @@ function App() {
                 <Route path="paymentRequest" element={<PaymentRequest />} />
                 <Route path="paymentRequestDetail" element={<PaymentRequestDetail />} />
                 <Route path="charge" element={<Charge />} />
+                <Route path="pettyCashRelease" element={<PettyCashRelease />} />
 
                 {/* Edit */}
                 <Route path="editUser/:id" element={<EditUser />} />

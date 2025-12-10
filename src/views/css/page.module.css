@@ -76,7 +76,7 @@ td {
 .headTablePayment {
   background-color: #fff;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 140px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 100px 120px;
   text-align: left;
   border-radius: 6px 6px 0 0;
    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -85,7 +85,7 @@ td {
 
 .bodyTablePayment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 140px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 100px 120px;
   text-align: left;
 }
 
@@ -216,6 +216,21 @@ td {
   text-align: left;
 }
 
+.headPettyCashTable{
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 140px;
+  text-align: left;
+  border-radius: 6px 6px 0 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin-bottom: .2rem;
+}
+.bodyPettyCashTable{
+  display: grid;
+  grid-template-columns: 1fr 1fr 140px;
+  text-align: left;
+}
+
 .bodyBookingTable {
   display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
@@ -320,6 +335,17 @@ th{
     border-radius: 2px;
     cursor: pointer;
     transition: 0.1s ease-in-out;
+}
+.flexBtn{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.cancelBtn{
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
 }
 .editBtn:hover{
     background-color: #007bff;
@@ -996,10 +1022,6 @@ textarea{
   margin: 0 0 1.5rem 0;
   min-width: 100%;
 }
-.cancelDeleteBtn:hover{
-  background-color: #c8c8c8;
-  color: #fff;
-}
 
 .modalTitle {
   margin: 0;
@@ -1029,17 +1051,17 @@ textarea{
 
 .cancelDeleteBtn {
   background: #f3f4f6;
-  color: #555;
+  color: #444;
   padding: 8px 2.5rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s ease-in-out;
+  border: 1px solid #ccc;
 }
 
 .confirmDeleteBtn {
-  background: #ef4444;
+  background: #dd0000;
   color: #fff;
   padding: 8px 2.5rem;
   border: none;
@@ -1048,12 +1070,8 @@ textarea{
   font-size: 14px;
   transition: background 0.2s;
   font-size: 14px;
-  transition: 0.2s ease-in-out;
 }
 
-.confirmDeleteBtn:hover {
-  background: #dd0000;
-}
 
 @keyframes fadeInOverlay {
   from { opacity: 0; }
