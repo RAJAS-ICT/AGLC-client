@@ -523,7 +523,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
               zIndex: 9999,
             }}
             >
-              <Mosaic color="#374151" size="small" />
+              <Mosaic color="#ca8a04" size="small" />
           </div>
         );
       }
@@ -821,11 +821,11 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                       Changing department to <b>{selectedDepartment.name}</b> will clear all existing charge details. Do you want to proceed?
                     </p>
                     <div className={style.modalButtons}>
-                      <button className={style.cancelDeleteBtn} onClick={cancelDepartmentChange}>
-                        Cancel
-                      </button>
                       <button className={style.confirmDeleteBtn} onClick={confirmDepartmentChange}>
                         Proceed
+                      </button>
+                      <button className={style.cancelDeleteBtn} onClick={cancelDepartmentChange}>
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -947,6 +947,9 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
           />
 
          <div className={style.flexBtn}>
+          <button className={style.editButtonPayment} type="submit" disabled={isUpdating}>
+              {isUpdating ? "Updating..." : "Update"}
+            </button>
             <button
               type="button"
               className={style.cancelBtn}
@@ -1009,12 +1012,13 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
             >
               Cancel
             </button>
-            <button className={style.editButton} type="submit" disabled={isUpdating}>
-              {isUpdating ? "Updating..." : "Update"}
-            </button>
          </div>
         </form>
-                  
+          
+          <div className={style.bookingContainer}>
+            <p className={style.bookingPaymentTitle}>Booking Details</p>
+            <p className={style.bookingPaymentSubtitle}>Verify current status and entire transaction history for official documentation.</p>
+          </div>
           <div className={style.payReqTempTable}>
             <table className={style.table}>
               <thead>
@@ -1029,11 +1033,8 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                       style={{
                         display: "grid",
                         gridTemplateColumns: gridColumns,
-                        marginBottom: "4px",
-                        border: "1px solid #ddd",
-                        fontSize: "14px",
+                        marginBottom: "2px",
                         textAlign: "left",
-                        backgroundColor: "#fff",
                       }}
                       className={style.editThPayreq}
                     >
@@ -1048,7 +1049,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
               </thead>
               <tbody>
                 {currentDetails.length === 0 ? (
-                  <tr>
+                  <tr className={style.bookingHistoryTd}>
                     <td
                       colSpan={departmentType.toLowerCase() === "operation" ? 5 : 4}
                       className={style.payreqDetails}
@@ -1071,11 +1072,6 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                           display: "grid",
                           gridTemplateColumns: gridColumns,
                           boxShadow: "none !important",
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          border: "1px solid #ddd",
-                          marginBottom: "2px",
-                          // boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 2px 0px"
                         }}
                       >
                         <td className={style.payreqTd}>

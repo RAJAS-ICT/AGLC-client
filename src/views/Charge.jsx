@@ -80,7 +80,7 @@ function Charge() {
             zIndex: 9999,
           }}
           >
-            <Mosaic color="#374151" size="small" />
+            <Mosaic color="#ca8a04" size="small" />
         </div>
       );
     }
@@ -126,7 +126,7 @@ function Charge() {
                 setSearch(e.target.value);
                 setCurrentPage(1);
               }}
-              placeholder="Search..."
+              placeholder="Search here..."
             />
             <button className={style.addBtn} onClick={() => setShowModal(true)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">

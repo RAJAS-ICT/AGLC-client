@@ -40,8 +40,14 @@ table {
   border-collapse: collapse;
 }
 .editThPayreq{
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  border-radius: 4px 4px 0 0;
+  box-shadow: none !important;
+  border: 1px solid #ccc !important;
+  background-color: #0D254C !important;
+  color: #fff !important;
+}
+.thPayreq{
+  font-weight: 500;
+  color: #fff !important;
 }
 td {
   word-break: break-all;
@@ -152,23 +158,23 @@ td {
   gap: .65rem;
 }
 .svgExclamation{
-  color: #111827;
+  color: #ca8a04;
   height: 24px;
   width: 24px;
 }
 .headerLaber{
   font-weight: 400;
-  color: #111827;
+  color: #ca8a04;
   font-family: "Oswald", sans-serif !important;
   font-size: 24px;
 }
 
 .svgTitleHeader{
   border-radius: 50%;
-  color: #374151 !important;
+  color: #0D254C !important;
   height: 1.75rem;
   width: 1.75rem;
-  border: 1px solid #374151;
+  border: 1px solid #0D254C;
   padding: 2px;
 }
 .editLabelPayment{
@@ -322,7 +328,7 @@ th{
 }
 
 .pageButton:hover {
-  background-color: #374151;
+  background-color: #0D254C;
   color: #fff;
 }
 
@@ -332,8 +338,8 @@ th{
 }
 
 .activePage {
-  background-color: #374151;
-  border-color: #374151;
+  background-color: #0D254C;
+  border-color: #0D254C;
   color: #fff;
 }
 
@@ -343,8 +349,8 @@ th{
     align-items: center;
     gap: 4px;
     background-color: #fff;
-    border: 1px solid #374151;
-    color: #374151;
+    border: 1px solid #0D254C;
+    color: #0D254C;
     padding: 6px 12px 6px 10px;
     border-radius: 2px;
     cursor: pointer;
@@ -355,15 +361,39 @@ th{
   display: flex;
   gap: 1rem;
 }
-.cancelBtn{
-  width: 100%;
+.editButtonPayment{
+  height: 40px;
+  width: 120px;
   border-radius: 4px;
-  border: 1px solid #bbb;
+  background-color: #ca8a04;
+  color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none;
   cursor: pointer;
 }
+.cancelBtn{
+  width: 120px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+}
+.bookingContainer{
+  padding: 3rem 1.25rem 0;
+}
+.bookingPaymentTitle{
+  font-size: 1.5rem;
+  color: #b91c1c;
+}
+.bookingPaymentSubtitle{
+  color: #5a5a5a;
+}
 .editBtn:hover{
-    background-color: #374151;
+    background-color: #0D254C;
     color: #fff;
+    font-weight: 300;
 }
 .svdEditIcon{
   height: 16px;
@@ -377,9 +407,11 @@ th{
 .flexHeaderAccount{
   display: flex;
   gap: 8px;
-  background-color: #374151;
+  background-color: #0D254C;
 }
-
+h3{
+  font-family: "Oswald", sans-serif !important;
+}
 .addBtn{
   display: flex;
   align-items: center;
@@ -388,14 +420,15 @@ th{
   border-radius: 6px;
   background-color:#fff;
   border: none;
-  color: #374151;
+  color: #0D254C;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
   border: 1px solid #ccc;
 }
 
+
 .addButton {
-  background-color: #374151;
+  background-color: #0D254C;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -507,7 +540,7 @@ th{
 .editAccountId{
   display: flex !important;
   padding: 1rem;
-  background-color: #374151;
+  background-color: #0D254C;
 }
 .activeAccountWrap {
   display: flex;
@@ -597,11 +630,21 @@ th{
 .editForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: 0.65rem;
   width: 100%;        
-  max-width: 500px;     
+  /* max-width: 500px;      */
   padding: 1.5rem;
+  border-radius: 8px;
+}
+.editFormCustomer{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.65rem;
+  width: 100%;        
+  /* max-width: 500px;      */
+  padding: 3rem 1.5rem;
   border-radius: 8px;
 }
 .editFormPayReq{
@@ -611,7 +654,7 @@ th{
   gap: 0.65rem;
   width: 100%;        
   min-width: 500px;     
-  padding: 1.5rem 0 1.5rem 1.5rem;
+  padding: 1.5rem ;
   border-radius: 8px;
 }
 .editFormBooking{
@@ -734,12 +777,14 @@ textarea{
 
 .editButton{
   height: 40px;
-  width: 100%;
+  width: 120px;
   border-radius: 4px;
-  background-color: #374151;
-  color: #F9FAFB;
+  background-color: #ca8a04;
+  color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border: none;
   cursor: pointer;
+  margin-top: 1rem;
 }
 .editActiveHolder{
   display: flex;
@@ -774,7 +819,7 @@ textarea{
   border-radius: 6px;
   background-color:#fff;
   border: none;
-  color: #374151;
+  color: #0D254C;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
   border: 1px solid #ccc;
@@ -811,7 +856,7 @@ textarea{
 }
 
 .dropdownItem:hover {
-  background-color: #374151;
+  background-color: #0D254C;
   color: #fff;
 }
 
@@ -898,19 +943,19 @@ textarea{
 }
 
 .customSelectOption:hover {
-  background-color: #374151;
+  background-color: #0D254C;
   color: #fff;
 }
 
 .flexFormTable{
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 
 .payReqTempTable{
   min-width: 50%;
-  padding: 3.5rem 1rem 0;
+  padding: 2rem 1rem 6rem;
 }
 .tableTempThead{
   display: grid;
@@ -922,10 +967,7 @@ textarea{
   text-align: left;
   background-color: #fff;
 }
-.thPayreq{
-  font-weight: 500;
 
-}
 .tableTempTbody {
   display: grid;
   grid-template-columns: 50px 1fr 1fr 100px 100px;
@@ -958,11 +1000,14 @@ textarea{
   box-shadow: none !important;
   font-family: "Oswald", sans-serif !important;
   color: #333 !important;
+  font-weight: 300;
 }
 .payreqTdTotal{
   box-shadow: none !important;
   font-family: "Oswald", sans-serif !important;
   font-weight: 400;
+  font-size: 16px;
+  padding: .75rem;
 }
 .flexPdfBtn{
   display: flex;
@@ -975,7 +1020,7 @@ textarea{
   padding: 0 8px;
   border-radius: 6px;
   background-color:#fff;
-  color:#374151;
+  color:#0D254C;
   border: none;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -986,12 +1031,16 @@ textarea{
   grid-template-columns: 1fr 1fr 1fr 100px 100px;
   font-weight: 300;
   font-size: 14px;
-  border: 1px solid #ddd;
   margin-bottom: 2px;
   font-family: "Oswald", sans-serif !important;
-
+  box-shadow: none !important;
+  border: 1px solid #ccc !important;
 }
-
+.bookingHistoryTd{
+  box-shadow: none !important;
+  border:  1px solid #ccc !important;
+  margin-bottom: 1rem;
+}
 .addBtnPayReq{
   display: flex;
   align-items: center;
@@ -999,7 +1048,7 @@ textarea{
   padding: 0 8px;
   border-radius: 6px;
   background-color:#fff;
-  color:#374151;
+  color:#0D254C;
   border: none;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;

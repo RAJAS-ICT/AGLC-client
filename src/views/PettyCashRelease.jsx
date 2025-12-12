@@ -85,7 +85,7 @@ function PettyCashRelease() {
         display: "flex", justifyContent: "center", alignItems: "center",
         backgroundColor: "#fff", zIndex: 9999
       }}>
-        <Mosaic color="#374151" size="small" />
+        <Mosaic color="#ca8a04" size="small" />
       </div>
     );
   }
@@ -129,7 +129,7 @@ function PettyCashRelease() {
               type="text"
               value={search}
               onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-              placeholder="Search..."
+              placeholder="Search here..."
             />
             <button className={style.addBtn} onClick={() => setShowModal(true)}>
                 <svg

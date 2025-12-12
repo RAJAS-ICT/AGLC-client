@@ -69,7 +69,7 @@ function VendorEdit() {
             zIndex: 9999,
           }}
           >
-            <Mosaic color="#374151" size="small" />
+            <Mosaic color="#ca8a04" size="small" />
         </div>
       );
     }
@@ -105,7 +105,7 @@ function VendorEdit() {
               </div>
               <p className={style.headerSubtitle}>Business / Manage Vendor</p>
             </div>
-        <form onSubmit={handleSubmit} className={style.editForm}>
+        <form onSubmit={handleSubmit} className={style.editFormCustomer}>
         <label className={style.editLabel}>Name: </label>
         <input
           className={style.editInput}

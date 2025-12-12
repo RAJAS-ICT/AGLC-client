@@ -88,7 +88,7 @@ function Employee() {
             zIndex: 9999,
           }}
           >
-            <Mosaic color="#374151" size="small" />
+            <Mosaic color="#ca8a04" size="small" />
         </div>
       );
     }
@@ -137,7 +137,7 @@ function Employee() {
                     setSearch(e.target.value);
                     setCurrentPage(1);
                   }}
-                  placeholder="Search..."
+                  placeholder="Search here..."
                 />
                 <button
                   className={style.addBtn}

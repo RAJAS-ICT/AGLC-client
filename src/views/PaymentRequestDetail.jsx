@@ -145,7 +145,7 @@ function PaymentRequestDetail() {
             zIndex: 9999,
           }}
           >
-            <Mosaic color="#374151" size="small" />
+            <Mosaic color="#ca8a04" size="small" />
         </div>
       );
     }
@@ -167,7 +167,7 @@ function PaymentRequestDetail() {
               <input
                 className={style.searchBox}
                 type="text"
-                placeholder="Search..."
+                placeholder="Search here..."
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value);

@@ -51,7 +51,7 @@ function EditUser() {
           zIndex: 9999,
         }}
       >
-        <Mosaic color="#374151" size="small" />
+        <Mosaic color="#ca8a04" size="small" />
       </div>
     );
   }
