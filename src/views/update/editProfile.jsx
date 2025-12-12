@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useUpdateUserProfileMutation } from "../../features/userSlice";
+import { useUpdateUserProfileMutation, useGetUserByIdQuery } from "../../features/userSlice";
 import toast, { Toaster } from 'react-hot-toast';
 import style from '../css/page.module.css';
 import { Mosaic } from "react-loading-indicators";
 
 function EditUser() {
   const { id } = useParams();
+
+    // FETCH USER
+  const { data: user, isLoading: isUserLoading } = useGetUserByIdQuery(id);
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserProfileMutation();
   const [password, setPassword] = useState('');
 
@@ -32,7 +35,7 @@ function EditUser() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (showLoader) {
+  if (showLoader || isUserLoading) {
     return (
       <div
         style={{
@@ -48,10 +51,18 @@ function EditUser() {
           zIndex: 9999,
         }}
       >
-        <Mosaic color="#007bff" size="small" />
+        <Mosaic color="#374151" size="small" />
       </div>
     );
   }
+  if (!user) 
+    return (
+      <div className={style.unauthorizedWrapper}>
+        <p className={style.error1}>401</p>
+        <p className={style.error2}>Unauthorized Error</p>
+        <p className={style.error3}>The resource requested could not be found on this server.</p>
+      </div>
+    );
 
   return (
     <main className='main-container'>

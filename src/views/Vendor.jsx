@@ -78,12 +78,28 @@ function Vendor() {
              zIndex: 9999,
            }}
            >
-             <Mosaic color="#007bff" size="small" />
+             <Mosaic color="#374151" size="small" />
          </div>
        );
      }
 
-      if (isError) return <p>Error: {error?.message || 'Something went wrong'}</p>;
+    if (isError) {
+      const status = error?.status;
+
+      if (status === 401) {
+        return (
+          <div className={style.unauthorizedWrapper}>
+            <p className={style.error1}>401</p>
+            <p className={style.error2}>Unauthorized Error</p>
+            <p className={style.error3}>
+              The resource requested could not be found on this server.
+            </p>
+          </div>
+        );
+      }
+
+      return <p>Error: {error?.data?.message || 'Something went wrong'}</p>;
+    }
 
   return (
     <main className="main-container">

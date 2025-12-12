@@ -145,7 +145,7 @@ function PaymentRequestDetail() {
             zIndex: 9999,
           }}
           >
-            <Mosaic color="#007bff" size="small" />
+            <Mosaic color="#374151" size="small" />
         </div>
       );
     }

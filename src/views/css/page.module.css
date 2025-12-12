@@ -152,23 +152,23 @@ td {
   gap: .65rem;
 }
 .svgExclamation{
-  color: #007bff;
+  color: #111827;
   height: 24px;
   width: 24px;
 }
 .headerLaber{
   font-weight: 400;
-  color: #007bff;
+  color: #111827;
   font-family: "Oswald", sans-serif !important;
   font-size: 24px;
 }
 
 .svgTitleHeader{
   border-radius: 50%;
-  color: #007bff !important;
+  color: #374151 !important;
   height: 1.75rem;
   width: 1.75rem;
-  border: 1px solid #007bff;
+  border: 1px solid #374151;
   padding: 2px;
 }
 .editLabelPayment{
@@ -322,7 +322,7 @@ th{
 }
 
 .pageButton:hover {
-  background-color: #007bff;
+  background-color: #374151;
   color: #fff;
 }
 
@@ -332,8 +332,8 @@ th{
 }
 
 .activePage {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #374151;
+  border-color: #374151;
   color: #fff;
 }
 
@@ -343,8 +343,8 @@ th{
     align-items: center;
     gap: 4px;
     background-color: #fff;
-    border: 1px solid #007bff;
-    color: #007bff;
+    border: 1px solid #374151;
+    color: #374151;
     padding: 6px 12px 6px 10px;
     border-radius: 2px;
     cursor: pointer;
@@ -362,7 +362,7 @@ th{
   cursor: pointer;
 }
 .editBtn:hover{
-    background-color: #007bff;
+    background-color: #374151;
     color: #fff;
 }
 .svdEditIcon{
@@ -372,11 +372,12 @@ th{
 .flexHeader{
   display: flex;
   gap: 6px;
+  padding-top: 1.2rem;
 }
 .flexHeaderAccount{
   display: flex;
   gap: 8px;
-  background-color: #007bff;
+  background-color: #374151;
 }
 
 .addBtn{
@@ -387,14 +388,14 @@ th{
   border-radius: 6px;
   background-color:#fff;
   border: none;
-  color: #007bff;
+  color: #374151;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
   border: 1px solid #ccc;
 }
 
 .addButton {
-  background-color: #007bff;
+  background-color: #374151;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -506,7 +507,7 @@ th{
 .editAccountId{
   display: flex !important;
   padding: 1rem;
-  background-color: #007bff;
+  background-color: #374151;
 }
 .activeAccountWrap {
   display: flex;
@@ -552,7 +553,7 @@ th{
 }
 
 .submitButton {
-  background: #007bff;
+  background: #0f74e0;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -561,7 +562,7 @@ th{
 }
 
 .submitButton:hover {
-  background: #0056b3;
+  background: #0e56a2;
 }
 
 @keyframes fadeIn {
@@ -735,8 +736,8 @@ textarea{
   height: 40px;
   width: 100%;
   border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #374151;
+  color: #F9FAFB;
   border: none;
   cursor: pointer;
 }
@@ -773,7 +774,7 @@ textarea{
   border-radius: 6px;
   background-color:#fff;
   border: none;
-  color: #007bff;
+  color: #374151;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
   border: 1px solid #ccc;
@@ -810,7 +811,7 @@ textarea{
 }
 
 .dropdownItem:hover {
-  background-color: #007bff;
+  background-color: #374151;
   color: #fff;
 }
 
@@ -897,7 +898,7 @@ textarea{
 }
 
 .customSelectOption:hover {
-  background-color: #007bff;
+  background-color: #374151;
   color: #fff;
 }
 
@@ -974,7 +975,7 @@ textarea{
   padding: 0 8px;
   border-radius: 6px;
   background-color:#fff;
-  color:#007bff;
+  color:#374151;
   border: none;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -998,7 +999,7 @@ textarea{
   padding: 0 8px;
   border-radius: 6px;
   background-color:#fff;
-  color:#007bff;
+  color:#374151;
   border: none;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -1127,4 +1128,32 @@ textarea{
   display: flex;
   flex-direction: column;
   gap: .75rem;
+}
+
+.unauthorizedWrapper{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ margin: 12rem auto;
+}
+.error1{
+  color: #b91c1c;
+  font-size: 6rem;
+  font-weight: bolder;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.error2{
+  color: #b91c1c;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.error3{
+  color: #6b7280;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
