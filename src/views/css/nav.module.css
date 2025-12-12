@@ -49,14 +49,13 @@
   width: 14rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
-  /* SLIDE DOWN/UP ANIMATION */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 }
 
 .dropdown.open {
-  max-height: 500px; /* enough for all items */
+  max-height: 500px; 
 }
 
 .dropdownItem1,
