@@ -280,7 +280,7 @@ th{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.75rem 1.25rem 2rem ;
+  padding: 2.75rem 1.25rem .25rem ;
 }
 
 .flexPdfBtn{

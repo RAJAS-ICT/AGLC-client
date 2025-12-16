@@ -38,7 +38,6 @@ function EditPaymentRequest() {
   const handlePrevious = () => currentPage > 1 && setCurrentPage((p) => p - 1);
 
   const { id } = useParams();
-  // const navigate = useNavigate();
 
   const { data: paymentRequest, isLoading, isError, error } = useFetchPaymentRequestByIdQuery(id);
 
@@ -53,18 +52,18 @@ function EditPaymentRequest() {
   const [postDetail] = usePostPaymentRequestDetailMutation();
   const { data: detail } = useGetPaymentRequestDetailByIdQuery(id);
 
-useEffect(() => {
-  if (detail) {
-    setDetailForm({
-      paymentRequestId: detail.paymentRequestId || id,
-      bookingId: detail.bookingId || "",
-      chargeId: detail.chargeId || "",
-      chargeDesc: detail.chargeDesc || "",
-      quantity: detail.quantity || "",
-      amount: detail.amount || "",
-    });
-  }
-}, [detail, id]);
+  useEffect(() => {
+    if (detail) {
+      setDetailForm({
+        paymentRequestId: detail.paymentRequestId || id,
+        bookingId: detail.bookingId || "",
+        chargeId: detail.chargeId || "",
+        chargeDesc: detail.chargeDesc || "",
+        quantity: detail.quantity || "",
+        amount: detail.amount || "",
+      });
+    }
+  }, [detail, id]);
 
   const [formData, setFormData] = useState({
     vendorId: "",
@@ -79,20 +78,25 @@ useEffect(() => {
 
   useEffect(() => {
     if (paymentRequest) {
-      setFormData({
+      setFormData(prev => ({
+        ...prev,
         vendorId: paymentRequest.vendorId || "",
         departmentId: paymentRequest.departmentId || paymentRequest.costCenterId || "",
         chargeTo: paymentRequest.chargeTo || "",
         requestType: paymentRequest.requestType || "",
         remarks: paymentRequest.remarks || "",
-        status: paymentRequest.status || "",
         dateNeeded: paymentRequest.dateNeeded
           ? new Date(paymentRequest.dateNeeded).toISOString().slice(0, 10)
           : "",
         requestNumber: paymentRequest.requestNumber || "",
-      });
+
+        status: prev.status === "Canceled"
+          ? "Canceled"
+          : paymentRequest.status || "",
+      }));
     }
   }, [paymentRequest]);
+
 
   const [openVendor, setOpenVendor] = useState(false);
   const vendorRef = useRef(null);
@@ -117,7 +121,6 @@ useEffect(() => {
     amount: "",
   });
   const [isPostingDetail, setIsPostingDetail] = useState(false);
-  // const [localDetails, setLocalDetails] = useState([]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -155,24 +158,30 @@ useEffect(() => {
   const handleSubmitMain = async (e) => {
     e.preventDefault();
     try {
-      await updatePaymentRequest({
-        id,
-        vendorId: Number(formData.vendorId),
-        departmentId: Number(formData.departmentId),
-        chargeTo: formData.chargeTo,
-        requestType: formData.requestType,
-        requestNumber: formData.requestNumber,
-        remarks: formData.remarks,
-        status: formData.status,
-        dateNeeded: formData.dateNeeded,
-      }).unwrap();
+    await updatePaymentRequest({
+      id,
+      vendorId: Number(formData.vendorId),
+      departmentId: Number(formData.departmentId),
+      chargeTo: formData.chargeTo,
+      requestType: formData.requestType,
+      requestNumber: formData.requestNumber,
+      remarks: formData.remarks,
+      dateNeeded: formData.dateNeeded,
+      status: "Canceled",
+    }).unwrap();
 
-      toast.success("Updated successfully!");
-      // navigate("/paymentRequest");
-    } catch (err) {
-      console.error("Update error:", err);
-      toast.error("Failed to update Payment Request.");
-    }
+    setFormData(prev => ({
+      ...prev,
+      status: "Canceled",
+    }));
+    toast.success("Updated Successfully."); 
+  } catch (error) {
+    toast.error("Failed to cancel");
+    console.error(error);
+  } finally {
+    setCancelModal(false);
+  }
+
   };
 
   const handleRequestTypeChange = (type) => {
@@ -188,9 +197,9 @@ useEffect(() => {
     setFormData({ ...formData, requestType: type, requestNumber: newRequestNumber });
   };
 
-const handleSubmitDetail = async (e) => {
-  e.preventDefault();
-  setIsPostingDetail(true);
+  const handleSubmitDetail = async (e) => {
+    e.preventDefault();
+    setIsPostingDetail(true);
 
   try {
     const payload = {
@@ -228,18 +237,17 @@ const handleSubmitDetail = async (e) => {
     setIsPostingDetail(false);
   }
 };
-function numberToWords(amount) {
-  // Arrays for number words
-  const ones = [
-    "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"
-  ];
-  const teens = [
-    "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
-    "Sixteen", "Seventeen", "Eighteen", "Nineteen"
-  ];
-  const tens = [
-    "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
-  ];
+  function numberToWords(amount) {
+    const ones = [
+      "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"
+    ];
+    const teens = [
+      "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+      "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+    ];
+    const tens = [
+      "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+    ];
 
   function convert(num) {
     if (num === 0) return "";
@@ -282,13 +290,11 @@ function numberToWords(amount) {
   return words + " Only";
 }
 
-
-
-const generatePDF = () => {
-  const doc = new jsPDF({
-    unit: "pt",
-    format: "letter",
-  });
+  const generatePDF = () => {
+    const doc = new jsPDF({
+      unit: "pt",
+      format: "letter",
+    });
 
   const margin = 40;
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -453,7 +459,8 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
-  
+  const [cancelModal, setCancelModal] = useState(false);
+
   const activeVendors = vendors.filter((v) => v.isActive);
   const activeDepartments = departments.filter((d) => d.isActive);
 
@@ -821,11 +828,11 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                       Changing department to <b>{selectedDepartment.name}</b> will clear all existing charge details. Do you want to proceed?
                     </p>
                     <div className={style.modalButtons}>
-                      <button className={style.confirmDeleteBtn} onClick={confirmDepartmentChange}>
-                        Proceed
-                      </button>
                       <button className={style.cancelDeleteBtn} onClick={cancelDepartmentChange}>
                         Cancel
+                      </button>
+                      <button className={style.confirmDeleteBtn} onClick={confirmDepartmentChange}>
+                        Proceed
                       </button>
                     </div>
                   </div>
@@ -939,68 +946,79 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
           <button className={style.editButtonPayment} type="submit" disabled={isUpdating}>
               {isUpdating ? "Updating..." : "Update"}
             </button>
-            <button
-              type="button"
-              className={style.cancelBtn}
-              onClick={() => {
-                toast((t) => (
-                  <div> 
-                    <p style={{ marginBottom: "24px", marginTop:"10px" }}>
-                      Cancel this Payment Request?
-                    </p>
-                    <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
-                      <button
-                        onClick={async () => {
-                          toast.dismiss(t.id);
-                          setFormData({ ...formData, status: "Canceled" });
+              <button
+                type="button"
+                className={style.cancelBtn}
+                onClick={() => setCancelModal(true)}
+              >
+                Cancel
+              </button>
+              {cancelModal && (
+                <div className={style.modalOverlay}>
+                  <div className={style.modalDialog}>
+                    <svg
+                      className={style.deleteCloseSvg}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1024"
+                      height="1024"
+                      viewBox="0 0 1024 1024"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M512 0C229.232 0 0 229.232 0 512c0 282.784 229.232 512 512 512c282.784 0 512-229.216 512-512C1024 229.232 794.784 0 512 0m0 961.008c-247.024 0-448-201.984-448-449.01c0-247.024 200.976-448 448-448s448 200.977 448 448s-200.976 449.01-448 449.01m181.008-630.016c-12.496-12.496-32.752-12.496-45.248 0L512 466.752l-135.76-135.76c-12.496-12.496-32.752-12.496-45.264 0c-12.496 12.496-12.496 32.752 0 45.248L466.736 512l-135.76 135.76c-12.496 12.48-12.496 32.769 0 45.249c12.496 12.496 32.752 12.496 45.264 0L512 557.249l135.76 135.76c12.496 12.496 32.752 12.496 45.248 0c12.496-12.48 12.496-32.769 0-45.249L557.248 512l135.76-135.76c12.512-12.512 12.512-32.768 0-45.248"
+                      />
+                    </svg>
 
+                    <h3 className={style.modalTitle}>Are you sure?</h3>
+
+                    <p className={style.modalText}>
+                      This will cancel the payment request and change its status to{" "}
+                      <b>Canceled</b>.
+                    </p>
+
+                    <div className={style.modalButtons}>
+                      <button
+                        className={style.cancelDeleteBtn}
+                        onClick={() => setCancelModal(false)}
+                      >
+                        No, keep it
+                      </button>
+                      <button
+                        className={style.confirmDeleteBtn}
+                        onClick={async () => {
                           try {
                             await updatePaymentRequest({
                               id,
-                              ...formData,
+                              vendorId: Number(formData.vendorId),
+                              departmentId: Number(formData.departmentId),
+                              chargeTo: formData.chargeTo,
+                              requestType: formData.requestType,
+                              requestNumber: formData.requestNumber,
+                              remarks: formData.remarks,
+                              dateNeeded: formData.dateNeeded,
                               status: "Canceled",
                             }).unwrap();
 
-                            toast.success("Payment Request Canceled");
-                          } catch (err) {
+                            setFormData(prev => ({
+                              ...prev,
+                              status: "Canceled",
+                            }));
+                             
+                          } catch (error) {
                             toast.error("Failed to cancel");
-                            console.log(err);
+                            console.error(error);
+                          } finally {
+                            setCancelModal(false);
                           }
                         }}
-                        style={{
-                          background: "#dc3545",
-                          color: "#fff",
-                          border: "none",
-                          padding: "6px 16px",
-                          borderRadius: "5px",
-                          cursor: "pointer",
-                        }}
                       >
-                        Yes
+                        Yes, cancel
                       </button>
-                      <button
-                        onClick={() => toast.dismiss(t.id)}
-                        style={{
-                          background: "#6c757d",
-                          color: "#fff",
-                          border: "none",
-                          padding: "6px 16px",
-                          borderRadius: "5px",
-                          cursor: "pointer",
-                        }}
-                      >
-                        No
-                      </button>
+
                     </div>
                   </div>
-                ), {
-                  duration: Infinity,
-                  position: "top-center",
-                });
-              }}
-            >
-              Cancel
-            </button>
+                </div>
+              )}
          </div>
         </form>
           
@@ -1041,8 +1059,6 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
               </button>
             </div>
          </div>
-
-
 
           <div className={style.payReqTempTable}>
             <table className={style.table}>
@@ -1180,7 +1196,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                     <div className={style.modalButtons}>
                       <button
                         className={style.cancelDeleteBtn}
-                        onClick={() => setDeleteModal(false)}
+                        onClick={() => setDeleteModal(false) }
                       >
                         Cancel
                       </button>
