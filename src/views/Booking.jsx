@@ -10,6 +10,9 @@ function Booking() {
 const [openCustomer, setOpenCustomer] = useState(false);
 const customerRef = useRef(null);
 
+const { data: customers = [] } = useFetchCustomerQuery();
+const activeCustomers = customers.filter(c => c.isActive);
+
 useEffect(() => {
   const handleClickOutside = (event) => {
     if (customerRef.current && !customerRef.current.contains(event.target)) {
@@ -35,12 +38,20 @@ useEffect(() => {
   const itemsPerPage = 10;
   const [showModal, setShowModal] = useState(false);
 
-  const filteredBookings = bookings.filter((b) =>
-    b.bookingNumber?.toString().toLowerCase().includes(search.toLowerCase()) ||
-    b.customerId?.toString().toLowerCase().includes(search.toLowerCase()) ||
-    b.remarks?.toLowerCase().includes(search.toLowerCase()) 
-    
-);
+const getCustomerName = (id) => {
+  const customer = customers.find(c => c.id === id);
+  return customer?.name?.toLowerCase() || "";
+};
+const filteredBookings = bookings.filter((b) => {
+  const query = search.toLowerCase();
+
+  return (
+    b.bookingNumber?.toLowerCase().includes(query) ||
+    getCustomerName(b.customerId).includes(query) ||
+    b.remarks?.toLowerCase().includes(query)
+  );
+});
+
 
   const totalPages = Math.ceil(filteredBookings.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -66,8 +77,7 @@ useEffect(() => {
     }
   };
 
-  const { data: customers = [] } = useFetchCustomerQuery();
-  const activeCustomers = customers.filter(c => c.isActive);
+
 
   const [showLoader, setShowLoader] = useState(true);
    

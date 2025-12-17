@@ -45,11 +45,31 @@ function PettyCashRelease() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const filteredPettyCash = pettyCashes.filter(
-    (pc) =>
-      pc.paymentRequestId?.toString().includes(search) ||
-      pc.receivedById?.toString().includes(search)
+
+
+    const getPaymentRequestLabel = (id) => {
+    const pr = paymentRequests.find(p => p.id === id);
+    return pr ? `${pr.requestNumber || pr.code || ""}`.toLowerCase() : "";
+  };
+
+  const getEmployeeName = (id) => {
+    const emp = employees.find(e => e.id === id);
+    return emp
+      ? `${emp.firstName || ""} ${emp.middleName || ""} ${emp.lastName || ""}`
+          .toLowerCase()
+      : "";
+  };
+
+
+const filteredPettyCash = pettyCashes.filter((pc) => {
+  const query = search.toLowerCase();
+
+  return (
+    getPaymentRequestLabel(pc.paymentRequestId).includes(query) ||
+    getEmployeeName(pc.receivedById).includes(query)
   );
+});
+
   const totalPages = Math.ceil(filteredPettyCash.length / itemsPerPage);
   const currentPettyCash = filteredPettyCash.slice(
     (currentPage - 1) * itemsPerPage,
