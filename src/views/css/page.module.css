@@ -36,7 +36,12 @@ th {
   color: #3a3a3a;
   font-family: "Oswald", sans-serif !important;
   font-weight: 600;
-  padding: 14px 12px;
+  font-size: 14px;
+  padding: 10px 12px;
+  
+}
+tr:nth-child(odd) td {
+  background-color: #edf1f6;
 }
 
 table {
@@ -53,28 +58,26 @@ table {
   font-weight: 500;
   color: #fff !important;
 }
+
 td {
   word-break: break-all;
-  padding: 8px 12px;
+  padding: 12px;
   border-top: none;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   background-color: #fff;
   color: #3f3f3f;
-  border-bottom: 1px solid #ccc;
   display: flex;
   align-items: center;     
   height: 100%;            
   box-sizing: border-box; 
+  font-size: 14px;
 }
-
 .headTable {
   background-color: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 140px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  margin-bottom: .2rem;
+   margin-bottom: .2rem;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .bodyTable {
@@ -84,18 +87,17 @@ td {
 }
 
 .headTablePayment {
-  background-color: #fff;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 100px 120px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 100px 80px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .2rem;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
 }
 
 .bodyTablePayment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 100px 120px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 100px 80px;
   text-align: left;
 }
 
@@ -197,49 +199,48 @@ td {
   padding-bottom: .8rem;
 }
 .headTableDepartment{
-  background-color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .2rem;
 }
+
 .bodyTableDept{
    display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
   text-align: left;
 }
 .headCustomerTable {
-  background-color: #fff;
   display: grid;
   grid-template-columns: 180px 1fr 1fr 1fr 140px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .2rem;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
+
 }
+
 .bodyChargeTable{
   display: grid;
   grid-template-columns:1fr 1fr 200px;
   text-align: left;
 }
 .headChargeTable{
-  background-color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns:1fr 1fr 200px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .2rem;
 }
 .headAccountTable{
-  background-color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns: 180px 1fr 1fr 1fr 1fr 140px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .2rem;
 }
 .bodyAccountTable{
@@ -249,12 +250,11 @@ td {
 }
 
 .headPettyCashTable{
-  background-color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr 140px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .2rem;
 }
 .bodyPettyCashTable{
@@ -270,14 +270,16 @@ td {
 }
 th{
   color: #5a5a5a !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .headBookingTable {
-  background-color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
   text-align: left;
-  border-radius: 6px 6px 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: .25rem;
 }
 .FlexBookingHistory{
@@ -370,13 +372,18 @@ th{
     justify-content: center;
     align-items: center;
     gap: 4px;
-    background-color: #fff;
-    border: 1px solid #0D254C;
+    background: none;
     color: #0D254C;
     padding: 6px 12px 6px 10px;
     border-radius: 2px;
     cursor: pointer;
     transition: 0.1s ease-in-out;
+    border: none;
+}
+.editBtn:hover{
+  background-color: #0D254C;
+  color: #fff;
+  content: 'manage';
 }
 .flexBtn{
   width: 100%;
@@ -413,11 +420,7 @@ th{
 .bookingPaymentSubtitle{
   color: #5a5a5a;
 }
-.editBtn:hover{
-    background-color: #0D254C;
-    color: #fff;
-    font-weight: 300;
-}
+
 .svdEditIcon{
   height: 16px;
   width: 16px;
