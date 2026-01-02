@@ -91,7 +91,7 @@ function EditCustomer() {
   return (
     <main className='main-container'>
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="edit-container">
+      <div className={style.editCustomer}>
         <div className={style.EditflexTitleHeader}>
           <div className={style.flexheaderTitle}>
               <svg className={style.svgExclamation} xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">

@@ -41,6 +41,7 @@ function UserList() {
 
       });
       setShowModal(false);
+      navigate(`/editUser/${response.data.id}`);
     } catch (err) {
       const message = err?.data?.message || err?.error || 'Action failed!';
       toast.error(message);
