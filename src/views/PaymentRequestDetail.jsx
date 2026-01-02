@@ -341,7 +341,6 @@ function PaymentRequestDetail() {
                   >
                     Cancel
                   </button>
-
                   <button type="submit" className={style.submitButton}>
                     Submit
                   </button>
@@ -350,7 +349,6 @@ function PaymentRequestDetail() {
             </div>
           </div>
         )}
-
         <table>
           <thead>
             <tr className={style.headTablePaymentDetail}>
@@ -363,7 +361,6 @@ function PaymentRequestDetail() {
               <th></th>
             </tr>
           </thead>
-
           <tbody>
             {currentData.length === 0 ? (
               <tr>
@@ -375,7 +372,6 @@ function PaymentRequestDetail() {
               currentData.map((d) => {
                 const booking = bookings.find((b) => b.id === d.bookingId);
                
-
                 return (
                   <tr key={d.id} className={style.bodyTablePaymentDetail}>
                     <td>

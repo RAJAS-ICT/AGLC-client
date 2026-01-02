@@ -77,8 +77,6 @@ const filteredBookings = bookings.filter((b) => {
     }
   };
 
-
-
   const [showLoader, setShowLoader] = useState(true);
    
   useEffect(() => {
