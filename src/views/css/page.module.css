@@ -323,15 +323,66 @@ th{
     margin-top: .5rem;
     margin-bottom: .5rem;
 }
-.searchBox{
-    height: 40px;
-    width: 250px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 0 12px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
-    outline: none;
+
+
+
+
+
+
+.SrchContainer {
+  position: relative;
+  --size-button: 40px;
+  color: white;
+
 }
+
+.inputSrch {
+  padding-left: var(--size-button);
+  height: var(--size-button);
+  font-size: 15px;
+  border: none;
+  color: #3a3a3a;
+  outline: none;
+  width: var(--size-button);
+  transition: all ease 0.3s;
+  background-color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.inputSrch:focus,
+.inputSrch:not(:invalid) {
+  width: 240px;
+  cursor: text;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding-right: .75rem;
+
+}
+
+.inputSrch:focus + .icon,
+.inputSrch:not(:invalid) + .icon {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  width: var(--size-button);
+  height: var(--size-button);
+  top: 0;
+  left: 0;
+  padding: 9px 8px;
+  pointer-events: none;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+
 .paginationContainer {
   display: flex;
   justify-content: flex-end;
@@ -342,13 +393,14 @@ th{
 
 .pageButton {
   background-color: #fff;
-  color: #3a3a3a;
+  color: #0D254C;
   padding: 6px 12px;
   /* border-radius: 4px; */
   cursor: pointer;
   transition: background 0.2s ease;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  border: none;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .pageButton:hover {
@@ -443,13 +495,13 @@ h3{
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  border-radius: 6px;
+  border-radius: 50px;
   background-color:#fff;
   border: none;
   color: #0D254C;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
-  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  /* border: 1px solid #ccc; */
 }
 
 
@@ -858,13 +910,12 @@ textarea{
   align-items: center;
   justify-content: center;
   padding: 2px 8px;
-  border-radius: 6px;
+  border-radius: 50px;
   background-color:#fff;
   border: none;
   color: #0D254C;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 1px 1px;
-  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   height: 100%;
   margin-left: -.65rem;
 }
@@ -876,9 +927,9 @@ textarea{
 
 .dropdownMenu {
   position: absolute;
-  top: 110%;
+  top: 124%;
   right: 1px;
-  background-color: white;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -892,7 +943,7 @@ textarea{
   padding: 8px 12px;
   border: none;
   background: transparent;
-  text-align: center;
+  text-align: start;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 }

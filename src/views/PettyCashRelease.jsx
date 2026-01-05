@@ -157,18 +157,33 @@ const filteredPettyCash = pettyCashes.filter((pc) => {
                 <svg className={style.svgExclamation} xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
                 <path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248m-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46s46-20.595 46-46s-20.595-46-46-46m-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654" />
               </svg>
-              <h3 className={style.headerLaber}>View Petty Cash</h3>
+              <h3 className={style.headerLaber}>View Petty Cash Release</h3>
               </div>
               <p className={style.headerSubtitle}>Transactions / Manage Petty Cash</p>
             </div>
           <div className={style.flexHeader}>
-            <input
-              className={style.searchBox}
-              type="text"
-              value={search}
-              onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-              placeholder="Search here..."
-            />
+            <div className={style.SrchContainer}>
+                <input
+                  type="text"
+                  className={style.inputSrch}
+                  required
+                  placeholder="Type to search..."
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                />
+
+                <div className={style.icon}>
+                <svg style={{color:'#3a3a3a'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="m21 21l-4.34-4.34" />
+                    <circle cx="11" cy="11" r="8" />
+                  </g>
+                </svg>
+                </div>
+              </div>
             <button className={style.addBtn} onClick={() => setShowModal(true)}>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -348,7 +363,7 @@ const filteredPettyCash = pettyCashes.filter((pc) => {
         <table>
           <thead>
             <tr className={style.headPettyCashTable}>
-              <th>Payment Request</th>
+              <th>Request Number</th>
               <th>Received By</th>
               <th></th>
             </tr>

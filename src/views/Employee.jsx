@@ -129,16 +129,28 @@ function Employee() {
               <p className={style.headerSubtitle}>User Management / Manage Employee</p>
                       </div>
               <div className={style.flexHeader}>
-                <input
-                  className={style.searchBox}
-                  type="text"
-                  value={search}
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                    setCurrentPage(1);
-                  }}
-                  placeholder="Search here..."
-                />
+                <div className={style.SrchContainer}>
+                  <input
+                    type="text"
+                    className={style.inputSrch}
+                    required
+                    placeholder="Type to search..."
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                  />
+
+                  <div className={style.icon}>
+                  <svg style={{color:'#3a3a3a'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                      <path d="m21 21l-4.34-4.34" />
+                      <circle cx="11" cy="11" r="8" />
+                    </g>
+                  </svg>
+                  </div>
+                </div>
                 <button
                   className={style.addBtn}
                   onClick={() => setShowModal(true)}
