@@ -1,17 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { userApi } from '../features/userSlice'
 import { companyApi } from '../features/companySlice' 
-import {employeeApi} from '../features/employeeSlice'
+import { employeeApi} from '../features/employeeSlice'
 import { vendorApi } from '../features/vendorSlice'
 import { customerApi } from '../features/customerSlice'
 import { bookingApi } from '../features/bookingSlice'
-import {accountApi} from '../features/accountTitleSlice'
-import {subAccountApi} from '../features/subAccountTitleSlice'
-import {departmentApi} from '../features/departmentSlice'
-import {paymentRequestApi} from '../features/paymentRequest'
-import {paymentRequestDetailApi} from '../features/paymentRequestDetailSlice'
-import {chargeSlice} from '../features/chargeSlice'
-import {pettyCashApi} from '../features/pettyCashReleaseSlice'
+import { accountApi } from '../features/accountTitleSlice'
+import { subAccountApi } from '../features/subAccountTitleSlice'
+import { departmentApi } from '../features/departmentSlice'
+import { paymentRequestApi } from '../features/paymentRequest'
+import { paymentRequestDetailApi } from '../features/paymentRequestDetailSlice'
+import { chargeSlice } from '../features/chargeSlice'
+import { pettyCashApi } from '../features/pettyCashReleaseSlice'
+import { affiliateApi } from '../features/affiliateSlice'
+import { localGovernmentAgencyApi } from '../features/localGovernmentAgencySlice'
 
 
 const store = configureStore({
@@ -28,7 +30,9 @@ const store = configureStore({
         [paymentRequestApi.reducerPath]:paymentRequestApi.reducer,
         [paymentRequestDetailApi.reducerPath]:paymentRequestDetailApi.reducer,
         [chargeSlice.reducerPath]:chargeSlice.reducer,
-        [pettyCashApi.reducerPath]:pettyCashApi.reducer
+        [pettyCashApi.reducerPath]:pettyCashApi.reducer,
+        [affiliateApi.reducerPath]:affiliateApi.reducer,
+        [localGovernmentAgencyApi.reducerPath]: localGovernmentAgencyApi.reducer
 
 
     },
@@ -46,7 +50,9 @@ const store = configureStore({
             paymentRequestApi.middleware,
             paymentRequestDetailApi.middleware,
             chargeSlice.middleware,
-            pettyCashApi.middleware
+            pettyCashApi.middleware,
+            affiliateApi.middleware,
+            localGovernmentAgencyApi.middleware
         )
 })
 

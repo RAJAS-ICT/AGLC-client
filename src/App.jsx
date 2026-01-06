@@ -21,6 +21,10 @@ import PaymentRequest from './views/PaymentRequest';
 import PaymentRequestDetail from './views/PaymentRequestDetail';
 import Charge from './views/Charge';
 import PettyCashRelease from './views/PettyCashRelease';
+import Affiliates from './views/Affiliates';
+import LocalGovernmentAgency from './views/LocalGovernmentAgency';
+import Banks from './views/Banks';
+import Agents from './views/Agents';
 
 
 // Edit
@@ -38,6 +42,10 @@ import EditPaymentRequestDetail from './views/update/editPaymentRequestDetail';
 import EditCharge from './views/update/editCharge';
 import EditProfile from './views/update/editProfile';
 import EditPettyCashRelease from './views/update/editPettyCashRelease';
+import EditAffiliate from './views/update/editAffiliates';
+import EditLocalGovernmentAgency from './views/update/editLocalGovernmentAgency';
+import EditBanks from './views/update/editBanks';
+import EditAgents from './views/update/editAgents';
 
 function App() {
   return (
@@ -68,6 +76,10 @@ function App() {
                 <Route path="paymentRequestDetail" element={<PaymentRequestDetail />} />
                 <Route path="charge" element={<Charge />} />
                 <Route path="pettyCashRelease" element={<PettyCashRelease />} />
+                <Route path="affiliates" element={<Affiliates />} />
+                <Route path="localGovernmentAgency" element={<LocalGovernmentAgency />} />
+                <Route path="banks" element={<Banks />} />
+                <Route path="agents" element={<Agents />} />
 
                 {/* Edit */}
                 <Route path="editUser/:id" element={<EditUser />} />
@@ -84,6 +96,10 @@ function App() {
                 <Route path="editCharge/:id" element={<EditCharge />} />
                 <Route path="editProfile/:id" element={<EditProfile />} />
                 <Route path="editPettyCashRelease/:id" element={<EditPettyCashRelease />} />
+                <Route path="editAffiliates/:id" element={<EditAffiliate />} />
+                <Route path="editLocalGovernmentAgency/:id" element={<EditLocalGovernmentAgency />} />
+                <Route path="editBanks/:id" element={<EditBanks />} />
+                <Route path="editAgents/:id" element={<EditAgents />} />
               </Routes>
             </>
           }
