@@ -14,25 +14,27 @@ import { chargeSlice } from '../features/chargeSlice'
 import { pettyCashApi } from '../features/pettyCashReleaseSlice'
 import { affiliateApi } from '../features/affiliateSlice'
 import { localGovernmentAgencyApi } from '../features/localGovernmentAgencySlice'
-
-
+import { bankApi } from '../features/bankSlice'
+import { agentApi } from '../features/agentSlice'
 const store = configureStore({
     reducer: {
         [userApi.reducerPath]: userApi.reducer,
         [companyApi.reducerPath]: companyApi.reducer,
-        [employeeApi.reducerPath]:employeeApi.reducer,
-        [customerApi.reducerPath]:customerApi.reducer,
-        [vendorApi.reducerPath]:vendorApi.reducer,
-        [bookingApi.reducerPath]:bookingApi.reducer,
-        [subAccountApi.reducerPath]:subAccountApi.reducer,
-        [accountApi.reducerPath]:accountApi.reducer,
-        [departmentApi.reducerPath]:departmentApi.reducer,
-        [paymentRequestApi.reducerPath]:paymentRequestApi.reducer,
-        [paymentRequestDetailApi.reducerPath]:paymentRequestDetailApi.reducer,
-        [chargeSlice.reducerPath]:chargeSlice.reducer,
-        [pettyCashApi.reducerPath]:pettyCashApi.reducer,
-        [affiliateApi.reducerPath]:affiliateApi.reducer,
-        [localGovernmentAgencyApi.reducerPath]: localGovernmentAgencyApi.reducer
+        [employeeApi.reducerPath]: employeeApi.reducer,
+        [customerApi.reducerPath]: customerApi.reducer,
+        [vendorApi.reducerPath]: vendorApi.reducer,
+        [bookingApi.reducerPath]: bookingApi.reducer,
+        [subAccountApi.reducerPath]: subAccountApi.reducer,
+        [accountApi.reducerPath]: accountApi.reducer,
+        [departmentApi.reducerPath]: departmentApi.reducer,
+        [paymentRequestApi.reducerPath]: paymentRequestApi.reducer,
+        [paymentRequestDetailApi.reducerPath]: paymentRequestDetailApi.reducer,
+        [chargeSlice.reducerPath]: chargeSlice.reducer,
+        [pettyCashApi.reducerPath]: pettyCashApi.reducer,
+        [affiliateApi.reducerPath]: affiliateApi.reducer,
+        [localGovernmentAgencyApi.reducerPath]: localGovernmentAgencyApi.reducer,
+        [bankApi.reducerPath]: bankApi.reducer,
+        [agentApi.reducerPath]: agentApi.reducer
 
 
     },
@@ -52,7 +54,9 @@ const store = configureStore({
             chargeSlice.middleware,
             pettyCashApi.middleware,
             affiliateApi.middleware,
-            localGovernmentAgencyApi.middleware
+            localGovernmentAgencyApi.middleware,
+            bankApi.middleware,
+            agentApi.middleware
         )
 })
 

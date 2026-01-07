@@ -543,7 +543,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
               zIndex: 9999,
             }}
             >
-              <Mosaic color="#ca8a04" size="small" />
+              <Mosaic color="#0D254C" size="small" />
           </div>
         );
       }

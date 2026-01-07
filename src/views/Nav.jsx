@@ -85,7 +85,7 @@ function Nav() {
             zIndex: 9999,
           }}
           >
-            <Mosaic color="#ca8a04" size="small" />
+            <Mosaic color="#0D254C" size="small" />
         </div>
       );
     }
@@ -178,6 +178,7 @@ function Nav() {
               <Link className={style.link} onClick={closeAllAccordions} to="/user"><p>Users</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/employee"><p>Employee</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/customer"><p>Customer</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/agents"><p>Agents</p></Link>
             </div>
           </div>
 
@@ -201,10 +202,12 @@ function Nav() {
               className={`${style.accordionContent} ${openBusiness ? style.openAccordion : ''}`}
               style={{ maxHeight: openBusiness ? '500px' : '0' }}
             >
+              <Link className={style.link} onClick={closeAllAccordions} to="/affiliates"><p>Affiliates</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/company"><p>Company</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/vendor"><p>Vendor</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/department"><p>Department</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/charge"><p>Charge</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/localGovernmentAgency"><p>Local Government Agency</p></Link>
             </div>
           </div>
 
@@ -232,6 +235,7 @@ function Nav() {
             >
               <Link className={style.link} onClick={closeAllAccordions} to="/account"><p>Account</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/subAccount"><p>Sub Account</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/banks"><p>Banks</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/booking"><p>Booking</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/paymentRequest"><p>Payment Request</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashRelease"><p>Petty Cash Release</p></Link>

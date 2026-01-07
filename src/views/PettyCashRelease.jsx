@@ -123,7 +123,7 @@ const filteredPettyCash = pettyCashes.filter((pc) => {
         display: "flex", justifyContent: "center", alignItems: "center",
         backgroundColor: "#fff", zIndex: 9999
       }}>
-        <Mosaic color="#ca8a04" size="small" />
+        <Mosaic color="#0D254C" size="small" />
       </div>
     );
   }

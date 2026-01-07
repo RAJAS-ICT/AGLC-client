@@ -368,7 +368,7 @@ th{
 
 .inputSrch:focus,
 .inputSrch:not(:invalid) {
-  width: 240px;
+  width: 260px;
   cursor: text;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   padding-right: .75rem;
