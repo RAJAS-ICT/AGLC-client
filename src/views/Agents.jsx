@@ -48,7 +48,7 @@ function Agents() {
       setShowModal(false)
 
       if (response?.data?.id) {
-        navigate(`/editAgent/${response.data.id}`)
+        navigate(`/editAgents/${response.data.id}`)
       }
     } catch (err) {
       console.error(err)
@@ -241,7 +241,7 @@ function Agents() {
                     <button
                       className={style.editBtn}
                       onClick={() =>
-                        navigate(`/editAgent/${agent.id}`)
+                        navigate(`/editAgents/${agent.id}`)
                       }
                     >
                       <svg
