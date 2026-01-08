@@ -12,6 +12,13 @@ export const bankApi = createApi({
             }),
             providesTags:['banks']
         }),
+        getBankById:builder.query({
+            query:(id)=>({
+                url:`/${id}`,
+                method:'GET'
+            }),
+            providesTags:['banks']
+        }),
         createBank:builder.mutation({
             query:(newData)=>({
                 url:'/',
@@ -21,7 +28,7 @@ export const bankApi = createApi({
             invalidatesTags:['banks']
         }),
         updateBank:builder.mutation({
-            query:({id, updateData})=>({
+            query:({id, ...updateData})=>({
                 url: `${id}`,
                 method:'PUT',
                 body:updateData
@@ -31,4 +38,4 @@ export const bankApi = createApi({
     })
 })
 
-export const {useFetchBankQuery, useCreateBankMutation, useUpdateBankMutation} = bankApi
+export const {useFetchBankQuery, useGetBankByIdQuery, useCreateBankMutation, useUpdateBankMutation} = bankApi

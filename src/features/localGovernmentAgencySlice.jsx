@@ -1,13 +1,20 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 export const localGovernmentAgencyApi = createApi({
-    reducerPath:'localGovernmentAgecyApi',
+    reducerPath:'localGovernmentAgencyApi',
     baseQuery:fetchBaseQuery({baseUrl:'http://localhost:4000/localGovernmentAgency', credentials:'include'}),
     tagTypes:['localGovernmentAgency'],
     endpoints:(builder)=>({
         fetchLocalGovernmentAgency:builder.query({
             query:()=>({
                 url:'/',
+                method:'GET'
+            }),
+            providesTags:['localGovernmentAgency']
+        }),
+        getLocalGovernmentAgencyById:builder.query({
+            query:(id)=>({
+                url:`/${id}`,
                 method:'GET'
             }),
             providesTags:['localGovernmentAgency']
@@ -21,7 +28,7 @@ export const localGovernmentAgencyApi = createApi({
             invalidatesTags:['localGovernmentAgency']
         }),
         updateLocalGovernmentAgency:builder.mutation({
-            query:({id, updateData})=>({
+            query:({id, ...updateData})=>({
                 url:`/${id}`,
                 method:'PUT',
                 body:updateData
@@ -33,6 +40,7 @@ export const localGovernmentAgencyApi = createApi({
 
 export const {
     useFetchLocalGovernmentAgencyQuery,
+    useGetLocalGovernmentAgencyByIdQuery,
     useCreateLocalGovernmentAgencyMutation,
     useUpdateLocalGovernmentAgencyMutation
 } = localGovernmentAgencyApi

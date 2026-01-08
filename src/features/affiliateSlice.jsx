@@ -12,6 +12,13 @@ export const affiliateApi = createApi({
             }),
             providesTags:['affiliate']
         }),
+        getAffiliateById:builder.query({
+            query:(id)=>({
+                url:`/${id}`,
+                method:'GET'
+            }),
+            providesTags:['affiliate']
+        }),
         createAffiliate:builder.mutation({
             query:(newAffiliate)=>({
                 url:'/',
@@ -25,10 +32,11 @@ export const affiliateApi = createApi({
                 url:`/${id}`,
                 method:'PUT',
                 body:updateData
-            })
+            }),
+            invalidatesTags:['affiliate']
         })
-    })
+        }),
 })
 
 
-export const {useFetchAffiliateQuery,useCreateAffiliateMutation, useUpdateAffiliateMutation} = affiliateApi
+export const {useFetchAffiliateQuery,useGetAffiliateByIdQuery, useCreateAffiliateMutation, useUpdateAffiliateMutation} = affiliateApi

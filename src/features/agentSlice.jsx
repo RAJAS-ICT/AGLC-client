@@ -12,6 +12,13 @@ export const agentApi = createApi({
             }),
             providesTags:['agents']
         }),
+        getAgentById:builder.query({
+            query:(id)=>({
+                url:`/${id}`,
+                method:'GET'
+            }),
+            providesTags:['agents']
+        }),
         createAgent:builder.mutation({
             query:(newData)=>({
                 url:'/',
@@ -21,9 +28,9 @@ export const agentApi = createApi({
             invalidatesTags:['agents']
         }),
         updateAgent:builder.mutation({
-            query:({id, updateData})=>({
+            query:({id, ...updateData})=>({
                 url:`${id}`,
-                mehtod:'PUT',
+                method:'PUT',
                 body:updateData
             }),
             invalidatesTags:['agents']
@@ -32,4 +39,4 @@ export const agentApi = createApi({
 })
 
 
-export const {useFetchAgentQuery, useCreateAgentMutation, useUpdateAgentMutation} = agentApi
+export const {useFetchAgentQuery, useGetAgentByIdQuery, useCreateAgentMutation, useUpdateAgentMutation} = agentApi
