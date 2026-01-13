@@ -131,14 +131,14 @@ function Vendor() {
                 />
                 <div className={style.icon}>
                 <svg style={{color:'#3a3a3a'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                     <path d="m21 21l-4.34-4.34" />
                     <circle cx="11" cy="11" r="8" />
                   </g>
                 </svg>
                 </div>
               </div>
-              <button className={style.addBtn} onClick={() => setShowModal(true)}>
+              <button className={style.addBtn} onClick={() => setShowModal(true)} title='Add Vendor'>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"/></svg>
               </button>
             </div>

@@ -142,6 +142,7 @@ function Banks() {
             <button
               className={style.addBtn}
               onClick={() => setShowModal(true)}
+              title="Add Bank"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

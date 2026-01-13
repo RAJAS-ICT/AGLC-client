@@ -88,7 +88,7 @@ td {
 
 .headTablePayment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 100px 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 110px 80px;
   text-align: left;
   margin-bottom: .2rem;
    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -97,7 +97,7 @@ td {
 
 .bodyTablePayment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 100px 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 110px 80px;
   text-align: left;
 }
 
@@ -339,11 +339,6 @@ th{
     margin-bottom: .5rem;
 }
 
-
-
-
-
-
 .SrchContainer {
   position: relative;
   --size-button: 40px;
@@ -396,8 +391,6 @@ th{
   height: 100%;
 }
 
-
-
 .paginationContainer {
   display: flex;
   justify-content: flex-end;
@@ -410,10 +403,8 @@ th{
   background-color: #fff;
   color: #0D254C;
   padding: 6px 12px;
-  /* border-radius: 4px; */
   cursor: pointer;
   transition: background 0.2s ease;
-  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -435,17 +426,17 @@ th{
 }
 
 .editBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    background: none;
-    color: #0D254C;
-    padding: 6px 12px 6px 10px;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: 0.1s ease-in-out;
-    border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  color: #0D254C;
+  padding: 6px 12px 6px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  border: none;
 }
 .editBtn:hover{
   background-color: #0D254C;
@@ -477,7 +468,6 @@ th{
   border: 1px solid #eee;
   cursor: pointer;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
 }
 
 .bookingPaymentTitle{
@@ -516,9 +506,7 @@ h3{
   color: #0D254C;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  /* border: 1px solid #ccc; */
 }
-
 
 .addButton {
   background-color: #0D254C;
@@ -624,9 +612,8 @@ h3{
 }
 .editActiveAccountWraper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 4rem;
   width: 100%;
   padding: 0 0rem .6rem;
 }
@@ -701,7 +688,6 @@ h3{
   to { transform: translateY(0); opacity: 1; }
 }
 
-
 .editContainer {
   display: flex;
   flex-direction: column;
@@ -730,7 +716,6 @@ h3{
   align-items: start;
   gap: 0.65rem;
   width: 100%;        
-  /* max-width: 500px;      */
   padding: 1.5rem;
   border-radius: 8px;
 }
@@ -740,7 +725,6 @@ h3{
   align-items: start;
   gap: 0.65rem;
   width: 100%;        
-  /* max-width: 500px;      */
   padding: 3rem 1.5rem;
   border-radius: 8px;
 }
@@ -769,7 +753,6 @@ h3{
   max-width: 500px;     
   padding: 1.5rem;
   border-radius: 8px;
-
 }
 
 .editBookerContainer{
@@ -848,7 +831,6 @@ textarea{
   margin: -.3rem 0 .75rem 0;
   cursor: pointer;
   outline: none;
-  /* color: #000; */
 }
 .modalLabel{
   font-weight: 600;
@@ -1024,7 +1006,6 @@ textarea{
   user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-
 }
 
 .customSelectDropdown {
@@ -1058,7 +1039,6 @@ textarea{
 .flexFormTable{
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
 .payReqTempTable{
@@ -1068,7 +1048,6 @@ textarea{
 .tableTempThead{
   display: grid;
   grid-template-columns: 50px 1fr 1fr 100px 100px;
-  /* background-color: #fff; */
   margin-bottom: 4px;
   border: 1px solid #ccc;
   font-size: 14px;
@@ -1147,7 +1126,6 @@ textarea{
   margin-bottom: 2px;
   font-family: "Oswald", sans-serif !important;
   box-shadow: none !important;
-  /* border: 1px solid #ccc !important; */
 }
 .bookingHistoryTd{
   box-shadow: none !important;
@@ -1296,7 +1274,7 @@ td.payreqTd {
 
 .flexInput{
     display: flex;
-    gap: .5rem;
+    gap: 1rem;
     width: 100%;
 }
 .gridUserEdit{

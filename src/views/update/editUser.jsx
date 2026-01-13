@@ -158,14 +158,16 @@ const [showLoader, setShowLoader] = useState(true);
                 onChange={(e) => setFormData({ ...formData, middleName: e.target.value })}
               />
             </div>
+            <div className={style.gridUserEdit}>
+              <label className={style.editLabel}>Last Name: </label>
+              <input
+                className={style.editInput}
+                type="text"
+                value={formData.lastName}
+                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+              />
+            </div>
         </div>
-        <label className={style.editLabel}>Last Name: </label>
-        <input
-          className={style.editInput}
-          type="text"
-          value={formData.lastName}
-          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-        />
         <label className={style.editLabel}>Password: </label>
         <input
           className={style.editInput}

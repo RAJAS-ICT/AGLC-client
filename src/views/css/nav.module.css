@@ -3,7 +3,6 @@
     padding: 0;
 }
 
-/* TOP BAR */
 .topBar{
     background-color: #fff !important;
     height: 50px;
@@ -14,6 +13,9 @@
     background-color: #f9f9f9;
     gap: 1rem;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    position: relative;
+    z-index: 1 !important;
+
 }
 
 .profileWrapper {
@@ -36,7 +38,6 @@
   border-color: #888;
 }
 
-/* DROPDOWN */
 .dropdown {
   position: absolute;
   top: 52px; 
@@ -120,7 +121,6 @@ p{
     font-family: "Oswald", sans-serif;
 }
 
-/* Sidebar */
 .sideBar {
   background-color: #0D254C;
   color: #F9FAFB;
@@ -136,6 +136,7 @@ p{
   left: 0;
   overflow-y: auto;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  z-index: 2;
 }
 
 .logoHeader{

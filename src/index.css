@@ -8,6 +8,7 @@
 body{
     background-color: #f9f9f9 !important;
     overflow-x: hidden;
+    overflow-y: hidden;
 
 }
 .main-container{
@@ -16,7 +17,7 @@ body{
     height: 100vh;
     overflow-y: auto; 
     box-sizing: border-box;
-    padding: 1.05rem 1rem 1rem;
+    padding: 1.05rem 1rem 4rem;
 }
 
 input,textarea{

@@ -42,8 +42,6 @@ export default function Register() {
       <form onSubmit={handleSubmit} className={authStyle.formRegister}>
         <div className={authStyle.logHeader}>
           <img className={authStyle.img} src={logo} alt="logo" />
-          <h3 className={authStyle.title}>Welcome Back</h3>
-          <p className={authStyle.subtitle}>Please enter your details below</p>
         </div>
 
         <input

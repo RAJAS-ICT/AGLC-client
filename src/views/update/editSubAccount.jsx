@@ -137,25 +137,30 @@ function EditSubAccount() {
             </div>
 
         <form onSubmit={handleSubmit} className={style.editForm}>
-          <label className={style.editLabel}>Code:</label>
-          <input
-            className={style.editInput}
-            type="text"
-            placeholder="Code"
-            value={formData.code}
-            onChange={(e) => setFormData({ ...formData, code: e.target.value })}
-            required
-          />
-
-          <label className={style.editLabel}>Name:</label>
-          <input
-            className={style.editInput}
-            type="text"
-            placeholder="Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-          />
+          <div className={style.flexInput}>
+            <div className={style.gridUserEdit}>
+              <label className={style.editLabel}>Code:</label>
+              <input
+                className={style.editInput}
+                type="text"
+                placeholder="Code"
+                value={formData.code}
+                onChange={(e) => setFormData({ ...formData, code: e.target.value })}
+                required
+              />
+            </div>
+            <div className={style.gridUserEdit}>
+              <label className={style.editLabel}>Name:</label>
+              <input
+                className={style.editInput}
+                type="text"
+                placeholder="Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+            </div>
+          </div>
         <div className={style.editActiveAccountWraper}>
           <div className={style.editActiveHolder}>
             <label>Account Department:</label>

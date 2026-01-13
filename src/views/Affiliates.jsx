@@ -152,6 +152,7 @@ function Affiliates() {
             <button
               className={style.addBtn}
               onClick={() => setShowModal(true)}
+              title="Add Affiliate"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

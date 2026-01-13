@@ -152,7 +152,7 @@ function LocalGovernmentAgency() {
               </div>
             </div>
 
-            <button className={style.addBtn} onClick={() => setShowModal(true)}>
+            <button className={style.addBtn} onClick={() => setShowModal(true)}  title="Add Local Government Agency">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

@@ -106,32 +106,40 @@ function EditEmployee() {
           <p className={style.headerSubtitle}>User Management / Manage Employees</p>
         </div>
         <form onSubmit={handleSubmit} className={style.editForm}>
-          <label className={style.editLabel}>Firstname: </label>
-          <input
-            className={style.editInput}
-            type="text"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-            required
-          />
-          <label className={style.editLabel}>Middlename: </label>
-          <input
-            className={style.editInput}
-            type="text"
-            placeholder="Middle Name"
-            value={formData.middleName}
-            onChange={(e) => setFormData({ ...formData, middleName: e.target.value })}
-          />
-          <label className={style.editLabel}>Lastname: </label>
-          <input
-            className={style.editInput}
-            type="text"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-            required
-          />
+          <div className={style.flexInput}>
+            <div className={style.gridUserEdit}>
+              <label className={style.editLabel}>Firstname: </label>
+              <input
+                className={style.editInput}
+                type="text"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                required
+              />
+            </div>
+            <div className={style.gridUserEdit}>
+              <label className={style.editLabel}>Middlename: </label>
+              <input
+                className={style.editInput}
+                type="text"
+                placeholder="Middle Name"
+                value={formData.middleName}
+                onChange={(e) => setFormData({ ...formData, middleName: e.target.value })}
+              />
+            </div>
+            <div className={style.gridUserEdit}>
+            <label className={style.editLabel}>Lastname: </label>
+              <input
+                className={style.editInput}
+                type="text"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                required
+              />
+            </div>
+          </div>
           <label className={style.editLabel}>Contact #: </label>
           <input
             className={style.editInput}

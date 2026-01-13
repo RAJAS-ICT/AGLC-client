@@ -143,6 +143,7 @@ function Agents() {
             <button
               className={style.addBtn}
               onClick={() => setShowModal(true)}
+              title="Add Agent"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

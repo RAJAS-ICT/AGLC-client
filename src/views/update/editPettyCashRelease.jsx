@@ -178,62 +178,67 @@ function EditPettyCashRelease() {
         </div>
 
         <form onSubmit={handleSubmit} className={style.editForm}>
-          <label className={style.editLabel}>Payment Request:</label>
-            <div className={style.customSelectWrapper} ref={payReqRef}>
-            <div
-            className={style.customSelectInput}
-            onClick={() => setOpenPayReq(!openPayReq)}
-            >
-            {formData.paymentRequestId
-                ? (() => {
-                    const pr = paymentRequests.find(
-                    (p) =>
-                        p.id === formData.paymentRequestId &&
-                        p.requestType === "Petty Cash"
-                    );
+          <div className={style.flexInput}>
+            <div className={style.gridUserEdit}>
+              <label className={style.editLabel}>Payment Request:</label>
+                <div className={style.customSelectWrapper} ref={payReqRef}>
+                  <div
+                  className={style.customSelectInput}
+                  onClick={() => setOpenPayReq(!openPayReq)}
+                  >
+                  {formData.paymentRequestId
+                      ? (() => {
+                          const pr = paymentRequests.find(
+                          (p) =>
+                              p.id === formData.paymentRequestId &&
+                              p.requestType === "Petty Cash"
+                          );
 
-                    return pr
-                    ? pr.requestNumber || pr.code || pr.id
-                    : formData.paymentRequestId;
-                })()
-                : "Select Payment Request"}
-                <span className={style.selectArrow}>▾</span>
-            </div>
+                          return pr
+                          ? pr.requestNumber || pr.code || pr.id
+                          : formData.paymentRequestId;
+                      })()
+                      : "Select Payment Request"}
+                      <span className={style.selectArrow}>▾</span>
+                  </div>
 
-            {openPayReq && (
-                <div className={style.customSelectDropdown}>
-                {isLoadingPayReq ? (
-                    <div className={style.customSelectOption}>Loading...</div>
-                ) : paymentRequests.filter(pr => pr.status === 'Open' && pr.requestType === 'Petty Cash').length === 0 ? (
-                    <div className={style.customSelectOption}>No Payment Requests</div>
-                ) : (
-                    paymentRequests
-                    .filter(pr => pr.status === 'Open' && pr.requestType === 'Petty Cash')
-                    .map(pr => (
-                        <div
-                        key={pr.id}
-                        className={style.customSelectOption}
-                        onClick={() => {
-                            setFormData({ ...formData, paymentRequestId: pr.id });
-                            setOpenPayReq(false);
-                        }}
-                        >
-                         {pr.requestNumber || pr.code || pr.id}
-                        </div>
-                    ))
-                )}
-                </div>
-            )}
+              {openPayReq && (
+                  <div className={style.customSelectDropdown}>
+                  {isLoadingPayReq ? (
+                      <div className={style.customSelectOption}>Loading...</div>
+                  ) : paymentRequests.filter(pr => pr.status === 'Open' && pr.requestType === 'Petty Cash').length === 0 ? (
+                      <div className={style.customSelectOption}>No Payment Requests</div>
+                  ) : (
+                      paymentRequests
+                      .filter(pr => pr.status === 'Open' && pr.requestType === 'Petty Cash')
+                      .map(pr => (
+                          <div
+                          key={pr.id}
+                          className={style.customSelectOption}
+                          onClick={() => {
+                              setFormData({ ...formData, paymentRequestId: pr.id });
+                              setOpenPayReq(false);
+                          }}
+                          >
+                          {pr.requestNumber || pr.code || pr.id}
+                          </div>
+                      ))
+                  )}
+                  </div>
+              )}
+              </div>
             </div>
-            
-        <label className={style.editLabel}>Vendor:</label>
-          <input
-            style={{outline:"none", cursor:'not-allowed'}}
-            type="text"
-            className={style.editInput}
-            value={vendorName}
-            readOnly
-          />
+          <div className={style.gridUserEdit}>
+            <label className={style.editLabel} style={{marginBottom:'4px'}}>Vendor:</label>
+              <input
+                style={{outline:"none", cursor:'not-allowed', height:'41px'}}
+                type="text"
+                className={style.editInput}
+                value={vendorName}
+                readOnly
+              />
+          </div>
+        </div>
         <label className={style.editLabel}>Remarks:</label>
           <textarea
             style={{outline:"none", cursor:'not-allowed'}}

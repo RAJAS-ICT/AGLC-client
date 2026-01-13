@@ -126,6 +126,29 @@ function PaymentRequestPage() {
     }
   };
 
+  const baseStyle = {
+    padding: '2px 12px',
+    borderRadius: '12px',
+    fontFamily: 'Oswald, sanSerif',
+    // fontWeight: 600,
+    fontSize: '13px',
+    textTransform: 'capitalize',
+    display: 'inline-block',
+  }
+
+  const getStatusStyle = (status) => {
+    switch (status.toLowerCase()) {
+      case 'canceled':
+        return { ...baseStyle, color: '#ef4444', backgroundColor: '#fee2e2' }
+      case 'released':
+        return { ...baseStyle, color: '#be8405ff', backgroundColor: '#ffedd5' }
+      case 'open':
+        return { ...baseStyle, color: '#166534', backgroundColor: '#dcfce7' }
+      default:
+        return baseStyle
+    }
+  }
+
   const [showLoader, setShowLoader] = useState(true);
     
    useEffect(() => {
@@ -203,14 +226,14 @@ function PaymentRequestPage() {
 
                 <div className={style.icon}>
                 <svg style={{color:'#3a3a3a'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                     <path d="m21 21l-4.34-4.34" />
                     <circle cx="11" cy="11" r="8" />
                   </g>
                 </svg>
                 </div>
               </div>
-              <button className={style.addBtn} onClick={() => setShowModal(true)}>
+              <button className={style.addBtn} onClick={() => setShowModal(true)} title="Add Payment Request">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -521,7 +544,12 @@ function PaymentRequestPage() {
                         })
                       : "--"}
                   </td>
-                  <td>{pr.status}</td>
+                    <td>
+                      <span style={getStatusStyle(pr.status)}>
+                        {pr.status}
+                      </span>
+                    </td>
+
                   <td>
                     <button className={style.editBtn} onClick={() => navigate(`/editPaymentRequest/${pr.id}`)}>
                       <svg className={style.svdEditIcon} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.14 2.25a5.61 5.61 0 0 0-5.327 7.376L2.77 17.671a1.774 1.774 0 0 0 0 2.508l1.052 1.052a1.773 1.773 0 0 0 2.509 0l8.044-8.045a5.61 5.61 0 0 0 7.19-6.765c-.266-1.004-1.442-1.104-2.032-.514L17.81 7.629a1.017 1.017 0 1 1-1.438-1.438l1.722-1.723c.59-.59.49-1.766-.515-2.032a5.6 5.6 0 0 0-1.438-.186"/></svg>

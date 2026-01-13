@@ -160,7 +160,7 @@ function Department() {
 
                 <div className={style.icon}>
                 <svg style={{color:'#3a3a3a'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                     <path d="m21 21l-4.34-4.34" />
                     <circle cx="11" cy="11" r="8" />
                   </g>
@@ -171,6 +171,7 @@ function Department() {
               <button
                 className={style.addBtn}
                 onClick={() => setShowModal(true)}
+                title="Add Department"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
