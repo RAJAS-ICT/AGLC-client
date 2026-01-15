@@ -1025,7 +1025,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
          <div className={style.FlexBookingHistory}>
            <div className={style.bookingContainer}>
             <p className={style.bookingPaymentTitle}>Booking Details</p>
-            <p className={style.bookingPaymentSubtitle}>Verify current status and entire transaction history for official documentation.</p>
+            <p className={style.bookingPaymentSubtitle}>Create and review booking details.</p>
           </div>
 
             <div className={style.flexPdfBtn}>
