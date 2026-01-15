@@ -102,7 +102,16 @@ function EditPettyCashRelease() {
     }
 
     await createJournalEntry(journalForm).unwrap();
-    setJournalForm('')
+    setJournalForm({
+      belongsToType: "Petty Cash Release",
+      belongsToId: Number(id),
+      accountTitleId: "",
+      subAccountTitleId: "",
+      departmentId: "",
+      listItemType: "",
+      listItemId: "",
+    });
+
     toast.success("Journal Entry Created");
     setOpenJournalModal(false);
   } catch (err) {
