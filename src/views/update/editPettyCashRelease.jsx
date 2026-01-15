@@ -131,8 +131,6 @@ function EditPettyCashRelease() {
   const [openListType, setOpenListType] = useState(false);
   const [openListItem, setOpenListItem] = useState(false);
 
-
-
   useEffect(() => {
     if (pettyCashData.length > 0) {
       const current = pettyCashData.find((pc) => pc.id === parseInt(id));
@@ -205,8 +203,8 @@ function EditPettyCashRelease() {
         .toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
     : (0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    const getListItemNameFromJournal = (j) => {
-    const id = j.listItemId;
+  const getListItemNameFromJournal = (j) => {
+  const id = j.listItemId;
 
     switch (j.listItemType) {
       case "Affiliate":
@@ -238,8 +236,6 @@ function EditPettyCashRelease() {
         return "-";
     }
   };
-
-
 
   if (isLoadingPettyCash || showLoader) {
     return (
@@ -286,7 +282,6 @@ function EditPettyCashRelease() {
 
     return <p>Error: {error?.data?.message || 'Something went wrong'}</p>;
   }
-
   
   return (
     <main className="main-container">
