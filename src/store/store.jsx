@@ -16,6 +16,9 @@ import { affiliateApi } from '../features/affiliateSlice'
 import { localGovernmentAgencyApi } from '../features/localGovernmentAgencySlice'
 import { bankApi } from '../features/bankSlice'
 import { agentApi } from '../features/agentSlice'
+import { journalEntryApi } from '../features/journalEntrySlice'
+
+
 const store = configureStore({
     reducer: {
         [userApi.reducerPath]: userApi.reducer,
@@ -34,7 +37,8 @@ const store = configureStore({
         [affiliateApi.reducerPath]: affiliateApi.reducer,
         [localGovernmentAgencyApi.reducerPath]: localGovernmentAgencyApi.reducer,
         [bankApi.reducerPath]: bankApi.reducer,
-        [agentApi.reducerPath]: agentApi.reducer
+        [agentApi.reducerPath]: agentApi.reducer,
+        [journalEntryApi.reducerPath]: journalEntryApi.reducer
 
 
     },
@@ -56,7 +60,8 @@ const store = configureStore({
             affiliateApi.middleware,
             localGovernmentAgencyApi.middleware,
             bankApi.middleware,
-            agentApi.middleware
+            agentApi.middleware,
+            journalEntryApi.middleware
         )
 })
 

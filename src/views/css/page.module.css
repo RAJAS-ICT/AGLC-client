@@ -170,6 +170,13 @@ td {
   align-items: center;
   gap: .65rem;
 }
+.flexheaderTitleJournal{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem;
+  padding: 1.5rem 0 2rem;
+}
 .svgExclamation{
   color: #ca8a04;
   height: 24px;
@@ -1079,10 +1086,6 @@ textarea{
   height: 22px !important;
   width: 22px !important;
 }
-.payreqDetails{
-  font-weight:300;
-  font-family: "Oswald", sans-serif !important;
-}
 .payreqTd{
   box-shadow: none !important;
   font-family: "Oswald", sans-serif !important;
@@ -1110,13 +1113,14 @@ textarea{
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  border-radius: 6px;
+  border-radius: 50px;
   background-color:#fff;
   color:#0D254C;
   border: none;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  height: 40px
+  height: 40px;
+  border: 1px solid #eee;
 }
 .tableTrHistory{
   display: grid;
@@ -1151,15 +1155,32 @@ td.payreqTd {
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  border-radius: 6px;
+  border-radius: 50px;
   background-color:#fff;
   color:#0D254C;
   border: none;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   height: 40px;
+  border: 1px solid #eee;
 }
-
+.tableJournal{
+  padding: 0 2rem;
+}
+.addBtnJournal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border-radius: 50px;
+  background-color:#fff;
+  color:#0D254C;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  height: 40px;
+  border: 1px solid #eee;
+}
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -1310,4 +1331,18 @@ td.payreqTd {
   color: #6b7280;
   font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.journalHeaderTable{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background-color: #0D254C;
+}
+.journalHeaderTable th{
+  color: #fff !important;
+}
+.journalBodyTable{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }

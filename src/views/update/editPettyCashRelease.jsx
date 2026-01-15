@@ -11,6 +11,16 @@ import { useFetchPaymentRequestQuery } from "../../features/paymentRequest";
 import { useFetchEmployeeQuery } from "../../features/employeeSlice";
 import { useGetPaymentRequestDetailsByRequestIdQuery } from "../../features/paymentRequestDetailSlice";
 
+import { useFetchAccountQuery } from "../../features/accountTitleSlice";
+import { useFetchSubAccountQuery } from "../../features/subAccountTitleSlice";
+import { useFetchDepartmentQuery } from "../../features/departmentSlice";
+import { useCreateJournalEntryMutation, useFetchJournalEntryQuery } from "../../features/journalEntrySlice";
+import { useFetchAffiliateQuery } from "../../features/affiliateSlice";
+import { useFetchAgentQuery } from "../../features/agentSlice";
+import { useFetchBankQuery } from "../../features/bankSlice";
+import { useFetchCustomerQuery } from "../../features/customerSlice";
+import { useFetchLocalGovernmentAgencyQuery } from "../../features/localGovernmentAgencySlice";
+import { useFetchVendorQuery } from "../../features/vendorSlice";
 
 import style from "../../views/css/page.module.css";
 
@@ -32,6 +42,87 @@ function EditPettyCashRelease() {
     vendor: "",
     remarks: "",
   });
+
+  const [openJournalModal, setOpenJournalModal] = useState(false);
+
+  const [journalForm, setJournalForm] = useState({
+    belongsToType: "Petty Cash Release",
+    belongsToId: Number(id),
+    accountTitleId: "",
+    subAccountTitleId: "",
+    departmentId: "",
+    listItemType: "",
+    listItemId: "",
+  });
+
+  const getListItemSource = () => {
+  switch (journalForm.listItemType) {
+    case "Affiliate":
+      return affiliates;
+    case "Agent":
+      return agents;
+    case "Bank":
+      return banks;
+    case "Customer":
+      return customers;
+    case "Employee":
+      return employees;
+    case "Local Government Agency":
+      return lgas;
+    case "Vendor":
+      return vendors;
+    default:
+      return [];
+  }
+};
+
+  const { data: accounts = [] } = useFetchAccountQuery();
+  const { data: subAccounts = [] } = useFetchSubAccountQuery();
+  const { data: departments = [] } = useFetchDepartmentQuery();
+
+  const { data: journalEntries = [] } = useFetchJournalEntryQuery();
+  const [createJournalEntry] = useCreateJournalEntryMutation();
+  const { data: affiliates = [] } = useFetchAffiliateQuery();
+  const { data: agents = [] } = useFetchAgentQuery();
+  const { data: banks = [] } = useFetchBankQuery();
+  const { data: customers = [] } = useFetchCustomerQuery();
+  const { data: lgas = [] } = useFetchLocalGovernmentAgencyQuery();
+  const { data: vendors = [] } = useFetchVendorQuery();
+
+  const handleSaveJournalEntry = async () => {
+  try {
+    if (
+      !journalForm.accountTitleId ||
+      !journalForm.subAccountTitleId ||
+      !journalForm.departmentId ||
+      !journalForm.listItemType
+    ) {
+      toast.error("Please complete journal entry fields");
+      return;
+    }
+
+    await createJournalEntry(journalForm).unwrap();
+    setJournalForm('')
+    toast.success("Journal Entry Created");
+    setOpenJournalModal(false);
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to create journal entry");
+  }
+};
+  const accountRef = useRef(null);
+  const subAccountRef = useRef(null);
+  const departmentRef = useRef(null);
+  const listTypeRef = useRef(null);
+  const listItemRef = useRef(null);
+
+  const [openAccount, setOpenAccount] = useState(false);
+  const [openSubAccount, setOpenSubAccount] = useState(false);
+  const [openDepartment, setOpenDepartment] = useState(false);
+  const [openListType, setOpenListType] = useState(false);
+  const [openListItem, setOpenListItem] = useState(false);
+
+
 
   useEffect(() => {
     if (pettyCashData.length > 0) {
@@ -105,6 +196,42 @@ function EditPettyCashRelease() {
         .toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
     : (0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
+    const getListItemNameFromJournal = (j) => {
+    const id = j.listItemId;
+
+    switch (j.listItemType) {
+      case "Affiliate":
+        return affiliates.find(a => a.id === id)?.name || "-";
+
+      case "Agent":
+        return agents.find(a => a.id === id)?.name || "-";
+
+      case "Bank":
+        return banks.find(b => b.id === id)?.name || "-";
+
+      case "Customer":
+        return customers.find(c => c.id === id)?.name || "-";
+
+      case "Employee": {
+        const emp = employees.find(e => e.id === id);
+        return emp
+          ? `${emp.firstName} ${emp.middleName || ""} ${emp.lastName}`.trim()
+          : "-";
+      }
+
+      case "Local Government Agency":
+        return lgas.find(l => l.id === id)?.name || "-";
+
+      case "Vendor":
+        return vendors.find(v => v.id === id)?.name || "-";
+
+      default:
+        return "-";
+    }
+  };
+
+
+
   if (isLoadingPettyCash || showLoader) {
     return (
       <div
@@ -151,6 +278,7 @@ function EditPettyCashRelease() {
     return <p>Error: {error?.data?.message || 'Something went wrong'}</p>;
   }
 
+  
   return (
     <main className="main-container">
       <Toaster position="top-right" reverseOrder={false} />
@@ -298,6 +426,316 @@ function EditPettyCashRelease() {
             {isUpdating ? "Updating..." : "Update"}
           </button>
         </form>
+
+
+      <div style={{padding:'0 1.25rem 5rem 1.25rem'}}>
+         <div className={style.flexheaderTitleJournal}>
+           <div className={style.bookingContainer}>
+            <p className={style.bookingPaymentTitle}>Journal Entry</p>
+            <p className={style.bookingPaymentSubtitle}>Create and review journal entry history.</p>
+          </div>
+          <button
+            className={style.addBtnJournal}
+            type="button"
+            onClick={() => setOpenJournalModal(true)}
+          >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"
+                />
+              </svg>
+          </button>
+        </div>
+
+        <table className={style.tableJournal}>
+          <thead>
+            <tr className={style.journalHeaderTable}>
+              <th>Account</th>
+              <th>Sub Account</th>
+              <th>Department</th>
+              <th>List Item Type</th>
+              <th>List Item</th>
+            </tr>
+          </thead>
+          <tbody>
+            {journalEntries.filter(
+              j =>
+                j.belongsToType === "Petty Cash Release" &&
+                j.belongsToId === Number(id)
+            ).length === 0 ? (
+              <tr className={style.journalBodyTable}>
+                <td
+                  style={{
+                    gridColumn: "1 / -1",
+                    textAlign: "center",
+                    padding: "12px",
+                  }}
+                >
+                  No journal entries found.
+                </td>
+              </tr>
+            ) : (
+              journalEntries
+                .filter(
+                  j =>
+                    j.belongsToType === "Petty Cash Release" &&
+                    j.belongsToId === Number(id)
+                )
+                .map(j => (
+                  <tr key={j.id} className={style.journalBodyTable}>
+                    <td>{j.account?.name}</td>
+                    <td>{j.subAccount?.name}</td>
+                    <td>{j.department?.name}</td>
+                    <td>{j.listItemType}</td>
+                    <td>{getListItemNameFromJournal(j)}</td>
+                  </tr>
+                ))
+            )}
+          </tbody>
+        </table>
+      </div>
+
+{/* modal */}
+      {openJournalModal && (
+        <div className={style.modalOverlay}>
+          <div className={style.modal}>
+            {/* Header */}
+            <div className={style.modalHeader}>
+              <h3>Add Journal Entry</h3>
+              <button
+                className={style.closeButton}
+                onClick={() => setOpenJournalModal(false)}
+              >
+                <svg
+                  className={style.closeBtn}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="m11.25 4.75-6.5 6.5m0-6.5 6.5 6.5"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <form
+              className={style.formContainer}
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSaveJournalEntry();
+              }}
+            >
+              {/* Account Title */}
+              <label className={style.modalLabel}>Account Title:</label>
+              <div className={style.customSelectWrapper} ref={accountRef}>
+                <div
+                  className={style.customSelectInput}
+                  onClick={() => setOpenAccount(!openAccount)}
+                >
+                  {journalForm.accountTitleId
+                    ? accounts.find(a => a.id === journalForm.accountTitleId)?.name
+                    : "Select Account"}
+                  <span className={style.selectArrow}>▾</span>
+                </div>
+
+                {openAccount && (
+                  <div className={style.customSelectDropdown}>
+                    {accounts.map(a => (
+                      <div
+                        key={a.id}
+                        className={style.customSelectOption}
+                        onClick={() => {
+                          setJournalForm(prev => ({
+                            ...prev,
+                            accountTitleId: a.id,
+                          }));
+                          setOpenAccount(false);
+                        }}
+                      >
+                        {a.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Sub Account */}
+              <label className={style.modalLabel}>Sub Account:</label>
+              <div className={style.customSelectWrapper} ref={subAccountRef}>
+                <div
+                  className={style.customSelectInput}
+                  onClick={() => setOpenSubAccount(!openSubAccount)}
+                >
+                  {journalForm.subAccountTitleId
+                    ? subAccounts.find(s => s.id === journalForm.subAccountTitleId)?.name
+                    : "Select Sub Account"}
+                  <span className={style.selectArrow}>▾</span>
+                </div>
+
+                {openSubAccount && (
+                  <div className={style.customSelectDropdown}>
+                    {subAccounts.map(s => (
+                      <div
+                        key={s.id}
+                        className={style.customSelectOption}
+                        onClick={() => {
+                          setJournalForm(prev => ({
+                            ...prev,
+                            subAccountTitleId: s.id,
+                          }));
+                          setOpenSubAccount(false);
+                        }}
+                      >
+                        {s.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Department */}
+              <label className={style.modalLabel}>Department:</label>
+              <div className={style.customSelectWrapper} ref={departmentRef}>
+                <div
+                  className={style.customSelectInput}
+                  onClick={() => setOpenDepartment(!openDepartment)}
+                >
+                  {journalForm.departmentId
+                    ? departments.find(d => d.id === journalForm.departmentId)?.name
+                    : "Select Department"}
+                  <span className={style.selectArrow}>▾</span>
+                </div>
+
+                {openDepartment && (
+                  <div className={style.customSelectDropdown}>
+                    {departments.map(d => (
+                      <div
+                        key={d.id}
+                        className={style.customSelectOption}
+                        onClick={() => {
+                          setJournalForm(prev => ({
+                            ...prev,
+                            departmentId: d.id,
+                          }));
+                          setOpenDepartment(false);
+                        }}
+                      >
+                        {d.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* List Item Type */}
+              <label className={style.modalLabel}>List Item Type:</label>
+              <div className={style.customSelectWrapper} ref={listTypeRef}>
+                <div
+                  className={style.customSelectInput}
+                  onClick={() => setOpenListType(!openListType)}
+                >
+                  {journalForm.listItemType || "Select Type"}
+                  <span className={style.selectArrow}>▾</span>
+                </div>
+
+                {openListType && (
+                  <div className={style.customSelectDropdown}>
+                    {[
+                      "Affiliate",
+                      "Agent",
+                      "Bank",
+                      "Customer",
+                      "Employee",
+                      "Local Government Agency",
+                      "Vendor",
+                    ].map(type => (
+                      <div
+                        key={type}
+                        className={style.customSelectOption}
+                        onClick={() => {
+                          setJournalForm(prev => ({
+                            ...prev,
+                            listItemType: type,
+                            listItemId: "",
+                          }));
+                          setOpenListType(false);
+                        }}
+                      >
+                        {type}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* List Item */}
+              <label className={style.modalLabel}>List Item:</label>
+              <div className={style.customSelectWrapper} ref={listItemRef}>
+                <div
+                  className={style.customSelectInput}
+                  onClick={() =>
+                    journalForm.listItemType && setOpenListItem(!openListItem)
+                  }
+                >
+                  {journalForm.listItemId
+                    ? getListItemSource().find(i => i.id === journalForm.listItemId)?.name
+                    : "Select Item"}
+                  <span className={style.selectArrow}>▾</span>
+                </div>
+
+                {openListItem && (
+                  <div className={style.customSelectDropdown}>
+                    {getListItemSource().map(item => (
+                      <div
+                        key={item.id}
+                        className={style.customSelectOption}
+                        onClick={() => {
+                          setJournalForm(prev => ({
+                            ...prev,
+                            listItemId: item.id,
+                          }));
+                          setOpenListItem(false);
+                        }}
+                      >
+                        {item.name ||
+                          `${item.firstName || ""} ${item.lastName || ""}`.trim()}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* buttons */}
+              <div className={style.modalActions}>
+                <button
+                  type="button"
+                  className={style.cancelButton}
+                  onClick={() => setOpenJournalModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className={style.submitButton}>
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       </div>
     </main>
   );
