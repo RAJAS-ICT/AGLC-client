@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { useLoginUserMutation, useGetUserCountQuery } from '../features/userSlice';
 import authStyle from '../auth/auth.module.css';
-import logo from '../assets/acestar.jpg';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -34,28 +33,32 @@ export default function Login() {
     <main className={authStyle.mainLogin}>
       <Toaster position="top-right" />
       <form onSubmit={handleSubmit} className={authStyle.formLogin}>
-        <div className={authStyle.logHeader}>
-          <img className={authStyle.img} src={logo} alt="Logo" />
-         
+        <div className={authStyle.headSubhead}>
+          <h4 className={authStyle.authHeadertext}>Login</h4>
+          <p className={authStyle.subheadAuth}>Complete the form below to proceed.</p>
         </div>
-
-        <input
-          className={authStyle.fieldLogin}
-          type="text"
-          value={formData.username}
-          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-          placeholder="Username"
-          required
-        />
-
-        <input
-          className={authStyle.fieldLogin}
-          type="password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          placeholder="Password"
-          required
-        />
+         <div className={authStyle.flexLabelfield}>
+            <label className={authStyle.authLabel} htmlFor="">Username</label>
+            <input
+              className={authStyle.fieldLogin}
+              type="text"
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div className={authStyle.flexLabelfield}>
+            <label className={authStyle.authLabel} htmlFor="">Username</label>
+            <input
+              className={authStyle.fieldLogin}
+              type="password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              placeholder="Password"
+              required
+            />
+          </div>
 
         <button className={authStyle.btnLogin} type="submit" disabled={isLoading}>
           {isLoading ? 'Logging in...' : 'Login'}

@@ -155,14 +155,14 @@ function Nav() {
         <div className={style.menuList}>
           <small className={style.menuCaption}>MENU</small>
 
-          {/* User Management */}
+          {/* User Directory */}
           <div className={style.accordionItem}>
             <div className={style.accordionHeader} onClick={toggleUsers}>
               <div className={style.flexUserManagement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M16 17v2H2v-2s0-4 7-4s7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.4 3.4 0 0 0-1.93.59a5 5 0 0 1 0 5.82A3.4 3.4 0 0 0 15 11a3.5 3.5 0 0 0 0-7" />
               </svg>
-              <p>User Management</p>
+              <p>User Directory</p>
               </div>
               <span className={`${style.arrow} ${openUsers ? style.rotate : ''}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -182,14 +182,14 @@ function Nav() {
             </div>
           </div>
 
-          {/* Business */}
+          {/* Entities */}
           <div className={style.accordionItem}>
             <div className={style.accordionHeader} onClick={toggleBusiness}>
               <div className={style.flexUserManagement}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M4 6V4h16v2zm0 14v-6H3v-2l1-5h16l1 5v2h-1v6h-2v-6h-4v6zm2-2h6v-4H6z" />
-              </svg>
-              <p>Business</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M7.998 5.75A3.752 3.752 0 1 1 12.5 9.428V11.5h3.25A2.25 2.25 0 0 1 18 13.75v.825a3.754 3.754 0 0 1-.748 7.43a3.752 3.752 0 0 1-.752-7.43v-.825a.75.75 0 0 0-.75-.75h-8a.75.75 0 0 0-.75.75v.825a3.754 3.754 0 0 1-.748 7.43a3.752 3.752 0 0 1-.752-7.43v-.825a2.25 2.25 0 0 1 2.25-2.25H11V9.428A3.754 3.754 0 0 1 7.998 5.75" />
+                </svg>
+              <p>Entities</p>
               </div>
               <span className={`${style.arrow} ${openBusiness ? style.rotate : ''}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -206,7 +206,6 @@ function Nav() {
               <Link className={style.link} onClick={closeAllAccordions} to="/company"><p>Company</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/vendor"><p>Vendor</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/department"><p>Department</p></Link>
-              <Link className={style.link} onClick={closeAllAccordions} to="/charge"><p>Charge</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/localGovernmentAgency"><p>Local Government Agency</p></Link>
             </div>
           </div>
@@ -237,6 +236,7 @@ function Nav() {
               <Link className={style.link} onClick={closeAllAccordions} to="/subAccount"><p>Sub Account</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/banks"><p>Banks</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/booking"><p>Booking</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/charge"><p>Charge</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/paymentRequest"><p>Payment Request</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashRelease"><p>Petty Cash Release</p></Link>
             </div>

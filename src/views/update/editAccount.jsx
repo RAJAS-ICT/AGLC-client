@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useGetAccountByIdQuery, useUpdateAccountMutation } from "../../features/accountTitleSlice";
 import toast, { Toaster } from 'react-hot-toast';
 import style from '../css/page.module.css';
@@ -77,14 +77,16 @@ function EditAccount() {
   if (isError) {
     const status = error?.status;
 
-    if (status === 401) {
+ if (status === 401) {
       return (
         <div className={style.unauthorizedWrapper}>
           <p className={style.error1}>401</p>
-          <p className={style.error2}>Unauthorized Error</p>
-          <p className={style.error3}>
-            The resource requested could not be found on this server.
-          </p>
+          <p className={style.error2}>Page Not Found.</p>
+          <Link to={'/login'}>
+            <button className={style.errorLogin}>
+             Unauthorized. Please log in to proceed.
+            </button>
+          </Link>
         </div>
       );
     }

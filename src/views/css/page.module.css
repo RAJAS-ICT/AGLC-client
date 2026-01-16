@@ -6,7 +6,7 @@
   background-color:#fff;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
 }
 
 *::-webkit-scrollbar {
@@ -37,8 +37,7 @@ th {
   font-family: "Oswald", sans-serif !important;
   font-weight: 600;
   font-size: 14px;
-  padding: 10px 12px;
-  
+  padding: 10px 12px;  
 }
 tr:nth-child(odd) td {
   background-color: #f1f4f6;
@@ -70,14 +69,15 @@ td {
   height: 100%;            
   box-sizing: border-box; 
   font-size: 14px;
+  
 }
 .headTable {
   background-color: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 140px;
   text-align: left;
-   margin-bottom: .2rem;
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  margin-bottom: .2rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .bodyTable {
@@ -156,8 +156,12 @@ td {
   margin: .75rem 0;
 }
 .headerSubtitle{
-  color: #6a6a6a;
+  color: #5a5a5a;
   font-weight: 300;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .flexTitleHeaderPayReq{
   display: flex;
@@ -178,17 +182,24 @@ td {
   padding: 1.5rem 0 2rem;
 }
 .svgExclamation{
-  color: #ca8a04;
+  color: #0D254C;
   height: 24px;
   width: 24px;
 }
+.EditsvgExclamation{
+  height: 28px;
+  width: 28px;
+  color: #0D254C;
+}
 .headerLaber{
-  font-weight: 400;
-  color: #ca8a04;
+  font-weight: 500;
+  color: #0D254C;
   font-family: "Oswald", sans-serif !important;
   font-size: 24px;
 }
-
+.EditflexTitleHeader{
+  margin: 0 1.5rem;
+}
 .svgTitleHeader{
   border-radius: 50%;
   color: #0D254C !important;
@@ -280,6 +291,8 @@ th{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 .headBookingTable {
    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -492,7 +505,6 @@ th{
 .flexHeader{
   display: flex;
   gap: 6px;
-  padding-top: 1.2rem;
 }
 .flexHeaderAccount{
   display: flex;
@@ -877,7 +889,7 @@ textarea{
   height: 40px;
   width: 120px;
   border-radius: 4px;
-  background-color: #ca8a04;
+  background-color: #0D254C;
   color: #fff;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border: none;
@@ -1310,30 +1322,32 @@ td.payreqTd {
  flex-direction: column;
  justify-content: center;
  align-items: center;
- margin: 12rem auto;
+ margin-top: 4rem;
 }
 .error1{
-  color: #b91c1c;
-  font-size: 6rem;
+  color: #3a3a3a;
+  font-size: 10rem;
   font-weight: bolder;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
 
 .error2{
-  color: #b91c1c;
-  font-size: 1.5rem;
-  font-weight: 700;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-}
-.error3{
-  color: #6b7280;
+  color: #3a3a3a;
+  font-size: 1.75rem;
   font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
+.errorLogin{
+  margin-top: 1rem;
+  /* padding: .75rem; */
+  background:none;
+  border: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #0f74e0;
+}
 .journalHeaderTable{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

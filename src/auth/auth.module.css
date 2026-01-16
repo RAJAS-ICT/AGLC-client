@@ -10,7 +10,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-.formLogin,.formRegister{
+
+.formLogin{
     width: 100vw;
     width: 400px;
     display: flex;
@@ -22,6 +23,45 @@ body{
     background-color: #fff;
 }
 
+.formRegister{
+    width: 100vw;
+    width: 450px;
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: #fff;
+    flex-direction: column;
+    gap: .75rem;
+}
+.headSubhead{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.75rem;
+}
+.subheadAuth{
+    font-weight: 300;
+    color: #0D254C;
+    font-size: 15px;
+}
+.authHeadertext{
+    font-size: 2rem;
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+    color: #0D254C;
+}
+.flexLabelfield{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+.authLabel{
+    font-family: "Oswald", sans-serif;
+    font-size: 14px;
+    color: #0D254C;
+}
 .fieldLogin,.btnLogin,.fieldRegister,.btnRegister{
     height: 40px;
     border-radius: 4px;
@@ -32,8 +72,9 @@ body{
 }
 
 .btnLogin,.btnRegister{
-    background-color: #2563eb;
+    background-color: #0D254C;
     color: #fff;
+    margin-top: .2rem;
 }
 
 .linkLogin,.linkRegister{
@@ -46,16 +87,11 @@ body{
 }
 a{
     font-family: inter, sans-serif !important;
-    color: #2563eb;
+    color: #0D254C;
+    text-decoration: underline;
 }
 
-.logHeader{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1.15rem 0 1rem 0;
-}
+
 .img{
     width: 330px;
     height: 170px;
@@ -73,6 +109,10 @@ a{
     font-family: inter, sans-serif;
     font-size: 14px;
 
+}
+.flexField{
+    display: flex;
+    gap:.75rem;
 }
 .flexInput{
     display: flex;
