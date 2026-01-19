@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { useCreateBookingMutation, useFetchBookingQuery } from '../features/bookingSlice';
 import { useNavigate, Link } from 'react-router-dom';
 import style from '../views/css/page.module.css';
@@ -66,14 +66,13 @@ const filteredBookings = bookings.filter((b) => {
     e.preventDefault();
     try {
       const response = await addBooking(formData).unwrap();
-      toast.success(response.message || 'Booking Added!');
+      toast.success(response.message || 'Created Successfully.');
       setFormData({ customerId: '', remarks: '' });
       setShowModal(false);
       navigate(`/editBooking/${response.data.id}`);
     } catch (err) {
       console.log(err);
-      const message = err?.data?.message || err?.error || 'Action failed!';
-      toast.error(message);
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   };
 
@@ -127,7 +126,6 @@ const filteredBookings = bookings.filter((b) => {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
         <div className={style.ListContainer}>
           {/* Header */}
           <div className={style.pageHeaderContainer}>

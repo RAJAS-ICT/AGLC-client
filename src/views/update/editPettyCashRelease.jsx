@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
 import { Mosaic } from "react-loading-indicators";
 
 import {
@@ -287,8 +287,6 @@ function EditPettyCashRelease() {
   
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className={style.editContainer}>
         <div className={style.EditflexTitleHeader}>
           <div className={style.flexheaderTitle}>

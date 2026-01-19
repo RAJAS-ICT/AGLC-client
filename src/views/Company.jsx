@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { useAddCompanyMutation, useGetCompanyQuery } from '../features/companySlice';
 import { useNavigate, Link } from 'react-router-dom';
 import style from '../views/css/page.module.css';
@@ -44,14 +44,13 @@ function Company() {
     e.preventDefault();
     try {
       const response = await addCompany(formData).unwrap();
-      toast.success(response.message || 'Company Added!');
+      toast.success(response.message || 'Created Successfully.');
       setFormData({ code: '', name: '', address: '', tin: '', isActive: false });
       setShowModal(false);
       navigate(`/editCompany/${response.data.id}`);
     } catch (err) {
       console.log(err);
-      const message = err?.data?.message || err?.error || 'Action failed!';
-      toast.error(message);
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   };
 
@@ -105,7 +104,6 @@ function Company() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
         <div className={style.ListContainer}>
         
           {/* Header */}
@@ -209,13 +207,19 @@ function Company() {
                   placeholder="TIN"
                 />
                 <div className={style.activeWrap}>
-                  <label> Active:</label>
-                  <input
-                    className={style.activeHolder}
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                  />
+                  <div className={style.toggleRow}>
+                    <span className={style.labelText}>Active: &nbsp;</span>
+                    <label className={style.switch}>
+                      <input
+                        type="checkbox"
+                        checked={formData.isActive}
+                        onChange={(e) =>
+                          setFormData({ ...formData, isActive: e.target.checked })
+                        }
+                      />
+                      <span className={style.slider}></span>
+                    </label>
+                  </div>
                 </div>
                 <div className={style.modalActions}>
                   <button type="button" className={style.cancelButton} onClick={() => setShowModal(false)}>

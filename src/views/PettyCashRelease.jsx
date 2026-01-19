@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
+
 import { useGetPettyCashQuery, useCreatePettyCashMutation } from "../features/pettyCashReleaseSlice";
 import { useFetchPaymentRequestQuery } from "../features/paymentRequest";
 import { useGetPaymentRequestDetailsByRequestIdQuery } from "../features/paymentRequestDetailSlice";
@@ -87,14 +88,15 @@ const filteredPettyCash = pettyCashes.filter((pc) => {
       return;
     }
     try {
-      const res = await createPettyCash(formData).unwrap();
-      toast.success(res.message || "Petty Cash Released!");
+      const response = await createPettyCash(formData).unwrap();
+      toast.success(response.message || 'Created Successfully.');
+
       setFormData({ paymentRequestId: null, receivedById: null });
       setShowModal(false);
-      navigate(`/editPettyCashRelease/${res.data.id}`);
+      navigate(`/editPettyCashRelease/${response.data.id}`);
 
     } catch (err) {
-      toast.error(err?.data?.message || "Failed to release petty cash");
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   };
 
@@ -150,8 +152,6 @@ const filteredPettyCash = pettyCashes.filter((pc) => {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" />
-
       <div className={style.ListContainer}>
         <div className={style.pageHeaderContainerAccount}>
             <div className={style.flexTitleHeader}>

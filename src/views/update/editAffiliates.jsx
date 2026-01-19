@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import toast, { Toaster } from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
 import {
   useGetAffiliateByIdQuery,
   useUpdateAffiliateMutation,
@@ -94,8 +94,6 @@ function EditAffiliates() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className={style.editCustomer}>
         <div className={style.EditflexTitleHeader}>
           <div className={style.flexheaderTitle}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { useCreateEmployeeMutation, useFetchEmployeeQuery } from '../features/employeeSlice';
 import { useNavigate, Link } from 'react-router-dom';
 import style from '../views/css/page.module.css';
@@ -26,7 +26,7 @@ function Employee() {
     e.preventDefault();
     try {
       const response = await addEmployee(formData).unwrap();
-      toast.success(response.message || 'Employee Added!');
+      toast.success(response.message || 'Created Successfully.');
       setFormData({
         firstName: '',
         middleName: '',
@@ -38,8 +38,7 @@ function Employee() {
       navigate(`/editEmployee/${response.data.id}`);
     } catch (error) {
       console.log(error);
-      const message = error?.data?.message || error?.error || 'Action failed!';
-      toast.error(message);
+      toast.error(error?.data?.message || 'Something went wrong');
     }
   };
 
@@ -115,10 +114,7 @@ function Employee() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className={style.ListContainer}>
-        
         {/* Header  */}
         <div className={style.pageHeaderContainer}>
           <div className={style.flexTitleHeader}>
@@ -230,13 +226,19 @@ function Employee() {
               placeholder="User ID"
             />
             <div className={style.activeWrap}>
-              <label> Active:</label>
-              <input
-                className={style.activeHolder}
-                type="checkbox"
-                checked={formData.isActive}
-                onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-              />
+                  <div className={style.toggleRow}>
+                    <span className={style.labelText}>Active: &nbsp;</span>
+                    <label className={style.switch}>
+                      <input
+                        type="checkbox"
+                        checked={formData.isActive}
+                        onChange={(e) =>
+                          setFormData({ ...formData, isActive: e.target.checked })
+                        }
+                      />
+                      <span className={style.slider}></span>
+                    </label>
+                  </div>
             </div>
 
             <div className={style.modalActions}>

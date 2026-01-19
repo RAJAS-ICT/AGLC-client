@@ -6,6 +6,8 @@ import {
   useCreateAgentMutation,
 } from '../features/agentSlice'
 import { Mosaic } from 'react-loading-indicators'
+import { ToastContainer, toast } from 'react-toastify';
+
 import style from '../views/css/page.module.css'
 
 function Agents() {
@@ -44,6 +46,7 @@ function Agents() {
     e.preventDefault()
     try {
       const response = await createAgent(formData).unwrap()
+      toast.success(response.message || 'Created Successfully.');
       setFormData({ name: '' })
       setShowModal(false)
 
@@ -51,7 +54,7 @@ function Agents() {
         navigate(`/editAgents/${response.data.id}`)
       }
     } catch (err) {
-      console.error(err)
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   }
 

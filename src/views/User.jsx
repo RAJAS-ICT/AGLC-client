@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { useGetUserQuery, useRegisterUserModalMutation } from '../features/userSlice';
 import style from '../views/css/page.module.css';
 import { Link } from 'react-router-dom';
@@ -28,7 +28,7 @@ function UserList() {
     e.preventDefault();
     try {
       const response = await newUser(formData).unwrap();
-      toast.success(response.message || 'User added!');
+      toast.success(response.message || 'Created Successfully.');
       setFormData({
         username: '',
         password: '',
@@ -43,8 +43,7 @@ function UserList() {
       setShowModal(false);
       navigate(`/editUser/${response.data.id}`);
     } catch (err) {
-      const message = err?.data?.message || err?.error || 'Action failed!';
-      toast.error(message);
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   };
 
@@ -119,7 +118,6 @@ function UserList() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
         <div className={style.ListContainer}>
           <div className={style.pageHeaderContainer}>
             <div className={style.flexTitleHeader}>
@@ -254,13 +252,21 @@ function UserList() {
                   <option value="Accounting Staff">Accounting Staff</option>
                 </select>
                 <div className={style.activeWrapUser}>
-                  <label> Active:</label>
-                  <input
-                    className={style.activeHolder}
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                  />
+
+                  <div className={style.toggleRow}>
+                    <span className={style.labelText}>Active: &nbsp;</span>
+                    <label className={style.switch}>
+                      <input
+                        type="checkbox"
+                        checked={formData.isActive}
+                        onChange={(e) =>
+                          setFormData({ ...formData, isActive: e.target.checked })
+                        }
+                      />
+                      <span className={style.slider}></span>
+                    </label>
+                  </div>
+
                 </div>
                 <div className={style.modalActions}>
                   <button type="button" className={style.cancelButton} onClick={() => setShowModal(false)}>Cancel</button>

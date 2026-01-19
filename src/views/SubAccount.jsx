@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 import {
@@ -82,7 +82,7 @@ useEffect(() => {
     }
     try {
       const response = await addSubAccount(formData).unwrap();
-      toast.success(response.message || "SubAccount Added!");
+      toast.success(response.message || 'Created Successfully.');
       setFormData({
         code: "",
         name: "",
@@ -201,7 +201,6 @@ const handleFileChange = async (e) => {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" />
       <div className={style.ListContainer}>
         <div className={style.pageHeaderContainerAccount}>
             <div className={style.flexTitleHeader}>
@@ -432,15 +431,19 @@ const handleFileChange = async (e) => {
                 />
 
                 <div className={style.activeWrap}>
-                  <label> Active:</label>
-                  <input
-                    className={style.activeHolder}
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) =>
-                      setFormData({ ...formData, isActive: e.target.checked })
-                    }
-                  />
+                  <div className={style.toggleRow}>
+                    <span className={style.labelText}>Active: &nbsp;</span>
+                    <label className={style.switch}>
+                      <input
+                        type="checkbox"
+                        checked={formData.isActive}
+                        onChange={(e) =>
+                          setFormData({ ...formData, isActive: e.target.checked })
+                        }
+                      />
+                      <span className={style.slider}></span>
+                    </label>
+                  </div>
                 </div>
 
                 <div className={style.modalActions}>

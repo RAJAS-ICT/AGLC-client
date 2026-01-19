@@ -5,6 +5,7 @@ import {
   useCreateBankMutation,
 } from '../features/bankSlice'
 import { Mosaic } from 'react-loading-indicators'
+import { ToastContainer, toast } from 'react-toastify';
 
 import style from '../views/css/page.module.css'
 
@@ -44,6 +45,7 @@ function Banks() {
     e.preventDefault()
     try {
       const response = await addBank(formData).unwrap()
+      toast.success(response.message || 'Created Successfully.');
       setFormData({ name: '' })
       setShowModal(false)
 
@@ -51,7 +53,7 @@ function Banks() {
         navigate(`/editBanks/${response.data.id}`)
       }
     } catch (err) {
-      console.error(err)
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   }
 

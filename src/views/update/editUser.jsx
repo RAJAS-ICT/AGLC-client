@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link} from 'react-router-dom';
 import { useGetUserByIdQuery, useUpdateUserMutation } from "../../features/userSlice";
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import style from '../css/page.module.css'
 import { Mosaic } from "react-loading-indicators";
 
 function EditUser() {
   const { id } = useParams();
-  // const navigate = useNavigate();
 
   const { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
@@ -106,7 +105,6 @@ const [showLoader, setShowLoader] = useState(true);
 
   return (
     <main className='main-container'>
-      <Toaster position="top-right" reverseOrder={false} />
       <div className={style.editContainer}>
          <div className={style.EditflexTitleHeader}>
           <div className={style.flexheaderTitle}>
@@ -176,6 +174,7 @@ const [showLoader, setShowLoader] = useState(true);
           type="password"
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          required
         />
         <label className={style.editLabel}>Role: </label>
         <select
@@ -192,13 +191,17 @@ const [showLoader, setShowLoader] = useState(true);
             <option value="Accounting Staff">Accounting Staff</option>
         </select>  
         <div className={style.editUserActiveHolder}>
-            <label>Active: </label>
-            <input
-              className={style.editActive}
-              type="checkbox"
-              checked={formData.isActive}
-              onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-            />
+            <label className={style.activeLabel}>Active:</label>
+              <label className={style.switch}>
+                <input
+                  type="checkbox"
+                  checked={formData.isActive}
+                  onChange={(e) =>
+                    setFormData({ ...formData, isActive: e.target.checked })
+                  }
+                />
+                <span className={style.slider}></span>
+              </label>
           </div>    
         <button
           className={style.editButton}

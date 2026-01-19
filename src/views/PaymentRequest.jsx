@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
+
 import { useFetchPaymentRequestQuery, usePostPaymentRequestMutation } from "../features/paymentRequest";
 import { useFetchVendorQuery } from "../features/vendorSlice";
 import { useFetchDepartmentQuery } from "../features/departmentSlice";
@@ -117,12 +118,12 @@ function PaymentRequestPage() {
     e.preventDefault();
     try {
       const response = await addPayment(formData).unwrap();
-      toast.success(response.message || "Payment Request added!");
+      toast.success(response.message || 'Created Successfully.');
       setFormData({ vendorId: "", costCenterId: "", dateNeeded: "", chargeTo: "", requestType: "", requestNumber: "", remarks: ""});
       setShowModal(false);
       navigate(`/editPaymentRequest/${response.data.id}`);
     } catch (err) {
-      toast.error(err?.data?.message || "Failed to add Payment Request");
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   };
 
@@ -175,7 +176,6 @@ function PaymentRequestPage() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" />
         <div className={style.ListContainer}>
           {/* Header */}
           <div className={style.pageHeaderContainer}>
@@ -524,7 +524,17 @@ function PaymentRequestPage() {
                       : "--"}
                   </td>
                     <td>
-                      <span >
+                      <span
+                        className={`${style.badge} ${
+                          pr.status === "Open"
+                            ? style.open
+                            : pr.status === "Released"
+                            ? style.released
+                            : pr.status === "Canceled"
+                            ? style.cancelled
+                            : ""
+                        }`}
+                      >
                         {pr.status}
                       </span>
                     </td>

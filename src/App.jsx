@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
 import Nav from './views/Nav';
 
 // Auth
@@ -50,6 +50,12 @@ import EditAgents from './views/update/editAgents';
 function App() {
   return (
     <Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        theme="light" 
+      />
+
       <Routes>
         {/* Auth */}
         <Route path="/" element={<Navigate to="/login" />} />

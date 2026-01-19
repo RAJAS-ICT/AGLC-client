@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { useParams, Link } from 'react-router-dom';
 import { useFetchBookingByIdQuery, useUpdateBookingMutation } from '../../features/bookingSlice';
 import style from '../css/page.module.css'
@@ -107,7 +107,6 @@ useEffect(() => {
 
   return (
     <main className='main-container'>
-      <Toaster position="top-right" reverseOrder={false} />
       <div className={style.editBooking}>
             <div className={style.EditflexTitleHeader}>
              <div className={style.flexheaderTitle}>

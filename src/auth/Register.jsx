@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, Link, Navigate } from 'react-router-dom'
-import toast, { Toaster } from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
 import { useRegisterUserMutation, useGetUserCountQuery } from '../features/userSlice'
 import authStyle from '../auth/auth.module.css'
 
@@ -27,7 +27,7 @@ export default function Register() {
     e.preventDefault()
     try {
       const response = await newUser(formData).unwrap()
-      toast.success(response.message || 'Registered successfully!')
+      toast.success(response.message || 'Account created successfully.')
       navigate('/login')
     } catch (error) {
       toast.error(error?.data?.message || 'Registration failed!')
@@ -36,8 +36,6 @@ export default function Register() {
 
   return (
     <main className={authStyle.mainRegister}>
-      <Toaster position="top-right" />
-
       <form onSubmit={handleSubmit} className={authStyle.formRegister}>
           <div className={authStyle.headSubhead}>
             <h4 className={authStyle.authHeadertext}>Sign Up</h4>
@@ -110,8 +108,14 @@ export default function Register() {
           />
         </div>
 
-        <button className={authStyle.btnLogin} type="submit" disabled={registering}>
-          {registering ? 'Registering…' : 'Register'}
+        <button
+          className={authStyle.loginBtn}
+          type="submit"
+          disabled={registering}
+        >
+          <span className={authStyle.btnText}>
+            {registering ? 'Registering…' : 'Register'}
+          </span>
         </button>
 
         <p className={authStyle.linkRegister}>

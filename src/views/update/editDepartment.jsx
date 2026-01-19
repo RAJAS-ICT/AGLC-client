@@ -4,7 +4,7 @@ import {
   useFetchDepartmentByIdQuery,
   useUpdateDepartmentMutation,
 } from "../../features/departmentSlice";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
 import style from "../css/page.module.css";
 import { Mosaic } from "react-loading-indicators";
 
@@ -114,8 +114,6 @@ function EditDepartment() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" />
-
       <div className={style.editContainer}>
             <div className={style.EditflexTitleHeader}>
              <div className={style.flexheaderTitle}>
@@ -179,18 +177,17 @@ function EditDepartment() {
             )}
           </div>
           <div className={style.editActiveHolder}>
-            <label>Active:</label>
-            <input
-              className={style.editActive}
-              type="checkbox"
-              checked={formData.isActive}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  isActive: e.target.checked,
-                })
-              }
-            />
+            <label className={style.activeLabel}>Active:</label>
+              <label className={style.switch}>
+                <input
+                  type="checkbox"
+                  checked={formData.isActive}
+                  onChange={(e) =>
+                    setFormData({ ...formData, isActive: e.target.checked })
+                  }
+                />
+                <span className={style.slider}></span>
+              </label>
           </div>
           <button
             className={style.editButton}

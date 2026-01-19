@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUpdateUserProfileMutation, useGetUserByIdQuery } from "../../features/userSlice";
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import style from '../css/page.module.css';
 import { Mosaic } from "react-loading-indicators";
 
@@ -77,7 +77,6 @@ function EditUser() {
 
   return (
     <main className='main-container'>
-      <Toaster position="top-right" reverseOrder={false} />
       <div className={style.editContainer}>
             <div className={style.EditflexTitleHeader}>
              <div className={style.flexheaderTitle}>
@@ -99,7 +98,7 @@ function EditUser() {
             required
           />
           <button
-            className={style.editButton}
+            className={style.editButtonPassword}
             type="submit"
             disabled={isUpdating}
           >

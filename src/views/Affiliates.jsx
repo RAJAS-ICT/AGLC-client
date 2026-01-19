@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
+
 import { useNavigate, Link } from 'react-router-dom'
 import {
   useFetchAffiliateQuery,
@@ -45,13 +46,16 @@ function Affiliates() {
     e.preventDefault()
     try {
       const response = await addAffiliate(formData).unwrap()
-      toast.success('Affiliate Added!')
+      toast.success(response.message || 'Created Successfully.');
       setFormData({ name: '' })
       setShowModal(false)
-      navigate(`editAffiliates/${response.data.id}`)
+
+       if (response?.data?.id) {
+        navigate(`/editAffiliates/${response.data.id}`)
+      }
+      
     } catch (err) {
-      const message = err?.data?.message || err?.error || 'Action failed!'
-      toast.error(message)
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   }
 
@@ -105,8 +109,6 @@ function Affiliates() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className={style.ListContainer}>
         <div className={style.pageHeaderContainer}>
           <div className={style.flexTitleHeader}>

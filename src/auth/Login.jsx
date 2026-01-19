@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { useLoginUserMutation, useGetUserCountQuery } from '../features/userSlice';
 import authStyle from '../auth/auth.module.css';
 
@@ -21,7 +21,7 @@ export default function Login() {
         toast.error('Your account is inactive.');
         return;
       }
-      toast.success('Login successful!');
+      toast.success('Welcome back!');
       navigate('/user');
     } catch (error) {
       const message = error?.data?.message || error?.error || 'Login failed!';
@@ -31,7 +31,6 @@ export default function Login() {
 
   return (
     <main className={authStyle.mainLogin}>
-      <Toaster position="top-right" />
       <form onSubmit={handleSubmit} className={authStyle.formLogin}>
         <div className={authStyle.headSubhead}>
           <h4 className={authStyle.authHeadertext}>Login</h4>
@@ -59,11 +58,15 @@ export default function Login() {
               required
             />
           </div>
-
-        <button className={authStyle.btnLogin} type="submit" disabled={isLoading}>
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-
+          <button
+            className={authStyle.loginBtn}
+            type="submit"
+            disabled={isLoading}
+          >
+            <span className={authStyle.btnText}>
+              {isLoading ? 'Logging in...' : 'Login'}
+            </span>
+          </button>
         {showRegister && (
           <p className={authStyle.linkLogin}>
             Don't have an account? <Link className={authStyle.link} to="/register">Register</Link>

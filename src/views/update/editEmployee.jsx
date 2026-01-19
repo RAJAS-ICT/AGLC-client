@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from '../../features/employeeSlice'
-import toast, { Toaster } from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
 import style from '../css/page.module.css'
 import { Mosaic } from "react-loading-indicators";
 
 function EditEmployee() {
   const { id } = useParams()
-  // const navigate = useNavigate()
-
   const { data: employee, isLoading, isError, error } = useGetEmployeeByIdQuery(id)
   const [updateEmployee, { isLoading: isUpdating }] = useUpdateEmployeeMutation()
 
@@ -96,7 +94,6 @@ function EditEmployee() {
 
   return (
     <main className='main-container'>
-      <Toaster position="top-right" reverseOrder={false} />
      <div className={style.editContainer}>
         <div className={style.EditflexTitleHeader}>
          <div className={style.flexheaderTitle}>
@@ -160,13 +157,17 @@ function EditEmployee() {
             required
           />
            <div className={style.editActiveHolder}>
-            <label>Active: </label>
-            <input
-              className={style.editActive}
-              type="checkbox"
-              checked={formData.isActive}
-              onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-            />
+              <label className={style.activeLabel}>Active:</label>
+              <label className={style.switch}>
+                <input
+                  type="checkbox"
+                  checked={formData.isActive}
+                  onChange={(e) =>
+                    setFormData({ ...formData, isActive: e.target.checked })
+                  }
+                />
+                <span className={style.slider}></span>
+              </label>
             </div>
           <button className={style.editButton} type="submit" disabled={isUpdating}>
             {isUpdating ? 'Updating...' : 'Update'}

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
-
+import { ToastContainer, toast } from 'react-toastify';
 import {
   useFetchPaymentRequestByIdQuery,
   useUpdatePaymentRequestMutation,
@@ -73,7 +72,7 @@ function EditPaymentRequest() {
     remarks: "",
     dateNeeded: "",
     requestNumber: "",
-    status: "Canceled"
+    status: ""
   });
 
   useEffect(() => {
@@ -81,22 +80,26 @@ function EditPaymentRequest() {
       setFormData(prev => ({
         ...prev,
         vendorId: paymentRequest.vendorId || "",
-        departmentId: paymentRequest.departmentId || paymentRequest.costCenterId || "",
+        departmentId:
+          paymentRequest.departmentId ||
+          paymentRequest.costCenterId ||
+          "",
         chargeTo: paymentRequest.chargeTo || "",
         requestType: paymentRequest.requestType || "",
         remarks: paymentRequest.remarks || "",
         dateNeeded: paymentRequest.dateNeeded
-          ? new Date(paymentRequest.dateNeeded).toISOString().slice(0, 10)
+          ? new Date(paymentRequest.dateNeeded)
+              .toISOString()
+              .slice(0, 10)
           : "",
         requestNumber: paymentRequest.requestNumber || "",
-
-        status: prev.status === "Canceled"
-          ? "Canceled"
-          : paymentRequest.status || "",
+        status:
+          prev.status === "Canceled"
+            ? "Canceled"
+            : paymentRequest.status || "",
       }));
     }
   }, [paymentRequest]);
-
 
   const [openVendor, setOpenVendor] = useState(false);
   const vendorRef = useRef(null);
@@ -167,19 +170,13 @@ function EditPaymentRequest() {
       requestNumber: formData.requestNumber,
       remarks: formData.remarks,
       dateNeeded: formData.dateNeeded,
-      status: "Canceled",
+      status: formData.status,
     }).unwrap();
 
-    setFormData(prev => ({
-      ...prev,
-      status: "Canceled",
-    }));
     toast.success("Updated Successfully."); 
   } catch (error) {
     toast.error("Failed to cancel");
     console.error(error);
-  } finally {
-    setCancelModal(false);
   }
 
   };
@@ -570,7 +567,6 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
       <div className={style.editContainer}>
         <div className={style.flexTitleHeaderPayReq}>
             <div className={style.EditflexTitleHeader}>
@@ -986,8 +982,11 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                         No, keep it
                       </button>
                       <button
+                        type="button" 
                         className={style.confirmDeleteBtn}
-                        onClick={async () => {
+                        onClick={async (e) => {
+                          e.preventDefault(); 
+
                           try {
                             await updatePaymentRequest({
                               id,
@@ -1005,18 +1004,17 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                               ...prev,
                               status: "Canceled",
                             }));
-                             
+
+                            toast.success("Payment request canceled");
+                            setCancelModal(false);
                           } catch (error) {
                             toast.error("Failed to cancel");
                             console.error(error);
-                          } finally {
-                            setCancelModal(false);
                           }
                         }}
                       >
                         Yes, cancel
                       </button>
-
                     </div>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom'
 import {
   useFetchLocalGovernmentAgencyQuery,
@@ -41,7 +41,8 @@ function LocalGovernmentAgency() {
     e.preventDefault()
     try {
       const response = await createAgency(formData).unwrap()
-      toast.success(response?.message || 'Agency Added!')
+      toast.success(response.message || 'Created Successfully.');
+
       setFormData({ name: '' })
       setShowModal(false)
 
@@ -49,8 +50,7 @@ function LocalGovernmentAgency() {
         navigate(`/editLocalGovernmentAgency/${response.data.id}`)
       }
     } catch (err) {
-      const message = err?.data?.message || err?.error || 'Action failed!'
-      toast.error(message)
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   }
 
@@ -104,8 +104,6 @@ function LocalGovernmentAgency() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className={style.ListContainer}>
         <div className={style.pageHeaderContainer}>
           <div className={style.flexTitleHeader}>

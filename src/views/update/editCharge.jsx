@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
 import { useParams, Link } from "react-router-dom";
 import { Mosaic } from "react-loading-indicators";
 
@@ -96,8 +96,6 @@ function EditCharge() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className={style.editCharge}>
             <div className={style.EditflexTitleHeader}>
              <div className={style.flexheaderTitle}>
@@ -135,14 +133,17 @@ function EditCharge() {
           />
 
           <div className={style.editActiveHolder}>
-            <label>Active: </label>
-            <input
-              type="checkbox"
-              checked={formData.isActive}
-              onChange={(e) =>
-                setFormData({ ...formData, isActive: e.target.checked })
-              }
-            />
+            <label className={style.activeLabel}>Active:</label>
+              <label className={style.switch}>
+                <input
+                  type="checkbox"
+                  checked={formData.isActive}
+                  onChange={(e) =>
+                    setFormData({ ...formData, isActive: e.target.checked })
+                  }
+                />
+                <span className={style.slider}></span>
+              </label>
           </div>
             <button className={style.editButton} type="submit">
               Update

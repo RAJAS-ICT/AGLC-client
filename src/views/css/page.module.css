@@ -35,17 +35,20 @@
 th {
   color: #3a3a3a;
   font-family: "Oswald", sans-serif !important;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
   padding: 10px 12px;  
 }
-tr:nth-child(odd) td {
+/* tr:nth-child(odd) td {
   background-color: #f1f4f6;
+} */
+td{
+  border-bottom: 1px solid #eee;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
+  border: 1px solid #eee;
 }
 .editThPayreq{
   box-shadow: none !important;
@@ -60,7 +63,7 @@ table {
 
 td {
   word-break: break-all;
-  padding: 12px;
+  padding: 13px 12px;
   border-top: none;
   background-color: #fff;
   color: #3f3f3f;
@@ -69,7 +72,6 @@ td {
   height: 100%;            
   box-sizing: border-box; 
   font-size: 14px;
-  
 }
 .headTable {
   background-color: #fff;
@@ -77,7 +79,9 @@ td {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 140px;
   text-align: left;
   margin-bottom: .2rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border-bottom: 1px solid #eee;
+  background-color: #f6f6f6;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
 }
 
 .bodyTable {
@@ -91,8 +95,8 @@ td {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 110px 80px;
   text-align: left;
   margin-bottom: .2rem;
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
 }
 
 .bodyTablePayment {
@@ -183,8 +187,8 @@ td {
 }
 .svgExclamation{
   color: #0D254C;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
 }
 .EditsvgExclamation{
   height: 28px;
@@ -217,8 +221,8 @@ td {
   padding-bottom: .8rem;
 }
 .headTableDepartment{
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
   display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
   text-align: left;
@@ -235,9 +239,8 @@ td {
   grid-template-columns: 180px 1fr 1fr 1fr 140px;
   text-align: left;
   margin-bottom: .2rem;
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
-
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
 }
 
 .bodyChargeTable{
@@ -246,16 +249,16 @@ td {
   text-align: left;
 }
 .headChargeTable{
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
   display: grid;
   grid-template-columns:1fr 1fr 200px;
   text-align: left;
   margin-bottom: .2rem;
 }
 .headAccountTable{
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
   display: grid;
   grid-template-columns: 180px 1fr 1fr 1fr 1fr 140px;
   text-align: left;
@@ -268,12 +271,12 @@ td {
 }
 
 .headPettyCashTable{
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
+  background-color: #f6f6f6;
   display: grid;
   grid-template-columns: 1fr 1fr 140px;
   text-align: left;
   margin-bottom: .2rem;
+  border-bottom: 1px solid #eee;
 }
 .bodyPettyCashTable{
   display: grid;
@@ -295,8 +298,8 @@ th{
   padding-bottom: .75rem;
 }
 .headBookingTable {
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
   display: grid;
   grid-template-columns:200px 1fr 1fr 140px;
   text-align: left;
@@ -314,9 +317,8 @@ th{
   grid-template-columns: 1fr 120px;
   text-align: left;
   margin-bottom: .2rem;
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-   border-radius: 4px 4px 0 0;
-
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #eee;
 }
 .bodyAffiliateTable {
   display: grid;
@@ -331,6 +333,29 @@ th{
 .flexbooking{
   display: flex;
   gap: 1rem;
+}
+.badge {
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 12px;
+  display: inline-block;
+  
+}
+
+.open {
+  background: #e6f9ec;
+  color: #1e7f43;
+}
+
+.released {
+  background: #fff1e0;
+  color: #c25a00;
+}
+
+.cancelled {
+  background: #fde8e8;
+  color: #b42318;
 }
 
 .flexBookingContainer{
@@ -378,16 +403,15 @@ th{
   background-color: #fff;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .inputSrch:focus,
 .inputSrch:not(:invalid) {
   width: 260px;
   cursor: text;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   padding-right: .75rem;
-
 }
 
 .inputSrch:focus + .icon,
@@ -475,7 +499,7 @@ th{
   height: 40px;
   width: 120px;
   border-radius: 4px;
-  background-color: #ca8a04;
+  background-color: #0D254C;
   color: #fff;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border: none;
@@ -524,7 +548,8 @@ h3{
   border: none;
   color: #0D254C;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
 }
 
 .addButton {
@@ -617,9 +642,51 @@ h3{
   margin-top: .75rem;
 
 }
-.activeHolder{
- margin-top: 2px;
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 18px;
 }
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.25s;
+  border-radius: 18px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  top: 3px; /* vertically centered */
+  background-color: #fff;
+  transition: 0.25s;
+  border-radius: 50%;
+}
+
+/* ACTIVE */
+.switch input:checked + .slider {
+  background-color: #16a34a;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+
 
 .activeAccountWraper {
   display: flex;
@@ -896,6 +963,17 @@ textarea{
   cursor: pointer;
   margin-top: 1rem;
 }
+.editButtonPassword{
+  height: 40px;
+  width: 140px;
+  border-radius: 4px;
+  background-color: #0D254C;
+  color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
 .editActiveHolder{
   display: flex;
   align-items: center;
@@ -931,7 +1009,7 @@ textarea{
   border: none;
   color: #0D254C;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   height: 100%;
   margin-left: -.65rem;
 }

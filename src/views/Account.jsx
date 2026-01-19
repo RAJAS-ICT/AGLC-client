@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import {
   useFetchAccountQuery,
   useImportExcelMutation,
@@ -60,7 +60,8 @@ function Account() {
     e.preventDefault();
     try {
       const response = await addAccount(formData).unwrap();
-      toast.success(response.message || 'Account Added!');
+      toast.success(response.message || 'Created Successfully.');
+      
       setFormData({
         code: '',
         name: '',
@@ -72,8 +73,7 @@ function Account() {
       setShowModal(false);
       navigate(`/editAccount/${response.data.id}`);
     } catch (err) {
-      const message = err?.data?.message || err?.error || 'Action failed!';
-      toast.error(message);
+      toast.error(err?.data?.message || 'Something went wrong');
     }
   };
 
@@ -176,10 +176,7 @@ function Account() {
 
   return (
     <main className="main-container">
-      <Toaster position="top-right" />
-
       <div className={style.ListContainer}>
-       
         <div className={style.pageHeaderContainerAccount}>
             <div className={style.flexTitleHeader}>
              <div className={style.flexheaderTitle}>
@@ -351,18 +348,19 @@ function Account() {
                   placeholder="Line Item"
                 />
                 <div className={style.activeWrap}>
-                  <label> Active:</label>
-                  <input
-                    className={style.activeHolder}
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        isActive: e.target.checked,
-                      })
-                    }
-                  />
+                  <div className={style.toggleRow}>
+                    <span className={style.labelText}>Active: &nbsp;</span>
+                    <label className={style.switch}>
+                      <input
+                        type="checkbox"
+                        checked={formData.isActive}
+                        onChange={(e) =>
+                          setFormData({ ...formData, isActive: e.target.checked })
+                        }
+                      />
+                      <span className={style.slider}></span>
+                    </label>
+                  </div>
                 </div>
                 <div className={style.modalActions}>
                   <button
