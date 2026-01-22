@@ -17,6 +17,7 @@ import { localGovernmentAgencyApi } from '../features/localGovernmentAgencySlice
 import { bankApi } from '../features/bankSlice'
 import { agentApi } from '../features/agentSlice'
 import { journalEntryApi } from '../features/journalEntrySlice'
+import { pettyCashLiquidationApi } from '../features/pettyCashLiquidationSlice';
 
 
 const store = configureStore({
@@ -38,7 +39,8 @@ const store = configureStore({
         [localGovernmentAgencyApi.reducerPath]: localGovernmentAgencyApi.reducer,
         [bankApi.reducerPath]: bankApi.reducer,
         [agentApi.reducerPath]: agentApi.reducer,
-        [journalEntryApi.reducerPath]: journalEntryApi.reducer
+        [journalEntryApi.reducerPath]: journalEntryApi.reducer,
+        [pettyCashLiquidationApi.reducerPath]: pettyCashLiquidationApi.reducer
 
 
     },
@@ -61,7 +63,8 @@ const store = configureStore({
             localGovernmentAgencyApi.middleware,
             bankApi.middleware,
             agentApi.middleware,
-            journalEntryApi.middleware
+            journalEntryApi.middleware,
+            pettyCashLiquidationApi.middleware
         )
 })
 

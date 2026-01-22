@@ -190,7 +190,7 @@ function PaymentRequestPage() {
               <p className={style.headerSubtitle}>Transactions / Payment Request</p>
             </div>
             <div className={style.flexHeader}>
-              <div className={style.SrchContainer}>
+              <divd className={style.SrchContainer}>
                 <input
                   type="text"
                   className={style.inputSrch}
@@ -211,7 +211,7 @@ function PaymentRequestPage() {
                   </g>
                 </svg>
                 </div>
-              </div>
+              </divd>
               <button className={style.addBtn} onClick={() => setShowModal(true)} title="Add Payment Request">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -516,12 +516,7 @@ function PaymentRequestPage() {
                   <td>{pr.remarks}</td>
                   <td>
                     {pr.dateNeeded
-                      ? new Date(pr.dateNeeded).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",  
-                        })
-                      : "--"}
+                      ? new Date(pr.dateNeeded).toLocaleDateString() : "--"}
                   </td>
                     <td>
                       <span

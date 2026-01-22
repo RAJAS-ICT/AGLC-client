@@ -94,16 +94,28 @@ td {
 
 .headTablePayment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 110px 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 110px 110px 80px;
   text-align: left;
   margin-bottom: .2rem;
-    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
   border-bottom: 1px solid #eee;
 }
-
+.headTablePettycashLiquidation{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 115px 100px 80px;
+  text-align: left;
+  margin-bottom: .2rem;
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+  border-bottom: 1px solid #eee;
+}
+.bodyTablePettycashLiquidation{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 115px 100px 80px;
+  text-align: left;
+}
 .bodyTablePayment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 120px 110px 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 110px 110px 80px;
   text-align: left;
 }
 
@@ -155,6 +167,12 @@ td {
   flex-direction: column;
   width: 100%;
   gap: 17px;
+}
+.flexSelectPaymentReadLiquidation{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px;
 }
 .flexTitleHeader{
   display: flex;
