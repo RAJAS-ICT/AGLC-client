@@ -1198,7 +1198,6 @@ textarea{
 }
 .payreqTd{
   box-shadow: none !important;
-  font-family: "Oswald", sans-serif !important;
   color: #333 !important;
   font-weight: 300;
 
@@ -1451,10 +1450,27 @@ td.payreqTd {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   background-color: #0D254C;
 }
-.journalHeaderTable th{
+.journalHeaderTable th, .EditjournalHeaderTableDetails th{
   color: #fff !important;
 }
 .journalBodyTable{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.EditjournalHeaderTableDetails{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr  1fr 120px;
+  background-color: #0D254C;
+
+}
+.EditpayreqDetailsBodyTable{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr  1fr 120px;
+  background-color: #0D254C;
+}
+.totalPayreqDetails{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 120px;
+
 }

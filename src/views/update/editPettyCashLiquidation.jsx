@@ -90,7 +90,11 @@ function EditPettyCashLiquidation() {
   };
 
     const [showLoader, setShowLoader] = useState(true);
-  
+    const mappedDetails = (details ?? []).map(d => ({
+    ...d,
+    bookingNumber: d.booking?.bookingNumber || "--" 
+  }));
+
     useEffect(() => {
       const timer = setTimeout(() => setShowLoader(false), 1000);
       return () => clearTimeout(timer);
@@ -120,7 +124,7 @@ function EditPettyCashLiquidation() {
           </div>
           <p className={style.headerSubtitle}>Transactions / Petty Cash Liquidation</p>
         </div>
-
+ 
         <form className={style.editFormCustomer} onSubmit={handleSubmit}>
           <div className={style.editPaymentReqSelect}>
 
@@ -216,6 +220,59 @@ function EditPettyCashLiquidation() {
           </button>
         </form>
 
+      <div style={{padding:'0 1.25rem 5rem 1.25rem'}}>
+         <div className={style.flexheaderTitleJournal}>
+           <div className={style.bookingContainer}>
+            <p className={style.bookingPaymentTitle}>Payment Request Detail</p>
+            <p className={style.bookingPaymentSubtitle}>Review Payment Request Detail history.</p>
+          </div>
+        </div>
+          <table className={style.tableJournal}>
+            <thead>
+              <tr className={style.EditjournalHeaderTableDetails}>
+                <th>Booking #</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+              <tbody>
+                {mappedDetails.length === 0 ? (
+                  <tr className={style.journalBodyTable}>
+                    <td style={{ gridColumn: "1 / -1", textAlign: "center", padding: "12px" }}>
+                      No details found.
+                    </td>
+                  </tr>
+                ) : (
+                  mappedDetails.map(d => (
+                    <tr key={d.id || d.bookingNumber} className={style.EditpayreqDetailsBodyTable}>
+                      <td>{d.bookingNumber}</td>
+                      <td>{d.chargeDesc || "--"}</td>
+                      <td>{d.quantity}</td>
+                      <td>{Number(d.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td>{(Number(d.quantity) * Number(d.amount)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            { (details ?? []).length > 0 && (
+              <tfoot>
+                <tr className={style.totalPayreqDetails}>
+                  <td colSpan="5" style={{ textAlign: "right", fontWeight: "bold", paddingRight: "12px" }}>
+                    Total:
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td style={{ fontWeight: "bold" }}>
+                    {(details ?? []).reduce((sum, d) => sum + Number(d.quantity) * Number(d.amount), 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </td>
+                </tr>
+              </tfoot>
+            )}
+          </table>
+        </div>
         <ToastContainer />
       </div>
     </main>

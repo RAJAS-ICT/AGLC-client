@@ -88,7 +88,7 @@ function PettyCashLiquidation() {
     { skip: !formData.paymentRequestId }
   );
 
-  const [amount, setAmount] = useState("0.00");
+  const [totalAmount, setAmount] = useState("0.00");
 
   useEffect(() => {
     if (paymentRequestDetails.length > 0) {
@@ -106,7 +106,7 @@ function PettyCashLiquidation() {
     if (!formData.paymentRequestId) return toast.error("Select a Request Number");
 
     try {
-      await createPettyCashLiquidation({ paymentRequestId: formData.paymentRequestId }).unwrap();
+      const response = await createPettyCashLiquidation({ paymentRequestId: formData.paymentRequestId , totalAmount: parseFloat(totalAmount.replace(/,/g, '')),}).unwrap();
       toast.success("Created Successfully");
 
       setShowModal(false);
@@ -123,6 +123,7 @@ function PettyCashLiquidation() {
       });
 
       setAmount("0.00");
+      navigate(`/editPettycashLiquidation/${response.data.id}`);
 
     } catch (err) {
       toast.error(err?.data?.message || "Something went wrong");
@@ -299,7 +300,7 @@ function PettyCashLiquidation() {
             <div className={style.modal}>
               <div className={style.modalHeader}>
                 <h3>Add Petty Cash Liquidation</h3>
-                <button className={style.closeButton} onClick={() => { setFormData({ paymentRequestId: null, vendor: "", department: "", chargeTo: "", requestType: "", remarks: "", dateNeeded: "", status: "", amount:"" }); setShowModal(false); }}>✕</button>
+                <button className={style.closeButton} onClick={() => { setFormData({ paymentRequestId: null, vendor: "", department: "", chargeTo: "", requestType: "", remarks: "", dateNeeded: "", status: "", totalAmount:"" }); setShowModal(false); }}>✕</button>
               </div>
 
               <form className={style.formContainer} onSubmit={handleSubmit}>
@@ -373,7 +374,7 @@ function PettyCashLiquidation() {
                 </div>
                 </div>
                   <label className={style.modalLabel}>Total Amount</label>
-                  <input style={{outline:'none',cursor:'not-allowed'}} type="text" className={style.modalInput} value={amount} readOnly />
+                  <input style={{outline:'none',cursor:'not-allowed'}} type="text" className={style.modalInput} value={totalAmount} readOnly />
 
                 <div className={style.modalActions}>
                   <button type="button" className={style.cancelButton} onClick={() => setShowModal(false)}>Cancel</button>

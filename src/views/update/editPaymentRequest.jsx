@@ -683,7 +683,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
                   />
                 </>
               )}
-
+              {/* <label className={style.modalLabel}>Charge Description: </label> */}
               {departmentType.toLowerCase() === "administrative" && (
                 <input
                   type="text"
