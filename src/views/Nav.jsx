@@ -182,34 +182,7 @@ function Nav() {
             </div>
           </div>
 
-          {/* Entities */}
-          <div className={style.accordionItem}>
-            <div className={style.accordionHeader} onClick={toggleBusiness}>
-              <div className={style.flexUserManagement}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M7.998 5.75A3.752 3.752 0 1 1 12.5 9.428V11.5h3.25A2.25 2.25 0 0 1 18 13.75v.825a3.754 3.754 0 0 1-.748 7.43a3.752 3.752 0 0 1-.752-7.43v-.825a.75.75 0 0 0-.75-.75h-8a.75.75 0 0 0-.75.75v.825a3.754 3.754 0 0 1-.748 7.43a3.752 3.752 0 0 1-.752-7.43v-.825a2.25 2.25 0 0 1 2.25-2.25H11V9.428A3.754 3.754 0 0 1 7.998 5.75" />
-                </svg>
-              <p>Entities</p>
-              </div>
-              <span className={`${style.arrow} ${openBusiness ? style.rotate : ''}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
-                </svg>
-              </span>
-            </div>
-
-            <div
-              className={`${style.accordionContent} ${openBusiness ? style.openAccordion : ''}`}
-              style={{ maxHeight: openBusiness ? '500px' : '0' }}
-            >
-              <Link className={style.link} onClick={closeAllAccordions} to="/affiliates"><p>Affiliates</p></Link>
-              <Link className={style.link} onClick={closeAllAccordions} to="/company"><p>Company</p></Link>
-              <Link className={style.link} onClick={closeAllAccordions} to="/vendor"><p>Vendor</p></Link>
-              <Link className={style.link} onClick={closeAllAccordions} to="/department"><p>Department</p></Link>
-              <Link className={style.link} onClick={closeAllAccordions} to="/localGovernmentAgency"><p>Local Government Agency</p></Link>
-            </div>
-          </div>
-
+         
           {/* Transactions */}
           <div className={style.accordionItem}>
             <div className={style.accordionHeader} onClick={toggleTransactions}>
@@ -240,6 +213,34 @@ function Nav() {
               <Link className={style.link} onClick={closeAllAccordions} to="/paymentRequest"><p>Payment Request</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashRelease"><p>Petty Cash Release</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashLiquidation"><p>Petty Cash Liquidation</p></Link>
+            </div>
+          </div>
+
+           {/* Entities */}
+          <div className={style.accordionItem}>
+            <div className={style.accordionHeader} onClick={toggleBusiness}>
+              <div className={style.flexUserManagement}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M7.998 5.75A3.752 3.752 0 1 1 12.5 9.428V11.5h3.25A2.25 2.25 0 0 1 18 13.75v.825a3.754 3.754 0 0 1-.748 7.43a3.752 3.752 0 0 1-.752-7.43v-.825a.75.75 0 0 0-.75-.75h-8a.75.75 0 0 0-.75.75v.825a3.754 3.754 0 0 1-.748 7.43a3.752 3.752 0 0 1-.752-7.43v-.825a2.25 2.25 0 0 1 2.25-2.25H11V9.428A3.754 3.754 0 0 1 7.998 5.75" />
+                </svg>
+              <p>Entities</p>
+              </div>
+              <span className={`${style.arrow} ${openBusiness ? style.rotate : ''}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
+                </svg>
+              </span>
+            </div>
+
+            <div
+              className={`${style.accordionContent} ${openBusiness ? style.openAccordion : ''}`}
+              style={{ maxHeight: openBusiness ? '500px' : '0' }}
+            >
+              <Link className={style.link} onClick={closeAllAccordions} to="/affiliates"><p>Affiliates</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/company"><p>Company</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/vendor"><p>Vendor</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/department"><p>Department</p></Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/localGovernmentAgency"><p>Local Government Agency</p></Link>
             </div>
           </div>
         </div>
