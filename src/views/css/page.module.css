@@ -802,6 +802,7 @@ h3{
   padding: 2rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 .editHeader{
   font-weight: 300;
@@ -1460,17 +1461,22 @@ td.payreqTd {
 
 .EditjournalHeaderTableDetails{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr  1fr 120px;
+  grid-template-columns: 140px 1fr 125px  135px 135px 140px 135px 120px;
+  text-align: left;
   background-color: #0D254C;
 
 }
 .EditpayreqDetailsBodyTable{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr  1fr 120px;
+  grid-template-columns: 140px 1fr 125px  135px 135px 140px 135px 120px;
   background-color: #0D254C;
+}
+.totalPayreqDetailsEdit{
+  display: grid;
+  grid-template-columns: 1fr 1fr 125px  135px 135px 140px 135px 120px;
+
 }
 .totalPayreqDetails{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 120px;
-
 }

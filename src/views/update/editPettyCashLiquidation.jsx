@@ -3,7 +3,12 @@ import { useParams } from 'react-router-dom';
 import { Mosaic } from 'react-loading-indicators';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { useFetchPettyCashLiquidationByIdQuery, useUpdatePettyCashLiquidationMutation } from '../../features/pettyCashLiquidationSlice';
+import { 
+  useFetchPettyCashLiquidationByIdQuery, 
+  useUpdatePettyCashLiquidationMutation,
+  useCreatePettyCashLiquidationDetailMutation, 
+  useFetchPettyCashLiquidationDetailQuery} from '../../features/pettyCashLiquidationSlice';
+
 import { useFetchPaymentRequestQuery } from '../../features/paymentRequest';
 import { useGetPaymentRequestDetailsByRequestIdQuery } from '../../features/paymentRequestDetailSlice';
 
@@ -89,11 +94,43 @@ function EditPettyCashLiquidation() {
     }
   };
 
-    const [showLoader, setShowLoader] = useState(true);
-    const mappedDetails = (details ?? []).map(d => ({
-    ...d,
-    bookingNumber: d.booking?.bookingNumber || "--" 
-  }));
+  const [showLoader, setShowLoader] = useState(true);
+
+  const { data: liquidationDetails = [] } = useFetchPettyCashLiquidationDetailQuery(id);
+
+  const mappedDetails = (details ?? []).map(d => {
+    const liquidation = (liquidationDetails ?? []).find(
+      ld => Number(ld.paymentRequestDetailId) === Number(d.id)
+    );
+
+    return {
+      ...d,
+      bookingNumber: d.booking?.bookingNumber || "--",
+      amount: Number(d.amount || 0),
+      quantity: Number(d.quantity || 0),
+      liquidatedAmount: liquidation ? Number(liquidation.liquidatedAmount) : 0,
+      returnRefundAmount: liquidation ? Number(liquidation.returnRefundAmount) : 0
+    };
+  });
+
+
+
+  
+  const [createLiquidationDetail] = useCreatePettyCashLiquidationDetailMutation();
+
+    const [showLiquidationModal, setShowLiquidationModal] = useState(false);
+    const [selectedDetail, setSelectedDetail] = useState(null);
+    const [liquidatedAmount, setLiquidatedAmount] = useState("");
+  
+  const releasedTotal = selectedDetail
+    ? (Number(selectedDetail.amount) || 0) * (Number(selectedDetail.quantity) || 0)
+    : 0;
+
+  const returnRefundAmount =
+    liquidatedAmount !== ""
+      ? releasedTotal - (Number(liquidatedAmount) || 0)
+      : 0;
+
 
     useEffect(() => {
       const timer = setTimeout(() => setShowLoader(false), 1000);
@@ -233,8 +270,11 @@ function EditPettyCashLiquidation() {
                 <th>Booking #</th>
                 <th>Description</th>
                 <th>Quantity</th>
-                <th>Amount</th>
-                <th>Total</th>
+                <th>Released Total</th>
+                <th>Released Amount</th>
+                <th>Liquidated Amount</th>
+                <th>Return/Refund</th>
+                <th>Action</th>
               </tr>
             </thead>
               <tbody>
@@ -252,13 +292,29 @@ function EditPettyCashLiquidation() {
                       <td>{d.quantity}</td>
                       <td>{Number(d.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                       <td>{(Number(d.quantity) * Number(d.amount)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td>{(d.liquidatedAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td>{(d.returnRefundAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+
+                      <td>
+                        <button
+                          className={style.editBtn}
+                          onClick={() => {
+                            setSelectedDetail(d);
+                            setLiquidatedAmount("");
+                            setShowLiquidationModal(true);
+                          }}
+                        >
+                          Liquidate
+                        </button>
+                      </td>
                     </tr>
                   ))
                 )}
               </tbody>
+
             { (details ?? []).length > 0 && (
               <tfoot>
-                <tr className={style.totalPayreqDetails}>
+                <tr className={style.totalPayreqDetailsEdit}>
                   <td colSpan="5" style={{ textAlign: "right", fontWeight: "bold", paddingRight: "12px" }}>
                     Total:
                   </td>
@@ -266,13 +322,123 @@ function EditPettyCashLiquidation() {
                   <td></td>
                   <td></td>
                   <td style={{ fontWeight: "bold" }}>
-                    {(details ?? []).reduce((sum, d) => sum + Number(d.quantity) * Number(d.amount), 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    {(mappedDetails ?? []).reduce(
+                      (sum, d) => sum + (Number(d.quantity) * Number(d.amount) || 0),
+                      0
+                    ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
+                  <td style={{ fontWeight: "bold" }}>
+                    {(mappedDetails ?? []).reduce(
+                      (sum, d) => sum + (Number(d.liquidatedAmount) || 0),
+                      0
+                    ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </td>
+                  <td style={{ fontWeight: "bold" }}>
+                    {(mappedDetails ?? []).reduce(
+                      (sum, d) => sum + (Number(d.returnRefundAmount) || 0),
+                      0
+                    ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </td>
+                  <td></td>
                 </tr>
               </tfoot>
             )}
           </table>
-        </div>
+
+            {showLiquidationModal && (
+              <div className={style.modalOverlay}>
+                <div className={style.modal}>
+                  <div className={style.modalHeader}>
+                    <h3>Liquidate Amount</h3>
+                    <button
+                      className={style.closeButton}
+                      onClick={() => setShowLiquidationModal(false)}
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className={style.formContainer}>
+                    <label className={style.modalLabel}>Released Total:</label>
+                    <input
+                      type="text"
+                      value={releasedTotal.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                      })}
+                      readOnly
+                      className={style.modalInput}
+                      style={{outline:'none', cursor:'not-allowed'}}
+                    />
+
+                    <label className={style.modalLabel}>Liquidated Amount:</label>
+                    <input
+                      type="number"
+                      className={style.modalInput}
+                      value={liquidatedAmount}
+                      onChange={(e) => setLiquidatedAmount(e.target.value)}
+                      placeholder='0.00'
+                    />
+
+                    <label className={style.modalLabel}>Return / Refund:</label>
+                    <input
+                      type="text"
+                      value={returnRefundAmount.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                      })}
+                      readOnly
+                      className={style.modalInput}
+                      style={{outline:'none', cursor:'not-allowed'}}
+                    />
+
+                    <div className={style.modalActions}>
+                      <button
+                        className={style.cancelButton}
+                        onClick={() => setShowLiquidationModal(false)}
+                      >
+                        Cancel
+                      </button>
+
+                      <button
+                        className={style.submitButton}
+                        onClick={async () => {
+                          if (!selectedDetail) {
+                            toast.error("No detail selected");
+                            return;
+                          }
+
+                          console.log({
+                            pettyCashLiquidationId: Number(id),
+                            paymentRequestDetailId: selectedDetail.id,
+                            liquidatedAmount: Number(liquidatedAmount),
+                            returnRefundAmount
+                          });
+
+                          try {
+                            await createLiquidationDetail({
+                              pettyCashLiquidationId: Number(id),            
+                              paymentRequestDetailId: selectedDetail.id,     
+                              liquidatedAmount: Number(liquidatedAmount),
+                              returnRefundAmount
+                            }).unwrap();
+
+                            toast.success("Liquidation saved");
+                            setShowLiquidationModal(false);
+                          } catch (error) {
+                            console.error(error);
+                            toast.error("Failed to save liquidation", error);
+                          }
+                        }}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         <ToastContainer />
       </div>
     </main>

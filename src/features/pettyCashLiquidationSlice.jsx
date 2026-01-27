@@ -34,9 +34,33 @@ export const pettyCashLiquidationApi = createApi({
                 body:updateData
             }),
             invalidatesTags:['liquidation']
+        }),
+
+        //Pettycash Liquidation Detail Slice
+        fetchPettyCashLiquidationDetail: builder.query({
+            query: (id) => ({
+                url: `/detail/${id}`,
+                method: 'GET'
+            }),
+            providesTags: ['liquidation']
+        }),
+        createPettyCashLiquidationDetail:builder.mutation({
+            query:(newData)=>({
+                url:'/detail',
+                method:'POST',
+                body:newData
+            }),
+            invalidatesTags:['liquidation']
         })
     })
 })
 
 
-export const {useFetchPettyCashLiquidationQuery, useFetchPettyCashLiquidationByIdQuery, useCreatePettyCashLiquidationMutation, useUpdatePettyCashLiquidationMutation} = pettyCashLiquidationApi
+export const {
+    useFetchPettyCashLiquidationQuery, 
+    useFetchPettyCashLiquidationByIdQuery, 
+    useCreatePettyCashLiquidationMutation, 
+    useUpdatePettyCashLiquidationMutation,
+    useFetchPettyCashLiquidationDetailQuery,
+    useCreatePettyCashLiquidationDetailMutation
+} = pettyCashLiquidationApi
