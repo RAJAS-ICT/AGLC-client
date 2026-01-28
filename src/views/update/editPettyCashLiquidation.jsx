@@ -260,8 +260,8 @@ function EditPettyCashLiquidation() {
       <div style={{padding:'0 1.25rem 5rem 1.25rem'}}>
          <div className={style.flexheaderTitleJournal}>
            <div className={style.bookingContainer}>
-            <p className={style.bookingPaymentTitle}>Payment Request Detail</p>
-            <p className={style.bookingPaymentSubtitle}>Review Payment Request Detail history.</p>
+            <p className={style.bookingPaymentTitle}>Petty Cash Liquidation Detail</p>
+            <p className={style.bookingPaymentSubtitle}>Review petty cash liquidation detail history.</p>
           </div>
         </div>
           <table className={style.tableJournal}>
@@ -297,7 +297,7 @@ function EditPettyCashLiquidation() {
 
                       <td>
                         <button
-                          className={style.editBtn}
+                          className={style.editBtnLiquidation}
                           onClick={() => {
                             setSelectedDetail(d);
                             setLiquidatedAmount("");
@@ -354,7 +354,22 @@ function EditPettyCashLiquidation() {
                       className={style.closeButton}
                       onClick={() => setShowLiquidationModal(false)}
                     >
-                      ✕
+                      <svg
+                        className={style.closeBtn}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                          d="m11.25 4.75-6.5 6.5m0-6.5 6.5 6.5"
+                        />
+                      </svg>
                     </button>
                   </div>
 

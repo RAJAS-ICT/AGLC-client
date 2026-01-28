@@ -507,6 +507,21 @@ th{
   color: #fff;
   content: 'manage';
 }
+.editBtnLiquidation{
+  background: none;
+  color: #3a3a3a;
+  padding: 6px 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.editBtnLiquidation:hover{
+  background-color: #0D254C;
+  color: #fff;
+  content: 'manage';
+}
 .flexBtn{
   width: 100%;
   display: flex;
