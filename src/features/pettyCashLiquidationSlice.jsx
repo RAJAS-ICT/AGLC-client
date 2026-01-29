@@ -51,7 +51,15 @@ export const pettyCashLiquidationApi = createApi({
                 body:newData
             }),
             invalidatesTags:['liquidation']
-        })
+        }),
+        updatePettyCashLiquidationDetail: builder.mutation({
+            query: ({ id, ...data }) => ({
+                url: `/detail/${id}`,
+                method: 'PUT',
+                body: data
+            }),
+            invalidatesTags: ['liquidation']
+            })
     })
 })
 
@@ -62,5 +70,6 @@ export const {
     useCreatePettyCashLiquidationMutation, 
     useUpdatePettyCashLiquidationMutation,
     useFetchPettyCashLiquidationDetailQuery,
-    useCreatePettyCashLiquidationDetailMutation
+    useCreatePettyCashLiquidationDetailMutation,
+    useUpdatePettyCashLiquidationDetailMutation
 } = pettyCashLiquidationApi

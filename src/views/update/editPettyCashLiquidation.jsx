@@ -7,7 +7,10 @@ import {
   useFetchPettyCashLiquidationByIdQuery, 
   useUpdatePettyCashLiquidationMutation,
   useCreatePettyCashLiquidationDetailMutation, 
-  useFetchPettyCashLiquidationDetailQuery} from '../../features/pettyCashLiquidationSlice';
+  useFetchPettyCashLiquidationDetailQuery,
+  useUpdatePettyCashLiquidationDetailMutation 
+
+} from '../../features/pettyCashLiquidationSlice';
 
 import { useFetchPaymentRequestQuery } from '../../features/paymentRequest';
 import { useGetPaymentRequestDetailsByRequestIdQuery } from '../../features/paymentRequestDetailSlice';
@@ -20,6 +23,8 @@ function EditPettyCashLiquidation() {
   const { data: liquidation, isLoading: loadingLiquidation } = useFetchPettyCashLiquidationByIdQuery(id);
   const { data: paymentRequests = [], isLoading: loadingRequests } = useFetchPaymentRequestQuery();
   const [selectedRequestId, setSelectedRequestId] = useState(null);
+  const [ updateLiquidationDetail ] = useUpdatePettyCashLiquidationDetailMutation();
+
 
   const { data: details = [], isLoading: loadingDetails } = useGetPaymentRequestDetailsByRequestIdQuery(selectedRequestId, { skip: !selectedRequestId });
   const [updateLiquidation, { isLoading: isUpdating }] = useUpdatePettyCashLiquidationMutation();
@@ -298,11 +303,13 @@ function EditPettyCashLiquidation() {
                       <td>
                         <button
                           className={style.editBtnLiquidation}
-                          onClick={() => {
-                            setSelectedDetail(d);
-                            setLiquidatedAmount("");
-                            setShowLiquidationModal(true);
-                          }}
+                            onClick={() => {
+                              setSelectedDetail(d);
+                              setLiquidatedAmount(
+                                d.liquidatedAmount ? d.liquidatedAmount.toString() : ""
+                              );
+                              setShowLiquidationModal(true);
+                            }}
                         >
                           Liquidate
                         </button>
@@ -321,13 +328,13 @@ function EditPettyCashLiquidation() {
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td style={{ fontWeight: "bold" }}>
+                  <td>
                     {(mappedDetails ?? []).reduce(
                       (sum, d) => sum + (Number(d.quantity) * Number(d.amount) || 0),
                       0
                     ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
-                  <td style={{ fontWeight: "bold" }}>
+                  <td>
                     {(mappedDetails ?? []).reduce(
                       (sum, d) => sum + (Number(d.liquidatedAmount) || 0),
                       0
@@ -409,13 +416,6 @@ function EditPettyCashLiquidation() {
 
                     <div className={style.modalActions}>
                       <button
-                        className={style.cancelButton}
-                        onClick={() => setShowLiquidationModal(false)}
-                      >
-                        Cancel
-                      </button>
-
-                      <button
                         className={style.submitButton}
                         onClick={async () => {
                           if (!selectedDetail) {
@@ -423,26 +423,36 @@ function EditPettyCashLiquidation() {
                             return;
                           }
 
-                          console.log({
-                            pettyCashLiquidationId: Number(id),
-                            paymentRequestDetailId: selectedDetail.id,
-                            liquidatedAmount: Number(liquidatedAmount),
-                            returnRefundAmount
-                          });
+                          const existingLiquidation = liquidationDetails.find(
+                            ld => Number(ld.paymentRequestDetailId) === Number(selectedDetail.id)
+                          );
 
                           try {
-                            await createLiquidationDetail({
-                              pettyCashLiquidationId: Number(id),            
-                              paymentRequestDetailId: selectedDetail.id,     
-                              liquidatedAmount: Number(liquidatedAmount),
-                              returnRefundAmount
-                            }).unwrap();
+                            if (existingLiquidation) {
+                              // update
+                              await updateLiquidationDetail({
+                                id: existingLiquidation.id,
+                                liquidatedAmount: Number(liquidatedAmount),
+                                returnRefundAmount
+                              }).unwrap();
 
-                            toast.success("Liquidation saved");
+                              toast.success("Liquidation updated");
+                            } else {
+                              // create
+                              await createLiquidationDetail({
+                                pettyCashLiquidationId: Number(id),
+                                paymentRequestDetailId: selectedDetail.id,
+                                liquidatedAmount: Number(liquidatedAmount),
+                                returnRefundAmount
+                              }).unwrap();
+
+                              toast.success("Liquidation saved");
+                            }
+
                             setShowLiquidationModal(false);
                           } catch (error) {
                             console.error(error);
-                            toast.error("Failed to save liquidation", error);
+                            toast.error("Failed to save liquidation");
                           }
                         }}
                       >

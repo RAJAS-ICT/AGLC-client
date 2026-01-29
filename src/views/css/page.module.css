@@ -510,7 +510,7 @@ th{
 .editBtnLiquidation{
   background: none;
   color: #3a3a3a;
-  padding: 6px 18px;
+  padding: 4px 10px;
   border-radius: 2px;
   cursor: pointer;
   transition: 0.1s ease-in-out;
