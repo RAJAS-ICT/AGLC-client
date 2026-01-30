@@ -104,7 +104,7 @@ function VendorEdit() {
               </svg>
               <h3 className={style.headerLaber}>Update Vendor</h3>
               </div>
-              <p className={style.headerSubtitle}>Entities / Vendor</p>
+              <p className={style.headerSubtitle}>View and manage vendor.</p>
             </div>
         <form onSubmit={handleSubmit} className={style.editFormCustomer}>
         <label className={style.editLabel}>Name: </label>

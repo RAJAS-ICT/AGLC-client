@@ -576,7 +576,7 @@ if ((departmentType || "").toLowerCase() === "operation" && bookingIdToShow) {
               </svg>
               <h3 className={style.headerLaber}>Update Payment Request</h3>
               </div>
-              <p className={style.headerSubtitle}>Transactions / Payment Request</p>
+              <p className={style.headerSubtitle}>View and manage payment request.</p>
             </div>
         </div>
 

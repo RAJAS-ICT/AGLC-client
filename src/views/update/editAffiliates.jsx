@@ -103,7 +103,7 @@ function EditAffiliates() {
             <h3 className={style.headerLaber}>Update Affiliate</h3>
           </div>
           <p className={style.headerSubtitle}>
-            Entities / Affiliates
+            View and manage affiliates.
           </p>
         </div>
 

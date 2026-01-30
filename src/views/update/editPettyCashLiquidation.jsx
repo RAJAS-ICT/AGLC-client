@@ -118,10 +118,7 @@ function EditPettyCashLiquidation() {
     };
   });
 
-
-
-  
-  const [createLiquidationDetail] = useCreatePettyCashLiquidationDetailMutation();
+    const [createLiquidationDetail] = useCreatePettyCashLiquidationDetailMutation();
 
     const [showLiquidationModal, setShowLiquidationModal] = useState(false);
     const [selectedDetail, setSelectedDetail] = useState(null);
@@ -311,7 +308,7 @@ function EditPettyCashLiquidation() {
                               setShowLiquidationModal(true);
                             }}
                         >
-                          Liquidate
+                           Liquidate
                         </button>
                       </td>
                     </tr>
@@ -436,7 +433,7 @@ function EditPettyCashLiquidation() {
                                 returnRefundAmount
                               }).unwrap();
 
-                              toast.success("Liquidation updated");
+                              toast.success("Updated Successfully");
                             } else {
                               // create
                               await createLiquidationDetail({

@@ -122,7 +122,7 @@ function EditDepartment() {
               </svg>
               <h3 className={style.headerLaber}>Update Department</h3>
               </div>
-              <p className={style.headerSubtitle}>Entities / Department</p>
+              <p className={style.headerSubtitle}>View and manage department.</p>
             </div>
 
         <form onSubmit={handleSubmit} className={style.editForm}>

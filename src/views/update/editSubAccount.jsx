@@ -133,7 +133,7 @@ function EditSubAccount() {
               </svg>
               <h3 className={style.headerLaber}>Update Sub Account</h3>
               </div>
-              <p className={style.headerSubtitle}>Transactions / Sub Account</p>
+              <p className={style.headerSubtitle}>View and manage sub account.</p>
             </div>
 
         <form onSubmit={handleSubmit} className={style.editForm}>

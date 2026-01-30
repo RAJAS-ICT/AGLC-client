@@ -103,7 +103,7 @@ function EditAgents() {
             <h3 className={style.headerLaber}>Update Agent</h3>
           </div>
           <p className={style.headerSubtitle}>
-            User Directory / Agents
+            View and manage agents.
           </p>
         </div>
 

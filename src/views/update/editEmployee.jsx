@@ -102,7 +102,7 @@ function EditEmployee() {
             </svg>
           <h3 className={style.headerLaber}>Update Employee</h3>
           </div>
-          <p className={style.headerSubtitle}>User Directory / Employee</p>
+          <p className={style.headerSubtitle}>View and manage employees.</p>
         </div>
         <form onSubmit={handleSubmit} className={style.editForm}>
           <div className={style.flexInput}>

@@ -102,7 +102,7 @@ function EditCompany() {
               </svg>
               <h3 className={style.headerLaber}>Update Company</h3>
               </div>
-              <p className={style.headerSubtitle}>Entities / Company</p>
+              <p className={style.headerSubtitle}>View and manage company.</p>
             </div>
              <form onSubmit={handleSubmit} className={style.editForm}>
               <label className={style.editLabel}>Code: </label>

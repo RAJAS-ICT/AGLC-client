@@ -104,7 +104,7 @@ function EditCharge() {
               </svg>
               <h3 className={style.headerLaber}>Update Charge</h3>
             </div>
-              <p className={style.headerSubtitle}>Transactions / Charge</p>
+              <p className={style.headerSubtitle}>View and manage charge.</p>
             </div>
 
         <form onSubmit={handleSubmit} className={style.editFormCustomer}>

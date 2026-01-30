@@ -196,7 +196,7 @@ td {
 .flexheaderTitle{
   display: flex;
   align-items: center;
-  gap: .65rem;
+  gap: .5rem;
 }
 .flexheaderTitleJournal{
   display: flex;
@@ -209,6 +209,12 @@ td {
   color: #0D254C;
   height: 22px;
   width: 22px;
+}
+.svgManageVendors{
+  color: #0D254C;
+  margin-top: 2px;
+  height: 28px;
+  width: 28px;
 }
 .EditsvgExclamation{
   height: 28px;
@@ -510,6 +516,10 @@ th{
 .editBtnLiquidation{
   background: none;
   color: #3a3a3a;
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
   padding: 4px 10px;
   border-radius: 2px;
   cursor: pointer;
@@ -518,9 +528,15 @@ th{
   border-radius: 2px;
 }
 .editBtnLiquidation:hover{
+  display: flex;
   background-color: #0D254C;
   color: #fff;
   content: 'manage';
+}
+.flashSvg{
+  width: 12px;
+  height: 14px;
+  color: #4c4c4c;
 }
 .flexBtn{
   width: 100%;

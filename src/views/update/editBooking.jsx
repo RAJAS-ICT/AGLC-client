@@ -115,7 +115,7 @@ useEffect(() => {
             </svg>
               <h3 className={style.headerLaber}>Update Booking</h3>
               </div>
-              <p className={style.headerSubtitle}>Transactions / Bookings</p>
+              <p className={style.headerSubtitle}>View and manage bookings.</p>
             </div>
           <form onSubmit={handleUpdate} className={style.editFormCustomer}>
           {/* <label className={style.editLabel}>Customer ID: </label>

@@ -113,7 +113,7 @@ const [showLoader, setShowLoader] = useState(true);
             </svg>
            <h3 className={style.headerLaber}>Update User</h3>
            </div>
-           <p className={style.headerSubtitle}>User Directory / User</p>
+           <p className={style.headerSubtitle}>View and manage users</p>
         </div>
        <form onSubmit={handleSubmit} className={style.editForm}>
           <div className={style.flexInput}>

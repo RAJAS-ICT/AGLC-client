@@ -105,7 +105,7 @@ function EditLocalGovernmentAgency() {
             </h3>
           </div>
           <p className={style.headerSubtitle}>
-            Entities / Local Government Agency
+            View and manage agency.
           </p>
         </div>
 

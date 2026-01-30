@@ -103,7 +103,7 @@ function EditBanks() {
             <h3 className={style.headerLaber}>Update Bank</h3>
           </div>
           <p className={style.headerSubtitle}>
-            Transactions / Banks
+            View and manage banks.
           </p>
         </div>
 

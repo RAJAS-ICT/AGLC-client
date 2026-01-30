@@ -296,7 +296,7 @@ function EditPettyCashRelease() {
             <h3 className={style.headerLaber}>Update Petty Cash Release</h3>
           </div>
           <p className={style.headerSubtitle}>
-            Transactions / Petty Cash Release
+           View and manage petty cash release.
           </p>
         </div>
 

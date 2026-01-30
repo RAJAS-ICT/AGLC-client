@@ -100,7 +100,7 @@ function EditCustomer() {
             </svg>
             <h3 className={style.headerLaber}>Update Customer</h3>
             </div>
-            <p className={style.headerSubtitle}>User Directory / Customer</p>
+            <p className={style.headerSubtitle}>View and manage customer.</p>
           </div>
         <form onSubmit={handleSubmit} className={style.editFormCustomer}>
           <label className={style.editLabel}>Name: </label>
