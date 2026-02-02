@@ -161,7 +161,7 @@ function EditPettyCashLiquidation() {
             </svg>
             <h3 className={style.headerLaber}>Update Petty Cash Liquidation</h3>
           </div>
-          <p className={style.headerSubtitle}>Transactions / Petty Cash Liquidation</p>
+          <p className={style.headerSubtitle}>View and manage petty cash liquidation.</p>
         </div>
  
         <form className={style.editFormCustomer} onSubmit={handleSubmit}>

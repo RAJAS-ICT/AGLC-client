@@ -179,9 +179,9 @@ function Nav() {
           <p className={style.logoHeader}>ACESTAR</p>
           <p className={style.logoSubHeader}>Global Logistics Corporation</p>
         </div>
-        <hr className={style.hr} />
+        {/* <hr className={style.hr} /> */}
         <div className={style.menuList}>
-          <small className={style.menuCaption}>MENU</small>
+          {/* <small className={style.menuCaption}>MENU</small> */}
           {/* User Directory */}
           <div className={style.accordionItem}>
             <div className={style.accordionHeader} onClick={toggleUsers}>
