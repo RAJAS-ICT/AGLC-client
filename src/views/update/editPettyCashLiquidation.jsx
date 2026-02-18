@@ -292,10 +292,10 @@ function EditPettyCashLiquidation() {
                       <td>{d.bookingNumber}</td>
                       <td>{d.chargeDesc || "--"}</td>
                       <td>{d.quantity}</td>
-                      <td>{Number(d.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                      <td>{(Number(d.quantity) * Number(d.amount)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                      <td>{(d.liquidatedAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                      <td>{(d.returnRefundAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td> &#8369; {Number(d.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td> &#8369; {(Number(d.quantity) * Number(d.amount)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td> &#8369; {(d.liquidatedAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td> &#8369; {(d.returnRefundAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
 
                       <td>
                         <button
@@ -326,19 +326,19 @@ function EditPettyCashLiquidation() {
                   <td></td>
                   <td></td>
                   <td>
-                    {(mappedDetails ?? []).reduce(
+                     &#8369; {(mappedDetails ?? []).reduce(
                       (sum, d) => sum + (Number(d.quantity) * Number(d.amount) || 0),
                       0
                     ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td>
-                    {(mappedDetails ?? []).reduce(
+                     &#8369; {(mappedDetails ?? []).reduce(
                       (sum, d) => sum + (Number(d.liquidatedAmount) || 0),
                       0
                     ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td style={{ fontWeight: "bold" }}>
-                    {(mappedDetails ?? []).reduce(
+                     &#8369; {(mappedDetails ?? []).reduce(
                       (sum, d) => sum + (Number(d.returnRefundAmount) || 0),
                       0
                     ).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}

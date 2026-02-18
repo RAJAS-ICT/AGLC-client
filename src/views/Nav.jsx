@@ -183,7 +183,7 @@ function Nav() {
         <div className={style.menuList}>
           {/* <small className={style.menuCaption}>MENU</small> */}
           {/* User Directory */}
-          <div className={style.accordionItem}>
+          <div className={`${style.accordionItem} ${openUsers ? style.activeAccordion : ''}`}>
             <div className={style.accordionHeader} onClick={toggleUsers}>
               <div className={style.flexUserManagement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ function Nav() {
             </div>
           </div>
           {/* Accounts */}
-          <div className={style.accordionItem}>
+          <div className={`${style.accordionItem} ${openSetup ? style.activeAccordion : ''}`}>
             <div className={style.accordionHeader} onClick={toggleSetup}>
               <div className={style.flexUserManagement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -236,7 +236,7 @@ function Nav() {
             </div>
           </div>
           {/* Petty Cash */}
-          <div className={style.accordionItem}>
+          <div className={`${style.accordionItem} ${openPettyCash ? style.activeAccordion : ''}`}>
             <div className={style.accordionHeader} onClick={togglePettyCash}>
               <div className={style.flexUserManagement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -275,7 +275,7 @@ function Nav() {
             </div>
           </div>
           {/* Entities */}
-          <div className={style.accordionItem}>
+          <div className={`${style.accordionItem} ${openBusiness ? style.activeAccordion : ''}`}>
             <div className={style.accordionHeader} onClick={toggleBusiness}>
               <div className={style.flexUserManagement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -301,7 +301,7 @@ function Nav() {
             </div>
           </div>
           {/* Operations */}
-          <div className={style.accordionItem}>
+          <div className={`${style.accordionItem} ${openOperations ? style.activeAccordion : ''}`}>
             <div className={style.accordionHeader} onClick={toggleOperations}>
               <div className={style.flexUserManagement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

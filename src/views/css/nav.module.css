@@ -49,7 +49,6 @@
   z-index: 1000;
   width: 14rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
@@ -122,12 +121,21 @@ p{
 }
 
 .sideBar {
-  background-color: #0D254C;
+background: linear-gradient(
+  rgba(13, 37, 76, 0.9), 
+  rgba(13, 37, 76, 0.9)
+    ),
+    url('../../assets/cargo6.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
   color: #F9FAFB;
   width: 240px;
   height: 100%;
   padding: 1.5rem 0;
-  display: flex;
+  display: flex;    
   flex-direction: column;
   gap: 3.5rem;
   box-sizing: border-box;
@@ -135,10 +143,9 @@ p{
   top: 0;
   left: 0;
   overflow-y: auto;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 0px 10px;
   z-index: 2;
 }
-
 .logoHeader{
     font-weight: 700;
     font-size: 44px;
@@ -204,9 +211,6 @@ svg{
 .svg:hover{
     color: #fff !important;
 }
-.link:hover{
-    color: #fff !important;
-}
 
 .active {
   color: #fff;
@@ -214,58 +218,74 @@ svg{
 }
 
 .accordionItem {
-  margin-bottom: 8px;
-  border-radius: 4px;
-  transition: 0.1s ease-in-out;
-  user-select: none;
-  padding: 0 .25rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  overflow: hidden; 
 }
-.accordionItem:hover{
-  background-color: #0a1c3a;
+
+.accordionItem:hover:not(.activeAccordion) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* accordion bg */
+.activeAccordion {
+  background-color: #fff !important; 
+  color: #3a3a3a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .accordionHeader {
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  align-items: center;
+  padding: 12px 15px;
   cursor: pointer;
-  color: white;
-  transition: 0.4s;
-  user-select: none;
+  color: #fff;
+}
+.activeAccordion .accordionHeader {
+  color: #3a3a3a !important;
+}
+.flexUserManagement {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .accordionContent {
-  padding: 0 1rem; 
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-  background-color: #fff;
+  transition: max-height 0.4s ease-in-out; 
+  background-color: transparent !important;
 }
 
-.openAccordion {
-  padding: 0rem 1rem 1rem 1.5rem; 
-  border-radius: 0 0 4px 4px;
+.link {
+  text-decoration: none;
+  display: block;
+  padding: 10px 0 10px 48px; 
+  transition: all 0.2s ease;
 }
 
-
-.accordionContent .link {
-  background-color: #fff;
-  color: #4a4a4a !important;
+.link p {
+  color: #3a3a3a !important; 
+  font-size: 0.95rem;
+  margin: 0;
+  font-family: "Oswald", sans-serif;
 }
 
-.accordionContent p {
-  margin-top: 1rem;
+.accordionContent .link:hover  {
+  background-color: #eee;
 }
 
+/* --- Utility --- */
 .arrow {
-  display: inline-block;
-  transition: transform 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
 .rotate {
   transform: rotate(90deg);
 }
-
 
 .flexUserManagement{
   display: flex;
@@ -284,7 +304,6 @@ svg{
   flex-direction: column;
   z-index: 1000;
   width: 14rem;
-  
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
