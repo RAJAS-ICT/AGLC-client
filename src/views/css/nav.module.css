@@ -267,7 +267,7 @@ svg{
 .link {
   text-decoration: none;
   display: block;
-  padding: 10px 0 10px 48px; 
+  padding: 10px 0 10px 2rem; 
   transition: all 0.2s ease;
 }
 

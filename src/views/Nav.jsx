@@ -235,45 +235,6 @@ function Nav() {
               <Link className={style.link} onClick={closeAllAccordions} to="/paymentRequest"><p>Payment Request</p></Link>
             </div>
           </div>
-          {/* Petty Cash */}
-          <div className={`${style.accordionItem} ${openPettyCash ? style.activeAccordion : ''}`}>
-            <div className={style.accordionHeader} onClick={togglePettyCash}>
-              <div className={style.flexUserManagement}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <defs>
-                    <path id="SVGS9q3IkIf" d="M21.5 11v10h-19V11z" />
-                  </defs>
-                  <g fill="none">
-                    <use href="#SVGS9q3IkIf" />
-                    <path d="M12 13.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5m5.136-7.209L19 5.67l1.824 5.333H3.002L3 11.004L14.146 2.1z" />
-                    <path stroke="currentColor" stroke-linecap="square" stroke-width="2" d="M21 11.003h-.176L19.001 5.67L3.354 11.003L3 11m-.5.004H3L14.146 2.1l2.817 3.95" />
-                    <g stroke="currentColor" stroke-linecap="square" stroke-width="2">
-                      <path d="M14.5 16a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0Z" />
-                      <use href="#SVGS9q3IkIf" />
-                      <path d="M2.5 11h2a2 2 0 0 1-2 2zm19 0h-2a2 2 0 0 0 2 2zm-19 10h2.002A2 2 0 0 0 2.5 18.998zm19 0h-2a2 2 0 0 1 2-2z" />
-                    </g>
-                  </g>
-                </svg>
-                <p>Petty Cash</p>
-              </div>
-              <span className={`${style.arrow} ${openPettyCash ? style.rotate : ''}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
-                </svg>
-              </span>
-            </div>
-            <div
-              className={`${style.accordionContent} ${openPettyCash ? style.openAccordion : ''}`}
-              style={{ maxHeight: openPettyCash ? '500px' : '0' }}
-            >
-              <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashRelease">
-                <p>Petty Cash Release</p>
-              </Link>
-              <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashLiquidation">
-                <p>Petty Cash Liquidation</p>
-              </Link>
-            </div>
-          </div>
           {/* Entities */}
           <div className={`${style.accordionItem} ${openBusiness ? style.activeAccordion : ''}`}>
             <div className={style.accordionHeader} onClick={toggleBusiness}>
@@ -321,6 +282,45 @@ function Nav() {
             >
               <Link className={style.link} onClick={closeAllAccordions} to="/booking"><p>Booking</p></Link>
               <Link className={style.link} onClick={closeAllAccordions} to="/charge"><p>Charge</p></Link>
+            </div>
+          </div>
+          {/* Petty Cash */}
+          <div className={`${style.accordionItem} ${openPettyCash ? style.activeAccordion : ''}`}>
+            <div className={style.accordionHeader} onClick={togglePettyCash}>
+              <div className={style.flexUserManagement}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <defs>
+                    <path id="SVGS9q3IkIf" d="M21.5 11v10h-19V11z" />
+                  </defs>
+                  <g fill="none">
+                    <use href="#SVGS9q3IkIf" />
+                    <path d="M12 13.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5m5.136-7.209L19 5.67l1.824 5.333H3.002L3 11.004L14.146 2.1z" />
+                    <path stroke="currentColor" stroke-linecap="square" stroke-width="2" d="M21 11.003h-.176L19.001 5.67L3.354 11.003L3 11m-.5.004H3L14.146 2.1l2.817 3.95" />
+                    <g stroke="currentColor" stroke-linecap="square" stroke-width="2">
+                      <path d="M14.5 16a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0Z" />
+                      <use href="#SVGS9q3IkIf" />
+                      <path d="M2.5 11h2a2 2 0 0 1-2 2zm19 0h-2a2 2 0 0 0 2 2zm-19 10h2.002A2 2 0 0 0 2.5 18.998zm19 0h-2a2 2 0 0 1 2-2z" />
+                    </g>
+                  </g>
+                </svg>
+                <p>Petty Cash</p>
+              </div>
+              <span className={`${style.arrow} ${openPettyCash ? style.rotate : ''}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
+                </svg>
+              </span>
+            </div>
+            <div
+              className={`${style.accordionContent} ${openPettyCash ? style.openAccordion : ''}`}
+              style={{ maxHeight: openPettyCash ? '500px' : '0' }}
+            >
+              <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashRelease">
+                <p>Petty Cash Release</p>
+              </Link>
+              <Link className={style.link} onClick={closeAllAccordions} to="/pettyCashLiquidation">
+                <p>Petty Cash Liquidation</p>
+              </Link>
             </div>
           </div>
 
